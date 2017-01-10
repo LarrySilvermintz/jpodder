@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://purl.org/dc/elements/1.1/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="publisher" type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+  <xs:element name="language" type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+  <xs:element name="creator">
+    <xs:simpleType>
+      <xs:restriction base="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:enumeration value="pater@slashdot.org"/>
+        <xs:enumeration value="CowboyNeal"/>
+        <xs:enumeration value="Zonk"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="rights" type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+  <xs:element name="subject">
+    <xs:simpleType>
+      <xs:restriction base="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:enumeration value="Technology"/>
+        <xs:enumeration value="windows"/>
+        <xs:enumeration value="google"/>
+        <xs:enumeration value="networking"/>
+        <xs:enumeration value="security"/>
+        <xs:enumeration value="suse"/>
+        <xs:enumeration value="movies"/>
+        <xs:enumeration value="games"/>
+        <xs:enumeration value="music"/>
+        <xs:enumeration value="biz"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="date" type="xs:dateTime" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+</xs:schema>

@@ -1,0 +1,316 @@
+jPodder Anatomy:
+release 1.1
+Author: Christophe Bouhier
+
+**************************************************************************************************
+This file describes the anatomy of the jPodder applications. It describes the development and 
+deployment file structure. It also describes the libraries and class loading as well as data 
+formats. 
+
+Generic Descriptions:
+
+jPodder is a very powerfull application supporting: 
+
+- UI/Non-UI mode. (Note: Non-UI mode is not controllable, files will be downloaded and treated though). 
+- Multi-language
+- Custom class loader and Plugin loading.
+- Multi-threaded for web access and executions of tasks like loading persistent data. 
+
+jPodder operates strictly according to the MVC patern. The Data model and Logic are 
+fully separated from the UI. The View and Controllers consists of 
+SWT classes. (Used to be swing). In actual fact jPodder runs the basic logical functions 
+without launching UI. First we will discuss the Data models, the basic logic and UI. 
+
+TODO: There are still some SWT references in the Model/Logic code. 
+These should be transferred. 
+
+
+1. DATA Models
+==============
+
+RSS Data model
+--------------
+
+jPodder acts on the RSS 2.0 data format. At some point RDF/ATOM should be supported, but
+it isn't today. jPodder is also extendable to support specific namesspaces. 
+Currently namespace support for iTunes is hardcoded in the data handlers and the MVC classes
+, but could be externalized. (Basically the whole app should be created from plugins). 
+
+We currently have two binding implementations of this data model.
+1) Using XML Beans
+2) Using nano XML. 
+
+jPodder creates an internal data model of the RSS, which is accesible through a generic entry 
+point which is the Feedlist. (Only 1 Feedlist exists for now). 
+
+It is anticipated that multiple feedlists (Or playlists),  will eventually exist. 
+
+
+Other Data models
+-----------------
+
+jPodder requires other persistent data (To be remembered), to restore the state. These are:
+
+Name:			Definition:				Description:
+Feeds			feeds.xsd				RSS Feedlist with information like URL, local folder, last modified dated 
+Cache			cache.xsd				A simple list of filenames, to avoid re-downloads.
+configuration	configuration.xsd		Application properties, like UI size etc.. (All you can find in Settings).
+plugin			plugin-properties.xsd	Can be anything in there. The plugin know what they put in.
+directory 								???
+ID3				-(hardcoded)			A list of ID3 tags to be applied to all downloaded files.					
+languages		Java ResourceBundle		Uses java I18n model to externalize strings. 
+plugin			plugin.xsd
+@TODO Missing data models?
+
+Note that as this data is personal and might want to be saved even when un-installing the 
+application, this data is mostly stored in the Operating System User Home folder. (For win32, this
+would be [User Home]/application Data/jPodder).
+
+The language resource bundles are however stored in the application installation directory.
+
+2. Logic
+========
+
+The app implements a custom class loader, to control which classes and where to load them
+from. The class loading also initially requires the use of persisted objects. (Classes instantiated
+using reflections), as the app is not aware of any class (A limited classpath is set) when
+launching.
+
+The preparation logic is responsible for version handling, telling the application where files 
+are available and loading of the data models and plugins. Data models are loaded in a background 
+thread. 
+
+The following tasks are performed when launching:
+1) Loading of Libraries. ( UI library SWT is not loaded yet). 
+2) Instantiate the class "Logic".
+3) Scan and load plugins..
+4) Initialize the checking of the User configuration and version of app, and potential upgrade of 
+the persistent data.
+5) Other logic classes are instantiated. These class could contain a data model which is then also 
+loaded in the background. i.e. the Feeds data model is loaded when the FeedList class is instantiated.
+
+The basic logic or intelligence operates on the data models. The operations are usually 
+retrieving, parsing, storing, rewriting meta-data, transferring, cleaning data. Data being 
+most of the time the RSS data model.
+
+Many of these actions are controlled manually, but are also kick-started by a scheduling logic 
+when operating in non-UI mode. Also many of the actions operate in threads. 
+
+Logic modules are singletons. An instance is retrieved using the "getInstance()" method. 
+
+Configuration Logic: Logic for User configuration.
+=================== 
+
+1)resolves the User configuration folder, checks the version and performs data upgrade if
+required by the version. 
+ 
+2) Contains a generic mechanism for loading and saving data from the file system 
+(Which complies to IDataHandler). Loading is performed as an ITask. (See Task Logic).
+
+
+Scheduler Logic: Logic modules can register to the Scheduler which kicks in on a fixed time or interval 
+===============	 based periods. The mode and other settings are stored in the Configuration.
+
+Feed Logic: The Feed logic module when kick-started, goes through the list of feeds and initiates intrusctions on the 
+==========  feed to:
+			- Collect			: Collect an RSS file, create a local copy (In temp), loads the data model.
+			- Inspect			: Inspect if enclosures are local, cached, in one of the plugin players.
+			- Mark				: Marks enclosures for downloading. 
+			- Download   		: Downloads the enclosures, and executes post-downloading tasks.
+Player Logic: The player logic module can check or transfer media files to external application which support can support
+============
+the Player interface. (Implemented by plugins). 
+
+Plugin Logic: Scans and loads plugins from the \plugin folder. The plugin.xml inside a plugin 
+============
+.jar file is the descriptor. It tell which classes to load and instantiate. It also tells
+which other archive libraries (.jar) or native libraries to load.
+
+Task Logic	: Logic for processing tasks.
+============
+
+Non API (Including SWT) tasks which could take some time can use the Task logic to 
+initiate tasks in background. Other classes can register and be notified of class completion. 
+The logic is generic but not used throughout jPodder. TODO: convert some of the tasks with 
+their own background logic to the generic task logic.
+
+
+ID3 Logic	: Logic for processing ID3 info in MP3 files. 
+============
+
+ID3 tags are rewritten as defined in the generic ID3 file. They are also rewritten for 
+specific feeds, As stored in feeds.xml. 
+
+
+OPML Logic	: Logic for loading/writing OPML files containing feed information.
+============
+
+Download Logic: Logic for downloading enclosures. Maintains a list of downloads.
+==============
+
+Net Logic	: HTTP downloading. (GET, HEAD). 
+============
+
+Remote Logic: An RPC listener, which can add feeds. @TODO, Shoud document more.
+============
+
+Content Logic:Logic which maintains supported content types for Player plugins.
+=============
+
+Language Logic: Logic for languages. Tries to find a translation for the OS Locale settings. 
+============== If not it uses language. Applies a change when changed in the settings. 
+
+Clock Logic: A clock which fires every second, modules can register to it.
+===========
+
+
+
+3. UI and Controllers
+========================
+
+The UI is an SWT display. The Tabview is the main holder of other views. 
+
+3.1 ID3 views
+-------------
+
+ID3 tags can be viewed for each ID3 compliant file. The same view is also used for 
+rewritable tags.
+
+
+
+**************************************************************************************************
+3rd Party Libraries
+
+External (Non-JRE) libraries are used. These are: 
+
+log4j						: Logging library
+vdHeide ID3					: ID3/MP3 library
+Apache Commons HTTP Client	: More powerful than sun's HTTP client.
+Apache Commons logging		: Needed by some other apache libraries.
+Apache Commons net			: For FTP etc... support
+Apache Commons codec		: Needed by some other apache libraries.
+nanoxml						: Lightweigth XML parser
+Apache XMLBeans				: XML to java data binder.
+Apache XML RPC				: XML Remote Procedure Calls.
+JDOM						: XML Document Object Model (Used to apply XML StyleSheets in directory).
+SWT							: Eclipse Standard Windows Toolkit
+JFace						: Eclipse Additional Windows Toolkit
+ktable						: Powerfull SWT compatible Table Toolkit.
+CSS2						: CSS Parser
+JDIC						: Java Desktop library for associating programs (Used in Core plugin). 
+Jawin						: Win32 COM interface.
+
+Generated binding libraries
+
+Most persistent data is made available as java libraries. For this XML data binding is used 
+to generate java from XML. The XML Schema definitions for these peristent data formats are
+used to generate the databinding libraries. See the folder \xml for application formats.
+
+plugin Libraries
+
+Plugins are loaded when stored in the \plugin folder. 
+There are various sorts of plugins. 
+
+- Player plugins. (implement the "Player" interface). 
+- Allround plugins. Implement whatever class. Plugins access modules and the UI.
+
+Standard Allround plugin: 
+- Core plugin				: Loads "OneClick" support. Sets/Removes an association.
+							: loads UI classes.
+Standard Player plugins are: 
+- ThumbDrive
+- itunes
+- Windows Media Player. 
+
+
+**************************************************************************************************
+Development Folder structure: 
+
+\jPodder
+		maven.xml
+		project.xml			: All dependencies (Libraries). 
+		project.properties	: Contains:
+							: 	documentation properties
+							: 	installation properties
+							:	compilation properties
+							:   overrides for local libraries (Libraries which are not downloaded).
+		\doc
+			license.txt		: License info	
+			README.html		: Readme (Installation information). @TODO Clean namespaces.
+			Release Notes.html : User version information
+		\src
+			\scripts
+					\directory
+							  A complete webpage with AJAX support for querying the 
+							  transitr podcast directory @TODO FAILING.
+					\lib
+						\[java scripts for XSLT, XMLRPC]		  
+			\java
+				 \com.jpodder.*.java	: core and UI java sources.
+			\resource
+					 \config
+					 		id3.xml				: contains all ID3 tags in XML format. 
+					 		jpodder.properties 	: Current release and version information.
+					 		jPodderResources_[lang]_[cc].properties : translations
+					 		log4j.xml			: Logging configuration (Default INFO ).
+					 		mime.xml			: mimetype to image mapping. ( NOT USED!). @TODO remove 
+							style.css			: jPodder Cascading Style Sheet.
+					 \default
+					 		cache.xml			: cache repository (persistent)
+					 		feeds.xml			: feed repository (persistent)
+					 		plugin-properties.xml: plugin properties repositotry (persistent)
+					 		properties.xml		: properties (persistent)
+					 		theme.css			: @TODO, Move to "theme" folder
+					 \image						: @TODO, rename to "theme" folder
+					 	   \installation	
+					 	   
+					 	   \ui
+					 	   	  \themes\
+					 	   	  		  [theme]   : A theme folder contains images in 16, 32 and 256 subfodlers
+					 	   	  		  			: @TODO, themes are not discovarable
+					 	   	  		  			: @TODO, file names should be listed, perhaps with a simple .properties 
+					 	   	  		  			  file. 
+					 \installation
+					 			  \izpack
+					 			  		install.maven.xml: Packages files in deployed structure.
+					 			  		install-unix.maven.xml Packages files in deployed structure
+					 			  \launcher
+					 			  \nsis
+					 			  	    jpodder.nsi: Packages files in deployed sturcture.
+					 			  
+					 \lib
+					 	 [Libraries] 	: Local libraries (Non downloadable) (.jar) 
+					 	 				: Should match with project.properties.
+					 \native
+					 		
+					 
+					 \template
+\xml
+	[XML Definitions]					
+\plugin [Standard Plugins]
+	   \core
+	   \player
+
+maven.xml					: jpodder:build -> 1) execute jpodder:build in all subdirs
+											   2) copy al .jar from **\dist to jpodder\target\plugin\
+											   3) run jpodder:create-installation
+							: jpodder:clean -> 1) execute jpodder:clean in all subdirs
+							: jpodder:[Other goals for installing and running jpodder]
+project.xml					: 
+
+**************************************************************************************************
+Deployed state Folder Structure: 
+
+\bin
+	jPodder.log (Generated) : Contains log4j logging output. 
+	jPodder.log.[date] 		: log backup files. 
+	log4j.xml 				: Logging configuration (Default INFO ). 
+	jPodder.properties		: Current release and version information. 	
+	main.jar				: Contains Main class, launch of jPodder. Manifest file set to log4j 
+							  library in \lib folder.
+	jpodder.cmd				: Looks for JAVA_HOME and launches from this folder. @TODO, Should 
+						      not be needed on win32 installs. 			
+\default
+	
+	
+	

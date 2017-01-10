@@ -1,0 +1,165 @@
+<project default="jpodder:build"
+         xmlns:ant="jelly:ant"
+         xmlns:j="jelly:core"
+         xmlns:maven="jelly:maven"
+         xmlns:deploy="deploy"
+>
+    <goal name="jpodder:install" prereqs="java:compile" description="Builds and installs (interactively) a full jPodder distribution" >
+        <attainGoal name="execute-installation"/>
+    </goal>
+
+    <goal name="jpodder:release" prereqs="java:compile, javadoc:generate" description="Builds a full jPodder distribution" >
+        <attainGoal name="jpodder:build"/>
+    </goal>
+
+    <goal name="jpodder:just-run" description="Only executes jPodder (you must have built it before)" >
+        <attainGoal name="execute-jpodder"/>
+    </goal>
+    
+    <goal name="jpodder:quick-run" prereqs="jpodder:quick-install" description="Builds, installs and executes a slimmed down jPodder distribution" >
+        <attainGoal name="execute-jpodder"/>
+    </goal>
+    
+    <goal name="jpodder:quick-install" prereqs="jpodder:quick-release" description="Builds and installs a slimmed down jPodder distribution" >
+        <attainGoal name="execute-installation-light"/>
+    </goal>
+    
+    <goal name="jpodder:quick-release" prereqs="java:compile" description="Builds a slimmed down jPodder distribution" >
+        <!-- Need to create this directory otherwise IzPack goes beserk if it is missing (normally created by JavaDoc -->
+        <ant:mkdir dir="${maven.build.dir}/docs/apidocs"/>
+        <attainGoal name="jpodder:build"/>
+    </goal>
+    
+    <goal name="jpodder:upload-beta" prereqs="prepare-archive" description="Upload a beta to powweb" >
+        <ant:ftp password="${p_betapassword}" server="ftp03.powweb.com" userid="${p_betauid}">
+            <ant:fileset dir="${maven.build.dir}">
+                <ant:include name="${p_app}-${p_relnum}.zip" />
+            </ant:fileset>
+        </ant:ftp>
+    </goal>
+    
+    <goal name="jpodder:upload-release" prereqs="prepare-archive" description="Upload a release to Sourceforge" >
+        <!--AS ATTENTION: If during upload nothing happens and you only get a listing like <ftp....></ftp> then
+            you need to install the necessary archives. Please download NetComponents.jar from
+            http://www.savarese.org/oro/downloads and put into into the MAVEN_HOME/lib directory.
+            Then go to the MAVEN_HOME/bin directory open forehead.conf file and add the following line:
+            ${maven.home}/lib/NetComponents.jar
+            at the end of the [root] category.
+            This should do the trick.
+        -->
+        <ant:ftp
+            server="upload.sourceforge.net"
+            userid="Anonymous"
+            password="hi@mail.com"
+            verbose="true"
+            remotedir="incoming"
+        >
+            <ant:fileset dir="${maven.build.dir}">
+                <ant:include name="${p_app}-${p_relnum}.zip" />
+            </ant:fileset>
+        </ant:ftp>
+        <!-- Please keep this line because if FTP is not available (see comment above) Maven is completely silent. With
+        this line it will list the ftp tag above indicating a problem.
+        -->
+        <ant:echo>After FTP</ant:echo>
+    </goal>
+    
+    <target name="jpodder:upload-podcast" description="Upload the latest podcast" >
+        <ant:ftp password="${ftp_password}" server="ftp03.powweb.com" userid="${ftp_userid}" remotedir="/htdocs">
+            <ant:fileset dir="${p_doc}/">
+                <ant:include name="jpodcast.xml" />
+            </ant:fileset>
+        </ant:ftp>
+    </target>
+
+   <goal name="jpodder:build"
+         description="Build all jPodder components">
+        <maven:reactor basedir="${basedir}"
+                     includes="**/project.xml"
+                     excludes="project.xml"
+                     goals="jpodder:build"
+                     banner="Building:"
+                     ignoreFailures="false"
+                     sort="true"
+        />
+        <ant:fileScanner var="ownLibs">
+            <ant:fileset dir="${basedir}">
+                <ant:include name="**/dist/*.jar"/>
+            </ant:fileset>
+        </ant:fileScanner>
+        <j:forEach var="entry" items="${ownLibs.iterator()}">
+            <ant:path id="libEntryPath" path="${entry}"/>
+            <ant:echo>Lib Entry: ${entry.name} ${entry}</ant:echo>
+            <ant:copy tofile="${basedir}/jpodder/target/plugin/${entry.name}" file="${entry}" />
+        </j:forEach>
+        <maven:reactor basedir="${basedir}"
+                     includes="jpodder/project.xml"
+                     goals="jpodder:create-installation"
+                     banner="Building:"
+                     ignoreFailures="false"
+                     sort="true"
+        />
+   </goal>
+    <goal name="execute-installation">
+        <ant:java
+            jar="${maven.build.dir}/install.jar"
+            fork="true"
+        >
+        </ant:java>
+    </goal>
+
+    <goal name="execute-jpodder">
+        <ant:mkdir dir="${maven.build.dir}/installation/configuration"/>
+        <ant:java jar="${maven.build.dir}/installation/jPodder/bin/main.jar"
+            fork="true"
+            spawn="true"
+            dir="${maven.build.dir}/installation/jPodder/bin">
+            <arg value="-configuration=${maven.build.dir}/installation/configuration/jPodder"/>
+        </ant:java>
+    </goal>
+    
+    <goal name="build-installation">
+    	 <maven:reactor basedir="${basedir}"
+                     includes="jpodder/project.xml"
+                     goals="jpodder:create-installation"
+                     banner="Building:"
+                     ignoreFailures="false"
+                     sort="true"
+        />
+    </goal>
+    
+    <goal name="execute-installation-light">
+        <!-- Before calling the automated installation we need to fill in some values to the automatic build script -->
+        <ant:copy todir="${maven.build.dir}" file="${basedir}/jpodder/src/resource/installation/izpack/auto-install.xml" filtering="true">
+            <ant:filterset begintoken="@" endtoken="@">
+                <ant:filter token="maven.build.dir" value="${maven.build.dir}"/>
+                <ant:filter token="file.separator" value="/"/>
+            </ant:filterset>
+        </ant:copy>
+        <ant:java
+            jar="${maven.build.dir}/install.jar"
+            fork="true">
+            <ant:arg value="${maven.build.dir}/auto-install.xml"/>
+        </ant:java>
+    </goal>
+
+   <goal name="jpodder:clean"
+         description="Clean all JPodder components" prereqs="clean">
+      <maven:reactor basedir="${basedir}"
+                     includes="**/project.xml"
+                     excludes="project.xml"
+                     goals="jpodder:clean"
+                     banner="Cleaning:"
+                     ignoreFailures="false"
+      />
+   </goal>
+   <!-- Site generation using Multi-Project plug-in -->
+   <goal name="jpodder:site">
+	   <attainGoal name="multiproject:site"/>
+   </goal>
+   <!-- Site generation using Multi-Project plug-in -->
+   <goal name="jpodder:site-deploy">
+	   <attainGoal name="multiproject:site"/>
+	   <attainGoal name="site:sshdeploy"/> -->
+   </goal>
+</project>

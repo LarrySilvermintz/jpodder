@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <pomVersion>3</pomVersion>
+    <groupId>jPodder</groupId>
+    <currentVersion>1.0</currentVersion>
+    <organization>
+        <name>jPodder</name>
+        <url>http://www.jpodder.com/</url>
+        <logo>http://www.jpodder.com/imaging/jPodder-web.gif</logo>
+    </organization>
+    <inceptionYear>2004</inceptionYear>
+    <package>com.jpodder</package>
+    <logo>http://www.jpodder.com/imaging/jPodder-web.gif</logo>
+    <url>http://www.jpodder.com/</url>
+    <siteAddress>www.jpodder.com</siteAddress>
+    <mailingLists>
+        <mailingList>
+        <name>jPodder Developers</name>
+            <archive>https://sourceforge.net/mailarchive/forum.php?forum_id=43305</archive>
+            <subscribe>http://lists.sourceforge.net/lists/listinfo/jpodder-develop</subscribe>
+            <unsubscribe>http://lists.sourceforge.net/lists/listinfo/jpodder-develop</unsubscribe>
+        </mailingList>
+    </mailingLists>
+    <versions>
+        <version>
+            <id>1.0</id>
+            <name>1.0RC3</name>
+            <tag>HEAD</tag>
+        </version>
+    </versions>
+    <developers>
+        <developer>
+            <name>Andreas Schaefer</name>
+            <id>schaefera</id>
+            <email>andreas.schaefer@madplanet.com</email>
+            <organization>jPodder</organization>
+            <roles>
+                <role>Developer</role>
+            </roles>
+            <url>www.madplanet.com</url>
+            <timezone>-8</timezone>
+        </developer>
+        <developer>
+            <name>Christophe Bouhier</name>
+            <id>dzonekl</id>
+            <email>christophe@kualasoft.com</email>
+            <organization>jPodder</organization>
+            <roles>
+                <role>Developer</role>
+            </roles>
+            <url>www.jpodder.com</url>
+            <timezone>+8</timezone>
+        </developer>
+    </developers>
+    <licenses>
+        <license>
+            <name>GNU General Public License</name>
+            <url>http://www.gnu.org/licenses/gpl.html</url>
+            <distribution>manual</distribution>
+        </license>
+    </licenses>
+    <dependencies>
+        <dependency>
+            <id>log4j</id>
+            <version>1.2.8</version>
+            <url>http://jakarta.apache.org/log4j/</url>
+            <properties>
+                <jar.lib>true</jar.lib>
+                <add.to.main>true</add.to.main>
+            </properties>
+        </dependency>
+    </dependencies>
+    <build>
+        <nagEmailAddress>andreas.schaefer@madplanet.com</nagEmailAddress>
+        <sourceDirectory>src/java</sourceDirectory>
+        <unitTestSourceDirectory>test/src/java</unitTestSourceDirectory>
+        <aspectSourceDirectory/>
+        <unitTest>
+            <includes>
+                <include>**/*Test.java</include>
+            </includes>
+        </unitTest>
+        <resources>
+            <resource>
+                <directory>${basedir}/src/resource/config</directory>
+                <includes>
+                    <include>log4j.xml</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+
+<!-- Reports that we are interested in -->
+    <reports>
+        <report>maven-changes-plugin</report>
+        <report>maven-license-plugin</report>
+        <report>maven-javadoc-plugin</report>
+        <report>maven-jxr-plugin</report>
+        <report>maven-checkstyle-plugin</report>
+        <report>maven-pmd-plugin</report>
+        <report>maven-jdepend-plugin</report>
+        <report>maven-changelog-plugin</report>
+        <report>maven-file-activity-plugin</report>
+        <report>maven-developer-activity-plugin</report>
+        <report>maven-tasklist-plugin</report>
+    </reports>
+</project>

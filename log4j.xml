@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <!-- console output -->
+    <appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+        <param name="Threshold" value="com.jpodder.util.XLevel#DEV_DEBUG"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <!-- a bunch of data, but SLOW -->
+            <!--
+            <param name="ConversionPattern"
+                value="%d %-5p %c{1}#%M(%F:%L) - %m%n"/>
+            -->
+            <!-- not as much info, but faster -->
+            <param name="ConversionPattern"
+                value="%d{HH:mm:ss} %-5p [%c{1}] %m%n"/>
+        </layout>
+    </appender>
+
+    <!-- log file output -->
+    <appender name="LOG" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="./jpodder.log" />
+        <!-- Do not append so that a restart creates a new log file -->
+        <param name="Append" value="false"/>
+        <!-- Rollover at midnight each day -->
+        <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <!-- The default pattern: Date Priority [Category] Message\n -->
+            <param name="ConversionPattern" value="%d %-5p [%c] %m%n"/>
+        </layout>
+    </appender>
+
+    <!-- Log Factory 5 Viewer Appender. If active it will pop-up a viewer
+         by itself
+    -->
+    <appender name="LF5Appender" class="org.apache.log4j.lf5.LF5Appender">
+        <param name="MaxNumberOfRecords" value="5000"/>
+    </appender>
+
+    <!-- individual category filters -->
+    <!-- Http Client is quite verbose so only log INFO or greater -->
+    <category name="org.apache">
+        <priority value="INFO" />
+    </category>
+    <category name="httpclient">
+        <priority value="INFO" />
+    </category>
+    <category name="com.jpodder">
+        <priority value="INFO" />
+    </category>
+ 
+
+    <!-- To activate the LF5 viewer add the "LF5Appender as "appender-ref" -->
+    <root>
+        <!-- We log all entries here because otherwise the ipLogArea has not chance to display any log statements below this level -->
+        <priority value="ALL" />
+        <appender-ref ref="LOG"/>
+        <!-- <appender-ref ref="LF5Appender"/> -->
+        <!-- <appender-ref ref="STDOUT"/> -->
+    </root>
+</log4j:configuration>
+

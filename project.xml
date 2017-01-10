@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <extend>./basic-project.xml</extend>
+    <artifactId>jPodder2</artifactId>
+    <name>jPodder2</name>
+    <shortDescription>jPodder: Podcasting Application</shortDescription>
+    <description>
+        jPodder is the leading podcasting client. It's support advanced features like enclosure previewing, multiple downloading,
+        BitTorrent support and many more user friendly functions.
+    </description>
+    <siteAddress>www.jpodder.com</siteAddress>
+    <repository>
+        <connection>scm:cvs:pserver:anonymous@cvs.sourceforge.net:/cvsroot/jpodder:jPodder</connection>
+    </repository>
+</project>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<shortcuts>	
+		<programGroup defaultName="jPodder-1.0" location="applications/startMenu"/> 
+			<shortcut name="jPodder"
+				target="$INSTALL_PATH\bin\main.jar"
+				commandLine=""
+				workingDirectory="$INSTALL_PATH\bin"
+				description="jPodder media downloader"
+				iconFile="$INSTALL_PATH\bin\jpodder.ico"
+				initialState="normal"
+				programGroup="yes"
+				desktop="yes"
+				applications="no"
+				startMenu="no"
+				startup="no">
+			</shortcut>
+			<shortcut name="jPodder (cmd)"
+				target="$INSTALL_PATH\bin\jpodder.cmd"
+				commandLine=""
+				workingDirectory="$INSTALL_PATH\bin"
+				description="jPodder media downloader"
+				iconFile="$INSTALL_PATH\bin\jpodder.ico"
+				initialState="normal"
+				programGroup="yes"
+				desktop="no"
+				applications="no"
+				startMenu="no"
+				startup="no">
+			</shortcut>
+			<shortcut name="Uninstall"
+				target="$INSTALL_PATH\Uninstaller\uninstaller.jar"
+				commandLine=""
+				workingDirectory="$INSTALL_PATH\bin"
+				description="uninstall jPodder"
+				iconFile="$INSTALL_PATH\bin\uninstall.ico"
+				initialState="normal"
+				programGroup="yes"
+				desktop="no"
+				applications="no"
+				startMenu="no"
+				startup="no">
+			</shortcut>
+		</shortcuts>

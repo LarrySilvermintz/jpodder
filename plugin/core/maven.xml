@@ -1,0 +1,97 @@
+<project default="jpodder:build"
+         xmlns:ant="jelly:ant"
+         xmlns:j="jelly:core"
+         xmlns:maven="jelly:maven"
+         xmlns:deploy="deploy"
+         xmlns:util="jelly:util"
+>
+    <goal name="jpodder:build" prereqs="jar:install" description="Builds the plugin deployment archive" >
+    	
+    
+    
+    </goal>
+
+    <goal name="jpodder:clean" prereqs="clean:clean" description="Deletes the build directory" >
+    </goal>
+    
+<!-- Pre / Post Goals for this Project -->
+
+    <preGoal name="java:compile">
+        <attainGoal name="selectos"/>
+    	<attainGoal name="init"/>
+	
+    </preGoal>
+    
+    <preGoal name="jar:jar">
+    	
+        <ant:copy todir="${maven.build.dest}" >
+            <ant:fileset dir="${plugin.resource.os.dir}/descriptor">
+                <ant:include name="*.properties"/>
+                <ant:include name="*.xml"/>
+            </ant:fileset>
+            <ant:fileset dir="${plugin.resource.os.dir}/lib">
+                <ant:include name="**.*"/>
+            </ant:fileset>
+        </ant:copy>
+        
+        
+    </preGoal>
+    
+    <postGoal name="jar:jar">
+        <!-- Because the plugins most likely depend on jPodder build we need to resolve
+             the dependencies by hand meaning we are copying them to a special directory
+             which can them be picked up -->
+        <ant:echo>Copy from ${maven.build.dest}/dist</ant:echo>
+        <ant:copy todir="${maven.build.dir}/dist" >
+            <ant:fileset dir="${maven.build.dir}">
+                <ant:include name="*.jar"/>
+            </ant:fileset>
+        </ant:copy>
+    </postGoal>
+    
+    <postGoal name="java:compile">
+    </postGoal>
+
+<!-- Private Goals for this Project -->
+
+    <goal name="selectos">
+        <ant:condition property="isUnix" value="true">
+            <os family="unix" />
+        </ant:condition>
+        <ant:condition property="isWindows" value="true">
+            <or>
+                <os family="windows" />
+                <os family="win9x" />
+            </or>
+        </ant:condition>
+        
+        <j:set var="plugin.resource.os.dir" value="${plugin.resource.os.dir.win32}" />
+        <j:if test="${isUnix == 'true'}">
+            <j:set var="plugin.resource.os.dir" value="${plugin.resource.os.dir.linux}" />
+        </j:if>
+        <j:if test="${isMac == 'true'}">
+            <j:set var="plugin.resource.os.dir" value="${plugin.resource.os.dir.mac}" />
+        </j:if>
+	<ant:echo>Building for ${plugin.resource.os.dir}</ant:echo>
+    </goal>
+	
+	<!--
+	We create a file scanner to retrieve the .jar in the Library directory.
+	We create a maven classpath for compilation.
+	-->
+    <goal name="init">
+    	<j:set var="manifest.class.path" value=""/>
+        <ant:fileScanner var="ownLibs">
+            <ant:fileset dir="${plugin.resource.os.dir}/lib">
+                <ant:include name="*.jar"/>
+            </ant:fileset>
+        </ant:fileScanner>
+        <j:forEach var="entry" items="${ownLibs.iterator()}">
+            <ant:path id="libEntryPath" path="${entry}"/>
+            <ant:echo>Add Lib to the MDC: ${entry.name}</ant:echo>
+            <maven:addPath id="maven.dependency.classpath" refid="libEntryPath"/>
+            <j:set var="manifest.class.path" value="${manifest.class.path} /lib/${entry.name}"/>
+	    
+        </j:forEach>
+    </goal>
+</project>

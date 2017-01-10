@@ -1,0 +1,105 @@
+<html>
+    <head>
+        <title>Podcast Producton in jPodder</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <link rel="stylesheet" ref="stylesheet" href="../../main.css" type="text/css">
+    </head>
+    <body>
+        <div id="title"><h1><a name="top">Step 3: Add Podcasts to the News Channel (Feed)</a></h1></div>
+        <p>
+	    Adding an enclosure to your feed is done in two easy steps. First you need to select
+	    an audio file (Your recently recorded podcast), set information tags. (Listeners downloading your 
+	    feed with jPodder will see this information tags appear in their media player) and add the
+	    file to the production. Secondly you set the URL of the podcast and write the podcast item (including the
+	    URL with the correct enclosure) into the feed.
+ 	    </p>
+	    It's important to distinguish the difference between adding the podcast to the production as to adding
+	    the podcast to the feed. In the production, the podcast is still a working item whereby the enclosure
+	    URL is initially not set. Only after you have entered a correct URL, the podcast can be added to the feed. 
+	    When doing so, the podcast is wrapped into an RSS item including the enclosure, description and the current 
+	    date and time. You can always see the results in the RSS editor. 
+	    When editing directly into the RSS editor, changes will only be reflected in the production tab
+	    when pressing save
+	    </p>
+	    Step 3A Add/Open an audio file.
+	    </p>
+            To add a new audio file to your feed click on the
+            <object CLASSID="java:com.sun.java.help.impl.JHSecondaryViewer">
+                <param name="content" value="../popup/production.mp3.add.html">
+                <param name="viewerActivator" value="javax.help.LinkLabel">
+                <param name="viewerStyle" value="javax.help.Popup">
+                <param name="viewerSize" value="165, 95">
+                <param name="text" value="Add MP3">
+            </object>
+            link. In order to edit an existing podcast just <b>double click</b> on it.
+            After selection (<i id="element">browse</i> button</p> an audio file the <i id="element">Add MP3</i> tab
+            will look like this:
+        </p>
+	</p>
+        <p id="image">
+            <img src="../../images/production.mp3.add.tab.png">
+        </p>
+        <p>
+            The tab contains these elements:
+            <table id="list"><tr valign="top">
+            <td id="key">Select an MP3 File</td><td id="value">Field to enter the location of the audio file</td>
+            </tr><tr valign="top">
+            <td id="key"><i id="element">Browse...</i> button</td><td id="value">Brings up a file selection dialog to select the audio file</td>
+            </tr><tr valign="top">
+            <td id="key">Link</td><td id="value">The
+                <object CLASSID="java:com.sun.java.help.impl.JHSecondaryViewer">
+                    <param name="content" value="../glossary/url.html">
+                    <param name="viewerActivator" value="javax.help.LinkLabel">
+                    <param name="viewerStyle" value="javax.help.Popup">
+                    <param name="viewerSize" value="225, 105">
+                    <param name="text" value="URL">
+                </object>
+                pointing to the feed on the web
+            </td>
+            </tr><tr valign="top">
+            <td id="key">ID3 Box</td><td id="value">lists the currently available tags of the MP3 audio file. Works like the
+                <a href="file.table.html#tag.dialog">File Tag Dialog</a></td>
+            </tr><tr valign="top">
+            <td id="key">Add</td><td id="value">adds the audio file to the production (will display
+            a dialog box if the audio file already exists). The podcast is not yet added to the RSS feed. This 
+	    will be done after we have set a correct URL for the audio file and filled in the description. (See below)</td>
+            </tr><tr valign="top">
+            <td id="key">Save</td><td id="value">saves the changed audio tags</td>
+            </tr></table>
+        </p>
+        <p id="image">
+	    Step 3B Set the URL and Description.
+            Going back to the <i id="element">production</i> tab it looks like this:
+            <img src="../../images/production.enclosure.list.png">
+        </p>
+        <p>
+            The tab contains these elements:
+            <table id="list"><tr valign="top">
+            <td id="key">Production Files</td><td id="value">List of all the current <i id="element">enclosures</i> of this feed</td>
+            </tr><tr valign="top">
+            <td id="key">Select host</td><td id="value">Allows you to select a known host where the podcast is hosted</td>
+            </tr><tr valign="top">
+            <td id="key"><u>Add</u></td><td id="value">Allows you to add a new
+                <object CLASSID="java:com.sun.java.help.impl.JHSecondaryViewer">
+                    <param name="content" value="../glossary/url.html">
+                    <param name="viewerActivator" value="javax.help.LinkLabel">
+                    <param name="viewerStyle" value="javax.help.Popup">
+                    <param name="viewerSize" value="225, 105">
+                    <param name="text" value="URL">
+                </object>
+            </td>
+            </tr><tr valign="top">
+            <td id="key">Result</td><td id="value">The URL of the location of <i id="element">podcast</i>
+	    The URL is calculated from the podcast file name plus the selected host name. You can also simply
+	    type in the URL, but the host will not be remembered. It's better to add a host using the "Add" button</td>
+            </tr><tr valign="top">
+            <td id="key">Description</td><td id="value">This the item description which will appear in the feed item section for
+	    this <i id="element">enclosure</i></a> The description is stored as formated HTML. The description field shows formated
+	    HTML.</td>
+            </tr><tr valign="top">
+            <td id="key">Add to RSS</td><td id="value">Adds the enclosure to the feed. You can verify the final result by 
+	    going to the feed editor and check that the enclosure URL for the podcast is correct.</td>
+            </tr></table>
+        </p>
+    </body>
+</html>

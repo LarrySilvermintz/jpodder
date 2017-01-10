@@ -1,0 +1,138 @@
+package com.jpodder;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLDecoder;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Vector;
+
+import com.jpodder.data.feeds.Feed;
+import com.jpodder.data.file.Enclosure;
+import com.jpodder.ui.util.Messages;
+import com.jpodder.xml.XMLUtil;
+
+import net.n3.nanoxml.*;
+
+/**
+ * RSS feed parsing class.
+ * <p>
+ * This class is responsible for parsing an RSS feed,
+ * Creating a title from the first "title" entry
+ * in the feed and getting all enclosures from this .RSS feed.
+ *
+ */
+public class NanoRSS {
+
+  private String feedTitle;
+  private List enclosureList;
+  private IXMLElement root;
+
+  private final Feed feed;
+
+  /**
+   * Constructor.
+   *
+   * @param root IXMLElement
+   * @param feed PollModel.Feed
+   */
+  public NanoRSS(IXMLElement root, Feed feed) {
+    this.root = root;
+    this.feed = feed;
+  }
+
+  /**
+   * Parse the RSS file.
+   * Call the <code>getFeedTitle()</code> and
+   * <code>getEnclosureList()</code> methods to get the results.
+   * @throws Exception
+   */
+  public void parseRSS() throws Exception {
+    // Feed example:
+    // http://live.curry.com/rss.xml
+    feedTitle = getFeedTitle(root);
+    enclosureList =  getEnclosureList(root);
+  }
+
+  /**
+   * Get the title from the feed.
+   * This is a recursive function, which returns the first "title" tag
+   * in the RSS 2.0 specification
+   * @param elem IXMLElement
+   * @return String
+   */
+  private String getFeedTitle(IXMLElement elem) {
+
+    Vector titleElements = elem.getChildrenNamed("title");
+    Iterator it = titleElements.iterator();
+    IXMLElement child = null;
+    while (it.hasNext()) {
+      child = (IXMLElement) it.next();
+      return child.getContent();
+    }
+    if( elem.hasChildren())
+      return getFeedTitle(elem.getChildAtIndex(0));
+    return(Messages.getString("nanorss.unknowntitle"));
+  }
+
+  /**
+   * Get the RSS playlist name (RSS 2.0 title).
+   * @return String The title or <code>null</code> if no title was found.
+   */
+  public String getFeedTitle() {
+    String result = null;
+
+    try{
+      result = URLDecoder.decode(feedTitle,"UTF-8");
+    }catch(java.io.UnsupportedEncodingException uee){
+      // Shoudn't happen;
+    }
+    return result;
+  }
+
+  /**
+   * Get the RSS enclosure track list (RSS 2.0 enclosure).
+   * @return Vector A list or <code>null</code> if no title was found.
+   */
+  public List getEnclosureList() {
+    return enclosureList;
+  }
+  
+  /**
+   * Get the enclosure list.
+   * This class doesn't descriminate enclosures. All are stored
+   * in an <code>ipEnclosure</code> model.
+   * @param elem IXMLElement
+   * @return Vector
+   */
+  private List getEnclosureList(IXMLElement elem) {
+    ArrayList enclosureList = new ArrayList();
+
+    int count = 0;
+    Vector enclElements = XMLUtil.getElementNamed(elem, "enclosure");
+    Iterator it = enclElements.iterator();
+    IXMLElement enclElem;
+    while (it.hasNext()) {
+      enclElem = (IXMLElement) it.next();
+      if (enclElem.hasAttribute("type")) {
+        String type = enclElem.getAttribute("type", "non-exist");
+        String audiofile = enclElem.getAttribute("url", "non-exist");
+        URL url = null;
+        try {
+          url = new URL(audiofile);
+        }
+        catch (MalformedURLException mue) {
+          // EXCEPTION HANDLING
+        }
+        if (url != null) {
+          // Store a more comprehensive enclosure object.
+          Enclosure encl = new Enclosure(url, type);
+          encl.setFeed(feed);
+          enclosureList.add(count++, encl);
+        }
+      }
+    }
+    return enclosureList;
+  }
+}

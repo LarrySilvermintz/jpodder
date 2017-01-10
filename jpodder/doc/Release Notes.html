@@ -1,0 +1,578 @@
+<html xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+	<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+	<title>jPodder release notes</title>
+</head>
+
+<body>
+
+<div class=Section1>
+	<h1><span class=GramE>jPodder</span> Release Notes</h1>
+	<div class=MsoNormal align=center style='text-align:center'>
+	<hr size=2 width="100%" align=center>
+</div>
+
+<h2>jPodder 1.1</h2>
+<p>More bug fixing.</p>
+
+<h2>jPodder 1.1RC2</h2>
+<p>Fixed various problems:
+	- Content Range handling. (Libsyn doesn't support partial downloads anymore). 
+	- You can move your podcast folder. We will adapt the feed file location.
+	- Upgrade helper. 
+	- More finetuning.
+</p>
+
+
+<h2>jPodder 1.1RC1</h2>
+
+<p>It took 5 months to deliver this baby! We switch UI to SWT. Why?
+Modern apps need a lot of integration with web (Clickable links, build HTML
+rendering etc<span class=GramE>..)</span> No way <span class=GramE>it could</span>
+be done with Swing so we added SWT. The UI is now also like a native
+application on your OS. (Run on windows only for now). </p>
+
+<p>Any new features? Well not really. There
+are actually less features. Production was removed, and som ID3 rewrite
+function is limited. (Not per feed basis). It’s <span class=GramE>OK,</span>
+still all you need is there. There a couple of other nice surprise, but I’ll
+you discover it. But beware, jPodder is a very powerfull downloader.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>Enjoy Christophe</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<div class=MsoNormal align=center style='text-align:center'>
+
+<hr size=2 width="100%" align=center>
+
+</div>
+
+<h2>jPodder 1.0RC1</h2>
+
+<p>In this release we have completly rebuilded the core code. We have implemented
+a big chunk of UI separation which will allow us to do do a lot of nice things
+in the future. We also have another Them created by The-Error.</p>
+
+<p>New Features:&nbsp;</p>
+
+<p>- OS association of .rss or MIME type application/rss+xml.</p>
+
+<p>- Synchronaztion with online OPML. <span class=GramE>(Tested with podnova
+OPML).</span>&nbsp;</p>
+
+<p>- Build in Language selection and Language editor.&nbsp;</p>
+
+<p>- Stop/Resume all downloads&nbsp;</p>
+
+<p>- Hiding or Showing of the enclosure view.&nbsp;</p>
+
+<p>Other Stuff:&nbsp;</p>
+
+<p>- Systray Shouldn't load on linux.</p>
+
+<p>- Some properties for running on MAC.</p>
+
+<p>- Fixed problem with URL's containing a query portion. <span class=GramE>(Generates
+random file).</span></p>
+
+<h2><span class=GramE>jPodder</span> 0.9</h2>
+
+<p><span class=GramE>Another milestone in podcasting.</span> Here is an update
+on the new features.&nbsp;</p>
+
+<p><u>Podcast production</u></p>
+
+<p>Create a podcast, from creating an RSS feed, recording the podcast, adding
+enclosures and uploading the file to an FTP server.</p>
+
+<p><span class=GramE><u>ID3 rewriting (Hot tags).</u></span><u>&nbsp;</u></p>
+
+<p>Rewrite ID3 tags with the values you select to create smart-lists. You can
+re-write on per file, feed and generically for all feeds.&nbsp;</p>
+
+<p><u>Player plugin support</u></p>
+
+<p>Developers can build plugins for their favorite media player.&nbsp;</p>
+
+<p><u>Download improvements</u></p>
+
+<p>Automatic retry of a timed-out connection and configurable HTTP timeout
+value. Redirects are also better handled with support for the re-directed file
+name. AAC transfers are now also supported.</p>
+
+<p><u>Feed Manager</u></p>
+
+<p>A new feed manager allows you to easily add/edit feeds changing <span
+class=GramE>it's</span> properties and behavior (Like ID3 overwriting).&nbsp;</p>
+
+<p><u>Improved Scheduling</u></p>
+
+<p>Hour of day based scheduling is now supported.</p>
+
+<p>&nbsp;</p>
+
+<h2><span class=GramE>jPodder</span> 0.8</h2>
+
+<p>This version of jPodder is improving the<span class=GramE>&nbsp; usability</span>
+with instant status feedback, Podcast life-cycle management,&nbsp; download
+improvements and easy migration from other iPodder clients. A detailed
+description of the features is provided below.</p>
+
+<p><u>Overview status bar</u></p>
+
+<p>In personal feeds, The overview status bar provides instant feedback on how
+many feeds are subscribed to, the total number of marked enclosures, the next
+scheduled download time, the number of files in a feed (When selected), the
+total number of bytes consumed by a feed, the currently selected player.</p>
+
+<p><u>Action bar</u></p>
+
+<p>Located at the top of the personal feeds tab, the action bar reports the
+most relevant actions. This gives you instead feedback on what is currently
+happening and which task is reporting a finished job. (Many tasks operate
+simultaneously in jPodder).</p>
+
+<p><u>Podcast Life-Cycle &amp; &quot;Ghost feeds&quot;</u></p>
+
+<p>The enclosure/preview panel, is now also a file panel, you can now see both
+the enclosures and the previously downloaded files for the feed. <span
+class=GramE>If a file is both an enclosure and visible on the folder, it is
+displayed as an enclosure.</span> (Highlighting is blue). If a file is not an
+enclosure it's highlighted in orange. You can choose to remove the files (Both
+from disc and player) or add them to the player if missing. The marking column
+is now context sensitive, for files on <span class=GramE>disc,</span> marking
+allows deletion of the files. (Files on the disc are auto-marked). Files can
+also be deleted individually or by selecting multiple rows. <b>How? </b>Files
+in the folder are displayed automatically.&nbsp;</p>
+
+<ul type=disc>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l4 level1 lfo1;tab-stops:list .5in'>To deleted marked files
+     select a feed, Mark the enclosures and files, right-click on the
+     feed-table-&gt; delete marked.&nbsp;</li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l4 level1 lfo1;tab-stops:list .5in'>To delete a single or
+     multiple file (regardless of marking) right-click on the file-table -&gt;
+     delete selected...</li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l4 level1 lfo1;tab-stops:list .5in'>To add a missing file to the
+     player right-click on the feed-table -&gt; update player...&nbsp;</li>
+</ul>
+
+<p><span class=GramE>jPodder</span> will also scan the root folder for folders
+corresponding to feeds, which are not in the personal feed list. The
+&quot;ghost feeds&quot; can be deleted or added to the player. As the URL of
+the feed is &quot;unknow&quot; it can<span class=GramE>&nbsp; be</span>
+&quot;looked-up&quot; in the directory. (The ghost feed folder name, is used as
+a query in the directory).</p>
+
+<p><u>Single download &amp; downloads resume</u></p>
+
+<p>Download has been extended with support for single-file download.&nbsp; This
+provides easier access to the downloading, not needing to initiate a subscribed
+feed download.&nbsp;<span class=GramE>(Pressing Download Now!)</span> <b>How? </b>When
+right-clicking on an enclosure, a popup menu will show and<span class=GramE>&nbsp;
+you</span> can select to download the enclosure.<b>&nbsp;</b></p>
+
+<p>Partially downloaded files are automatically resumed. The continuation of
+the download is <span class=GramE>transparent,</span> no special action is
+required from the user.</p>
+
+<p><u>Direct Play</u></p>
+
+<p>You can play a file directly in the selected player. Simply right click on
+the enclosure and select &quot;play&quot;. This is only supported for already
+downloaded files. (On disc column is flagged).&nbsp;</p>
+
+<p><u>URL Decoding</u></p>
+
+<p>Feed URL's are now properly decoded using the URL decoding standard RFC This
+gets rid of odd looking encoding strings in titles and file names.</p>
+
+<p><u>Cache learning</u></p>
+
+<p>You can now instruct jPodder to update the cache with files which are in the
+folder but might be missing from the cache. (In case the cache.xml file got
+lost or damaged). You can tell jPodder which cache file to use. <b>How? </b>Settings-&gt;Download,
+check mark the option to &quot;update cache entries&quot;.</p>
+
+<p><u>Import</u></p>
+
+<p><span class=GramE>jPodder</span> can import the settings and feeds file from
+other iPodder-Lemon in case you want to start using&nbsp; jPodder and have used
+iPodder-lemon before. <b>How</b>? In Settings-&gt;<span class=GramE>Import ,</span>
+Just point to the iPodder folder and click import, you will see an overview
+first.</p>
+
+<p><u>BitTorrent</u></p>
+
+<p>Share ratio and total downloaded bytes is now visible in the download panel.</p>
+
+<p><u>MP3</u></p>
+
+<p>The latest version of the MP3 library (<span class=GramE>vd</span> Heide) is
+now included resulting in better MP3 support.</p>
+
+<h2><span class=GramE>jPodder</span> 0.7.3 maintenance release:</h2>
+
+<p>Bug fixes:&nbsp;</p>
+
+<p>- Copying to player (iTunes) fixed.</p>
+
+<p>- Enclosure marking should behave correctly (Tested very limited).&nbsp;</p>
+
+<h2><span class=GramE>jPodder</span> 0.7.2 maintenance release:</h2>
+
+<p>Bug fixes:</p>
+
+<p>- Double player (iTunes) entries when selecting &quot;Copy media to iTunes
+folder&quot; option selected.&nbsp;</p>
+
+<p>- Empty categories from iPodderX filtered.&nbsp;</p>
+
+<p>- Marking of all enclosure after a scheduled refresh/download is changed to
+marking of new enclosures only.</p>
+
+<p>- Added option to select &quot;no player&quot;. Downloaded files will not be
+transferred.</p>
+
+<p>- Non-Win32 release which excludes all win32 related code. (COM interface to
+players and system tray).</p>
+
+<h2><span class=GramE>jPodder</span> 0.7.1 maintenance release:</h2>
+
+<p>Some bugfixes:&nbsp;</p>
+
+<p>- Enclosure marking is now remembered when:&nbsp; 1) opening/closing jPodder
+2) Browsing through the feed list 3) previewing/refreshing. The marking is only
+overriden when scheduling kicks in. For manual downloads the marking is
+preserved.</p>
+
+<p>- Fixed enclosure highlighting problem (purple highlighting)<span
+class=GramE>,.</span>&nbsp;</p>
+
+<p>- Add Mark-all / Un-Mark all enclosures action. <span class=GramE>(Righ-click
+on feed list to see the action in a pop-up).</span>&nbsp;</p>
+
+<h2><span class=GramE>jPodder</span> 0.7 release:</h2>
+
+<p>Welcome to the 0.7 release of jPodder. This release optimizes some existing
+features, aswell as introduces new advanced stuff.&nbsp;</p>
+
+<p><u>Optimized enclosure previewing:</u></p>
+
+<p>The RSS feed is not parsed automatically when selecting a feed in the feed
+table. The user has to press the preview/refresh button to parse the RSS file
+and view the enclosures inside. The file is only parsed if the last-modified
+date as returned by the server is not changed. The enclosures inside the RSS feed
+are only queried if jPodder hasn't done some previously. The state of the RSS
+feed and enclosures are &quot;remembered&quot; by jPodder even when restarting
+the application.</p>
+
+<p>These changes have major impact on response times and the overall number of
+network queries like HTTP HEAD.&nbsp; It benefits the user to a great
+extend.&nbsp;</p>
+
+<p><u>GUI Enhancements:</u></p>
+
+<p>Various parts of the GUI have been enhanced:&nbsp;</p>
+
+<p>- Directory: 1) New icons, 2) Trimming of feed title in add button. 3)
+Subscribed feed has need icon</p>
+
+<p>- Personal Feeds: 1) <span class=GramE>It's</span> now possible to move
+feeds up and down the list with new buttons to the left of the feed
+table.&nbsp;&nbsp;</p>
+
+<p>- <span class=GramE>Settings :</span> 1) The settings panel is now a tree
+structure, which looks nicer and prepared for expansion when adding new
+settings.</p>
+
+<p>- <span class=GramE>Download :</span> 1) Download time is displayed. 2)
+Corrected some wrong displaying of the progress bar.&nbsp;</p>
+
+<p><u>Windows Media Player Support:</u></p>
+
+<p><span class=GramE>jPodder</span> can now stored downloaded media files into
+windows Media Player. The preferred player can be selected in the settings
+panel -&gt; media. (Limitation)Please note the implementation can not detect if
+a file already exists in WMP.&nbsp;</p>
+
+<p><span class=GramE><u>bitTorrent</u></span><u> support</u></p>
+
+<p>Besides multiple concurrent downloads, jPodder now supports bitTorrent
+downloads. After jPodder has downloaded a file ending on .torrent, it will
+automatically be added to the bitTorrent download table. This table is the
+lower pane in the download panel.&nbsp;</p>
+
+<p>The bitTorrent will automatically seed after the download completed. Please
+note the bitTorrent Azureus module create a subdirectory in the users home
+directory to store configuration information.&nbsp;</p>
+
+<p>ID3v2 MP3 Viewing:&nbsp;</p>
+
+<p><span class=GramE>Basic support of ID3v2 viewing.</span> <span class=GramE>jPodder</span>
+can display ID3 information as supplied in the MP3 file.&nbsp;</p>
+
+<h2><span class=GramE>jPodder</span> 0.6 release:</h2>
+
+<p>0.6, <span class=GramE>This</span> new release solves various bugs and
+incorporates new features.&nbsp;</p>
+
+<p>- GUI Improvements:</p>
+
+<p>Action buttons re-arranged for all the panels, Clear log button, Auto
+scrolling of log. <span class=GramE>Highlighting of download selection.</span>&nbsp;</p>
+
+<p>- Server based search function.&nbsp;</p>
+
+<p>A server based directory browse/search function has been implemented using
+the iPodderX. Retrieved feeds can be added to personal feeds.&nbsp;</p>
+
+<p>- Download panel:&nbsp;&nbsp;</p>
+
+<p>Downloads are now visualized in a download table, with progress and speed.
+They can be queued and aborted at user pleasing.&nbsp;</p>
+
+<p>- Build-in User Guide</p>
+
+<p>A new panel as been added, showing a user guide. The guide describes usage
+of jPodder.</p>
+
+<p>- HTTP Client Apache implementation.</p>
+
+<p>Not directly visible to the user, but the java.net API is not used any more
+for HTTP connections. <span class=GramE>jPodder</span> is now fully based on
+the Apache Commons httpClient. This results in various improvements like
+setting of the user-agent, better performance,<span class=GramE>&nbsp; HTTP</span>
+time-out settings etc...It is the fundament for more HTTP features in jPodder.</p>
+
+<h2><span class=GramE>iPodder</span> 0.5-beta release:</h2>
+
+<p>I decided to release a beta version of 0.5. I didn't have a lot of time to
+test it, so I appreciate your feedback in case of malfunction. The new features
+are pretty neat, so enjoy it! <a href="mailto:christophe.bouhier@kualasoft.com">christophe@kualasoft.com</a>&nbsp;</p>
+
+<p>New features:&nbsp;</p>
+
+<p>- Multi tasking (previews, inspection, downloads).&nbsp;&nbsp;</p>
+
+<p>- Enclosure previews.</p>
+
+<p>- RSS feed import from OPML (This is a basic function The OPML links are not
+&quot;followed&quot; to absorb additional RSS feeds).&nbsp;</p>
+
+<p>- Visualized downloads.&nbsp;</p>
+
+<p>It's been 3 weeks since the release of the 0.2 version. I have done some
+major rework of the code introducing multi-threading, which means various task
+are executed independently.&nbsp;</p>
+
+<p>Additionally one of the key new <span class=GramE>feature</span> is the
+&quot;enclosure-preview&quot;. This feature displays the enclosures in a table
+view including various information, like the cache status, the file size on the
+disc and on the server etc....As downloads occur in the background, the preview
+function gives a high level of interactivity, so that new feeds can be
+checked.&nbsp;</p>
+
+<p><span class=GramE>OPML import.</span> You can import an OPML file, the file
+will be scanned and the RSS feeds will be your new feeds in jPodder.</p>
+
+<h2><span class=GramE>iPodder</span> 0.2 release:</h2>
+
+<p>I stepped the release number by a decimal, I believe it's worth it with the
+following new features/improvements:&nbsp;</p>
+
+<p><u>System tray</u></p>
+
+<p><span class=GramE>iPodder</span> can now be minimized in the system tray. <span
+class=GramE>iPodder</span> can be brought forward by single-clicking the system
+tray icon.&nbsp;</p>
+
+<p><u>GUI</u></p>
+
+<p>The <span class=GramE>gui</span> now contains Tab panels for Feeds, Log and
+Settings. The GUI look &amp; feel is based on the JGoodies plastic L&amp;F.</p>
+
+<p><u>Feed Selection</u></p>
+
+<ol start=1 type=1>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l3 level1 lfo2;tab-stops:list .5in'>Feeds can be selected for
+     download or skipped.&nbsp;</li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l3 level1 lfo2;tab-stops:list .5in'>If selected, the number of
+     downloads can be set. (The default is 1).</li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l3 level1 lfo2;tab-stops:list .5in'>The feeds settings are now
+     stored and retrieved in XML (feeds.xml).</li>
+</ol>
+
+<p><u>Scheduling</u></p>
+
+<p>The scheduler is improved in many aspects.&nbsp;</p>
+
+<ol start=1 type=1>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l1 level1 lfo3;tab-stops:list .5in'>You can turn it on or off.
+     This can be done in the system tray or in the settings panel.</li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l1 level1 lfo3;tab-stops:list .5in'>When stopping, this is a hard
+     stop (It kills the scanning<span class=GramE>&nbsp; process</span>), this
+     can result in partially saved files and unclosed objects. It is
+     recommended, to limit the use of this feature as the effects are unknown.
+     (Sun has deprecated this function in the Thread API).&nbsp;</li>
+</ol>
+
+<p><u>Feed scanning</u></p>
+
+<p>The scanning of feeds has been <span class=GramE>rebuild</span> from
+scratch. <span class=GramE>iPodder</span> now performs tasks in the following
+order (This can be witnessed in the logging pane).</p>
+
+<ol start=1 type=1>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo4;tab-stops:list .5in'>Collect enclosures from a
+     feed.</li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo4;tab-stops:list .5in'>Extract a folder name from
+     the first feed title.</li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo4;tab-stops:list .5in'>Mark the &quot;known&quot;
+     enclosures from either the cache register or the download folders.</li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo4;tab-stops:list .5in'>Download the unmarked
+     enclosures (Limited by a maximum).</li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo4;tab-stops:list .5in'>Store the new downloads in the
+     cache file</li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo4;tab-stops:list .5in'>Store the newly downloaded
+     enclosure in the player (iTunes is only supported for now).</li>
+</ol>
+
+<p><u>Settings</u></p>
+
+<p>Settings have been greatly improved with support for:&nbsp;</p>
+
+<ol start=1 type=1>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l2 level1 lfo5;tab-stops:list .5in'>Download folder
+     selection&nbsp;</li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l2 level1 lfo5;tab-stops:list .5in'>HTTP Proxy Settings (Needs
+     more settings.</li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l2 level1 lfo5;tab-stops:list .5in'>Scheduler settings</li>
+</ol>
+
+<p>Settings are stored in the feeds.xml file.&nbsp;</p>
+
+<p><u>Caching</u></p>
+
+<p>Caching is now also XML based, all resolved enclosures are cached for
+further querying.&nbsp;</p>
+
+<h2><span class=GramE>iPodder</span> 0.1i release:</h2>
+
+<p>- It seemed I was using izPack installer wrongly! <span class=GramE>this</span>
+resulted in a large .zip file, as all files are already packaged by izPack in
+the install.jar file. This is now solved and the file is back to normal size.
+The next release will&nbsp;</p>
+
+<p>- This release also contains a new build of the jawin library. It solves
+some funny string output on the console. Also iPodder now has an icon
+(Unbelievable how much time one can spend on a stupid icon).&nbsp;</p>
+
+<p>- The GUI is now extended with a manual starter, so you can start/stop
+podcasting. It also contains a scheduler which can use to set podcasting time
+at intervals of 15 minutes.</p>
+
+<p>- Connections through an HTTP proxy is supported (manually<span class=GramE>)
+,</span> but for this you will have to add the following properties to the java
+command:&nbsp;</p>
+
+<p><span lang=FR style='mso-ansi-language:FR'>-Dhttp.proxyHost<span
+class=GramE>=<b>[</b></span><b>Your proxy]&nbsp; </b>-Dhttp.proxyPort=<b>[Your
+Port e.g. 80]</b><o:p></o:p></span></p>
+
+<p>Hope you enjoy it.&nbsp;</p>
+
+<h2><span class=GramE>iPodder</span> 0.1h release:</h2>
+
+<p>There was a bug in my deployment script,<span class=GramE>&nbsp; (</span> in
+build.xml, As I use <st1:City w:st="on"><st1:place w:st="on">Jakarta</st1:place></st1:City>
+ant to compile, archive, copy, test, zip, create install and upload the
+application), which freaked me out for a couple of days.&nbsp;</p>
+
+<p>This release includes an installer! The installation is there for somewhat
+friendlier. I see this as a first step, I have also figured out how to create
+executable and shortcuts, so it will become much better coming weeks. (Stay
+tuned).&nbsp;</p>
+
+<p>I started to <span class=GramE>migrate</span> XML parsing to a dedicated class,
+and will try to use SAX instead of DOM, this will probably allow me to bundle a
+smaller size library, which will reduce the overall file size. (I admit it's
+big for such a tiny program).&nbsp;</p>
+
+<p>There is still something funny <span class=GramE>happening</span> a String
+is printed on standard output and I have no idea where it comes from. I checked
+all error traps, but can not find when and where this occurs (anyone interested
+in having a look in the code?)&nbsp;</p>
+
+<h2><span class=GramE>iPodder</span> 0.1e release:</h2>
+
+<p>Storing of tracks in iTunes is now <span class=GramE>supported,</span> also
+the code will avoid duplications in iTunes playlists. Caching will write to
+memory.txt, but as a check is made if the file is already on the disc, I doubt
+what this function really adds?</p>
+
+<h2>Installation:</h2>
+
+<p>This is a JAVA application, which supports the win32 version of iTunes. It
+will not work on any other platform (yet). To run the <span class=GramE>application
+simply make</span> sure that the Java Runtime Environment is installed. It's
+easy to check when typing:</p>
+
+<p><span class=GramE>java</span> -version</p>
+
+<p>When installed, the command above will reply with the java version on your
+system, otherwise install java from:</p>
+
+<p><a href="http://java.sun.com">http://java.sun.com</a></p>
+
+<p>To run the application, follow these steps:&nbsp;</p>
+
+<p>1) Unzip the file to a directory of choosing. [<span class=GramE>dir</span>]</p>
+
+<p>2) <span class=GramE>goto</span> the [dir]\bin directory and type <b>install.cmd</b>,
+follow instruction and install iPodder on your system.&nbsp;</p>
+
+<p>2) Open the [dir]\bin feeds.txt file using notepad or other text editor.
+Change the first line to your directory of choosing.&nbsp;</p>
+
+<p>3) <span class=GramE>run</span> iPodder from the start-menu or goto the
+[dir]\bin directory and type <b>iPodder.cmd</b>&nbsp;</p>
+
+<p>4) This will start a small window, and access the feeds in your feeds.txt
+file</p>
+
+<h2>Help/Developers</h2>
+
+<p>Send questions about (this version) of iPodder to:&nbsp;</p>
+
+<p><a
+href="http://groups.yahoo.com/group/ipodder-dev/post?postID=BGSV8cnVkhY-6p9d9FabSeelPD2HMCetxjJ9ValKJr7mXlo6wXX_wqPW4goSaALKJW6KVzDe2bRKSxQE0GNFpdDlCg">ipodder-dev@yahoogroups.com</a></p>
+
+<p><a href="mailto:ipodder-user@lists.sourceforge.net">ipodder-user@lists.sourceforge.net</a></p>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+body {
+	background: #FFFFFF url(asual-bg.jpg) repeat-x;
+	text-align: left;
+}
+body, div, h1, h2, h3, h4, p, form, img, li {
+	margin: 0;
+	padding: 0;
+}
+#title h1 {
+	float: left;
+	margin: 13px 0 16px 30px;
+	display: inline;
+	color: blue;
+}
+#title h2 {
+	float: left;
+	margin: 5px 0 5px 20px;
+	display: inline;
+	color: blue;
+}
+img {
+	border: 0;
+}
+ul#column {
+    list-style-type: circle;
+}
+
+b#key {
+    font-weight: bold;
+	color: red;
+}
+
+/* Table definition for listing table columns, menu entries etc */
+table#list {
+    margin-left: 15px;
+}
+
+/* Index column (mostly the first column) for a list table */
+td#index {
+    font-weight: bold;
+    color: green;
+    white-space:nowrap;
+}
+
+/* Key column referencing a column or menu entry name */
+td#key {
+    font-weight: bold;
+    color: green;
+}
+
+/* Column describing the element */
+td#desc {
+}
+

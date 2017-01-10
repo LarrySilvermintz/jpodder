@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes"?>
+<installation version="1.0">
+    <info>
+        <appname>jPodder</appname>
+        <appversion>1.1</appversion>
+        <appsubpath>$APP_NAME-$APP_VER</appsubpath>
+        <authors>
+            <author name="Christophe Bouhier" email="christophe@kualasoft.com" />
+            <author name="Andreas Schaefer" email="andreas.schaefer@madplanet.com"/>
+        </authors>
+        <url>http://www.jpodder.com</url>
+        <javaversion>1.5</javaversion>
+    </info>
+    <guiprefs width="640" height="500" resizable="no" />
+    <locale>
+        <langpack iso3="eng" />
+        <langpack iso3="ned" />
+    </locale>
+    <resources>
+    	<res id="Installer.image" src="../../image/installation/jPodder-install.png" />
+        <res id="LicencePanel.licence" src="../../../../doc/license.txt" />
+    </resources>
+    <panels>
+        <panel classname="HelloPanel" />
+    <!--panel classname="InfoPanel"/-->
+        <panel classname="LicencePanel" />
+        <panel classname="TargetPanel" />
+        <panel classname="PacksPanel" />
+        <panel classname="InstallPanel" />
+        <!-- <panel classname="ShortcutPanel" /> -->
+        <panel classname="SimpleFinishPanel" />
+    </panels>
+    <packs>
+        <pack name="Base" required="yes">
+            <description>The base files</description>
+            <fileset dir="../../../../doc" targetdir="$INSTALL_PATH">
+                <include name="README.html" />
+                <include name="license.txt" />
+                <include name="Release Notes.html" />
+                <exclude name="CVS" />
+            </fileset>
+            <fileset dir="../../native" targetdir="$INSTALL_PATH/bin">
+                <include name="ipodder.trans" />
+                <exclude name="CVS" />
+            </fileset>
+            <fileset dir="../" targetdir="$INSTALL_PATH/bin">
+                <include name="jpodder" />
+				<exclude name="CVS" />
+            </fileset>
+            <fileset dir="../../../../target" targetdir="$INSTALL_PATH/bin">
+                <include name="main.jar" />
+                <include name="jPodder.one.click.jar" />
+                <exclude name="CVS" />
+            </fileset>
+            <fileset dir="../../config/" targetdir="$INSTALL_PATH/bin">
+                <include name="log4j.xml" />
+                <exclude name="CVS" />
+            </fileset>
+            <fileset dir="." targetdir="$INSTALL_PATH/lib/themepack">
+                <include name="*.zip" />
+                <exclude name="CVS" />
+            </fileset>
+            <fileset dir="../../default/" targetdir="$INSTALL_PATH/default">
+                <include name="*.xml" />
+                <include name="*.css" />
+                <exclude name="CVS" />
+            </fileset>
+            <fileset dir="../../config/" targetdir="$INSTALL_PATH/lib">
+                <include name="id3.xml" />
+                <include name="style.css" />
+                <exclude name="CVS" />
+            </fileset>
+            <fileset dir="../../../../target/plugin" targetdir="$INSTALL_PATH/plugin">
+                <include name="*.jar"/>
+                <exclude name="CVS" />
+            </fileset>
+            <fileset dir="../../image/ui" targetdir="$INSTALL_PATH/imaging">
+                <include name="**/*.*" />
+                <exclude name="CVS" />
+            </fileset>
+            <fileset dir="../../image/ui/themes/the-error/32" targetdir="$INSTALL_PATH/bin">
+                <include name="jpodder.png" />
+            </fileset>            
+	    <executable targetfile="$INSTALL_PATH/bin/jpodder" />
+        </pack>
+        <pack name="Libraries" required="yes" preselected="yes">
+            <description>The Libraries, select if this a major upgrade.</description>
+            <fileset dir="../../../../target/tmpLibDir" targetdir="$INSTALL_PATH/lib">
+                <include name="*.jar" />
+                <exclude name="CVS" />
+                <exclude name="SWT-3.2.jar" />
+            </fileset>
+        </pack>
+<!-- TODO API Docs are not generated.        
+        <pack name="Source Documentation" required="no" preselected="no">
+            <description>The documentation</description>
+            <fileset dir="../../../../target/docs/apidocs" targetdir="$INSTALL_PATH/doc/api">
+                <include name="**/*.*" />
+                <exclude name="CVS" />
+            </fileset>
+        </pack>
+-->        
+        <pack name="Sources" required="no" preselected="no">
+            <description>The sources</description>
+            <fileset dir="../../../../src/java" targetdir="$INSTALL_PATH/src">
+                <include name="**/*.*" />
+                <exclude name="CVS" />
+            </fileset>
+        </pack>
+    </packs>
+</installation>

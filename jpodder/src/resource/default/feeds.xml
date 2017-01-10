@@ -1,0 +1,18 @@
+    <feeds>
+      <feed file="" max="1" quality="100" poll="true" title="Coverville" folder="" url="http://www.coverville.com/index.xml">
+        <id3tags/>
+      </feed>
+      <feed file="" max="1" quality="100" poll="true" title="Adam Curry: Daily Source Code" folder="" url="http://radio.weblogs.com/0001014/categories/dailySourceCode/rss.xml">
+        <id3tags/>
+      </feed>
+      <feed file="" max="1" quality="100" poll="true" title="this WEEK in TECH" folder="" url="http://leo.am/podcasts/twit">
+        <id3tags/>
+      </feed>
+      <feed file="" max="1" quality="100" poll="true" title="Pacific Coast Hellway" folder="" url="http://feeds.feedburner.com/PacificCoastHellway">
+        <id3tags/>
+      </feed>
+      <feed file="" max="1" quality="100" poll="true" title="The Dawn and Drew Show!" folder="" url="http://www.dawnanddrew.com/rss2.xml">
+        <id3tags/>
+      </feed>
+    </feeds>
+    

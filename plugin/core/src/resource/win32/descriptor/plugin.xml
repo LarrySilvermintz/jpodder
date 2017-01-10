@@ -1,0 +1,11 @@
+<plugins>
+    <plugin name="OneClick" class="com.jpodder.CorePlugin"/>
+    <archives>
+        <archive type="java" scope="global">jawin-1.0.jar</archive>
+        <archive type="native" scope="global">jawin-1.0.dll</archive>
+        <archive type="java" scope="global">jdic.jar</archive>
+        <archive type="native" scope="global">jdic.dll</archive>
+        <archive type="native" scope="global">swt.jar</archive>
+        <archive type="native" scope="global">swt-win32-3212.dll</archive>
+    </archives>
+</plugins>

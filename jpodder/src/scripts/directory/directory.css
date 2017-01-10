@@ -1,0 +1,138 @@
+body {
+	background: white url("shade-right.png") repeat-y 800px;
+	font-family: Tahoma;
+}
+
+.tables {
+	padding: 5px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background: #DFE3ED;
+	width: 800px;
+	color: #F9A004;
+	border: thin solid white;
+}
+
+div.title {
+	margin: 0px; font-size : 30px;
+	font-weight: bold;
+	background: gray;
+	padding: 5px;;
+	}
+
+div.subtitle {
+	margin: 0px;
+	padding-top: 0px;
+	padding-left: 5px;
+	font-size: 13px;
+	font-weight: bold;
+	border-bottom: dotted white thin;
+	height: 15px;
+}
+
+div.catdisplay {
+	float: left;
+	padding: 5px;
+	font-size: 11px;
+	border: 2px solid #F9A004;
+	background: white;
+	width : 150px;
+	height: 650px;
+	width: 150px;
+	margin-top: 5px;
+}
+
+div.first_row, #first_row {
+	position: relative;
+	top: 5px; 
+	left : 5px;
+	height: 25 px;
+	margin-right: 5px;
+	background: #F5F8F1;
+	padding: 5px;
+}
+
+.first_row {
+	position: relative;
+	left : 5px;
+	margin: 0px;
+	padding: 0px;
+}
+
+div.status {
+	float:right;
+	font-size: 9px;
+	padding: 5px;
+}
+
+div.feedsdisplay {
+	position: relative;
+	left: 5px;
+	right: 5px;
+	margin-top: 5px;
+	margin-right: 5px;
+	font-size: 11px;
+	background: #F5F8F1;
+	height:10px;
+}
+
+#query {
+	font-size: 12px;
+	border: 1px solid gray;
+	background: white;
+	margin: 0px;
+	height: 20px;
+}
+
+/*****************/ /** FEEDS TABLE **/ /*****************/
+.feeds {
+	position: relative;
+	top: 0px;
+	left: 5px;
+	font-size: 10px;
+}
+
+.header {
+	font-size: 14px;
+	background: #F9A004;
+	border-top: solid thin;
+	border-left: solid thin;
+	border-right: solid thin;
+	color: white;
+	font-weight: bold;
+	width: 540px;
+}
+
+/**
+Descriptions of feeds sometimes overflow, to 
+solve this problem we add scrollbars. The description is 
+encapsulated in a div.
+**/
+div.description {
+	font-size: 14px;
+	color: black;
+	background: white;
+	overflow: auto;
+	width: 540px;
+}
+
+/*****************/ /** LINKS       **/ /*****************/
+a:link,a:visited,a:active {
+	color: #94918C;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.button,.buttonlink a:link,.buttonlink a:visited,.buttonlink a:hover,.buttonlink a:active
+	{
+	padding: 2px;
+	font-weight: bold;
+	font-size: 11px;
+	border: 2px solid red;
+	text-decoration: none;
+	color: FFF;
+	background: #F9A004;
+	cursor: crosshair;
+	margin: 0px;
+}

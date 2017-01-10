@@ -1,0 +1,413 @@
+1.1 (Fixed)Scan folders, folder is not set in feed.(
+:Folder now set
+
+1.1 Local files are not inspected properly.
+The fileview is updated. 
+[General problem to find bugs in this area]
+Potential ideas to overcome or make bugtracing easier:
+
+- Centralize processing/dispatching of background events. 
+- Log each background event which is fired.
+- Models should register to events which can cause model mutation
+and therefor auto-update.
+
+
+1.1 (FIXED)When a feed can't be retrieved we should still set the local folder
+to the title of the feed. 
+: We evaluate the new folder as a final step after having collected a feed.
+
+1.1 
+Controls should be bound to Actions. Now we have an ugly way to include enabling and disabling
+of controls (Depending on model and user selections).
+
+All controls and views suffer from this. 
+Possible solutions: 
+
+-  	Tell the BaseAction and IBaseActionCondition to learn about supported controls. 
+	The control's text could also change based on what is selected. 
+	Implemented: 
+		setControls(Widget[] pControls);
+	
+	So the action is aware of the associated controls. 
+	Also: 
+		setEnabled(boolean) - enables/disables the action and associated controllers.
+	
+
+1.1 WMP hastrack method doesn't work. 
+
+1.1 (FIXED) when removing a feed we should inform other process. 
+Implement a model notifier. 
+	- Download Logic listens to this. 
+
+1.1 (FIXED)Limit of downloads only works within one session (Before the enclosures 
+are loaded). When relaunching, marking will be triggered again and mark older downloads. 
+This is not what some users want.
+
+				boolean mark = false;
+				
+				// Mark only if enclosures are not existing, or
+				// if the polling was triggered by the scheduler.
+				if (feed.getEnclosureSize() == 0) {
+					mark = true;
+				}
+				feed.setInstruction(pSrc, true, true, mark, true, download,
+						true);
+				addFeedToCollect(feed);
+: We now check the index of the enclosure, when in "limited" mode. 
+
+1.1 (FIXED, mostly) Async Display calls, need to check if their widgets are disposed, as the
+UI might be disposed in the event dispatching thread. 
+(When changing language for example).  
+
+1.1 When double clicking, single click action is invoked.
+
+1.1. (FIXED) Directory script is not installed (IZPACK install for linux). 
+: Disabled the jPodder directory :-), as iPodderX service is not available anymore.
+
+1.1 (FIXED) When downloading a file, the Conditional action for file-> download should be a link 
+to the download view or some text download "in progress". A little rotating icon would be nice also.
+: Download disabled when it's ongoing download.
+
+1.1 (FIXED) When editing ID3 cell.
+: The model included some binary tags. (Like the image), which the implementation
+coudn't handle.	
+Caused by: org.eclipse.jface.util.Assert$AssertionFailedException: Assertion failed: 
+	at org.eclipse.jface.util.Assert.isTrue(Unknown Source)
+	at org.eclipse.jface.util.Assert.isTrue(Unknown Source)
+	at org.eclipse.jface.viewers.TextCellEditor.doSetValue(Unknown Source)
+	at org.eclipse.jface.viewers.CellEditor.setValue(Unknown Source)
+	at org.eclipse.jface.viewers.TableEditorImpl.activateCellEditor(Unknown Source)
+	at org.eclipse.jface.viewers.TableEditorImpl.activateCellEditor(Unknown Source)
+	at org.eclipse.jface.viewers.TableEditorImpl.handleMouseDown(Unknown Source)
+	at org.eclipse.jface.viewers.TableViewer$2.mouseDown(Unknown Source)
+
+
+1.1 1) (FIXED) Feed manager doesn't show up.
+	2) (FIXED) hanging when selecting feed edit from the menu.
+:Browser should be caught.				 
+Caused by: org.eclipse.swt.SWTError: No more handles [Unknown Mozilla path (MOZILLA_FIVE_HOME not set)]
+	at org.eclipse.swt.SWT.error(SWT.java:3400)
+	at org.eclipse.swt.browser.Browser.<init>(Browser.java:138)
+				at com.jpodder.ui.swt.feeds.manager.FeedRSSPanel.<init>(FeedRSSPanel.java:22)
+	at com.jpodder.ui.swt.feeds.manager.FeedDialog.<init>(FeedDialog.java:93)
+	at com.jpodder.ui.swt.feeds.FeedController.showFeedManager(FeedController.java:930)
+	at com.jpodder.ui.swt.feeds.FeedController$EditFeedAction.handleEvent(FeedController.java:500)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:66)
+
+
+1.1 The download table updates, update the whole table. (Should be some columns only). 
+
+1.1 (FIXED) Translation: When showing the empty string and pressing save, only empty strings
+are saved! ( Should put a filter on the table). 
+
+1.1 (FIXED) Language, setting (Save) language closes jPodder, but doesn't restart. 
+jPodder restarts now (Maintaining the same Display and dispatching loop), but executes
+some Configuration notification after a UI relaunch. This obviously causes problesm when
+original widgets have been disposed. 
+: The relaunch is invoked from a separate thread to let the notifications finish and relaunch 
+after a half a second delay. Works nicely. Confirms full separation of Logic, Controllers and 
+Views. 
+
+1.1 Download actions status is not set without selecting a download. 
+(Action status should be triggered when the model changes).
+
+1.1 Linux the RSS association plugin is useless. 
+
+com.jpodder.util.DynamicObjectException [ type: 4, cause: java.lang.NoClassDefFoundError: org/jdesktop/j                                dic/filetypes/AssociationNotRegisteredException ]
+        at com.jpodder.util.DynamicObject.<init>(Unknown Source)
+        at com.jpodder.util.PersistentObject.<init>(Unknown Source)
+        at com.jpodder.Main.launchUI(Unknown Source)
+        at com.jpodder.Main.main(Unknown Source)
+Caused by: java.lang.NoClassDefFoundError: org/jdesktop/jdic/filetypes/AssociationNotRegisteredException
+        at com.jpodder.ui.swt.properties.panel.OneClickController$CheckOneClick.handleEvent(OneClickCont                                roller.java:86)
+        at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:66)
+        at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1085)
+        at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3166)
+        at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:2842)
+        at com.jpodder.ui.swt.UILauncher.dispatch(Unknown Source)
+        at com.jpodder.ui.swt.UILauncher.<init>(Unknown Source)
+        at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+        at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+        at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.j                                ava:27)
+
+
+1.1. We load SWT from the library and core plugin. 
+Adapt maven, so it can find SWT at compile time (From plugin folder). 
+
+1.1. Linux - Why trying to load win32 native libs?
+TODO, plugin should indicate which OS. 
+
+1.1 (FIXED) Linux hanging, when clicking help->www.jpodder.com
+com.jpodder.util.DynamicObjectException [ type: 4, cause: java.lang.NullPointerException ]
+        at com.jpodder.util.DynamicObject.<init>(Unknown Source)
+        at com.jpodder.util.PersistentObject.<init>(Unknown Source)
+        at com.jpodder.Main.launchUI(Unknown Source)
+        at com.jpodder.Main.main(Unknown Source)
+Caused by: java.lang.NullPointerException
+        at com.jpodder.ui.swt.help.HelpView$1.handleEvent(Unknown Source)
+        at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:66)
+        at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1085)
+        at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3166)
+        at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:2842)
+: Program association can't be resolved for .htm and .html. (Issue with KDE/GNOME).
+
+	
+1.1 (FIXED).Linux, SWT Browser.
+Caused by: org.eclipse.swt.SWTError: No more handles [Unknown Mozilla path (MOZILLA_FIVE_HOME not set)]
+	at org.eclipse.swt.SWT.error(SWT.java:3400)
+	at org.eclipse.swt.browser.Browser.<init>(Browser.java:138)
+
+Following needs to be set in .bashrc
+
+MOZILLA_FIVE_HOME=/usr/lib/mozilla
+LD_LIBRARY_PATH=${MOZILLA_FIVE_HOME}
+export MOZILLA_FIVE_HOME
+export LD_LIBRARY_PATH
+
+Added this to jpodder bash script.
+
+1.1 Tab controls (Minimize, Maximize) don't work as should.
+
+1.1 (In Progress) migrate the Smart tag selector from swing.
+
+1.1 (FIXED) Thumb drive description in media settings is wrong. We don't use
+the cache.xml anymore.
+
+1.1 (FIXED)When deleting a local file, the UI is not updated. 
+
+1.1 (CODED) when selecting multiple, abort text should show multiple. 
+
+1.1 (FIXED) Completness goes to 100% ? when using a clear user configuration and partial downloads.
+It is likely because the HEAD content size for partials is not available yet. 
+
+1.1 (FIXED) When setting candidate, we should consider the incompletes to 
+come first. The file date is not evaluated against the RSS date. 
+: Bug, when contentsize is 0, the current length of the download shoudn't be compared. 
+
+1.1 When going on standby
+Exception in thread "AWT-EventQueue-0" java.lang.NullPointerException
+	at sun.awt.Win32GraphicsEnvironment.displayChanged(Unknown Source)
+	at sun.awt.windows.WToolkit$4.run(Unknown Source)
+	at java.awt.event.InvocationEvent.dispatch(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+
+1.1 (FIXED).
+When enabling scheduling.
+Caused by: java.lang.NullPointerException
+	at com.jpodder.ui.swt.conf.ConfigurationController.configurationChanged(ConfigurationController.java:200)
+	at com.jpodder.data.configuration.ConfigurationLogic.fireConfigurationChanged(ConfigurationLogic.java:51)
+	at com.jpodder.schedule.SchedulerLogic.setSchedulingState(SchedulerLogic.java:48)
+	at com.jpodder.ui.swt.status.StatusController.widgetSelected(StatusController.java:78)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:90)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:66)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:896)
+
+1.1 size is not set correctly when launching in maximized mode.
+Worked on this, the size is changed. (Firing an event) when maximining. The original size
+is never remembered. Need to investigate further. 
+
+1.1 Should press save, when changing the current player. (?)
+
+
+1.1 (FIXED) Connecting doesn't time out for feed:
+http://seattlepi.nwsource.com/rss/onfood.xml
+
+Problem happens on line: 626 gMethod = new GetMethod(pUrl.toExternalForm());
+No exception is thrown, ends up in final clause. (Some bug in HTTP lib?). 
+
+Found problem: 
+URL is not escaped properly: 
+java.lang.IllegalArgumentException: Invalid uri 'http://blog.seattlepi.nwsource.com/audio/onfood/hcc_onfood48_ rinella.mp3': escaped absolute path not valid
+It's a valid URL, but it contains a white space in the file name.
+
+
+1.1 Selection jumps to feed index. (Not sorted feed index) when deleting a feed.
+
+1.1 (FIXED) When cancelling a deletion, we should not reselect another feed.
+. 
+
+1.1 setting a table feed selecttion updates the table header in file view which looks like flickering. 
+We should not set the complete model. (This is Table, not KTable). 
+
+
+1.1 Change model to use less memory. How? 
+- Don't load all stored personal feed information? 
+- Use a database?
+
+1.1 Async loaded styles, when not yet available causes:
+
+Caused by: java.lang.NullPointerException
+	at com.jpodder.html.style.Css.getStyleRule(Css.java:116)
+	at com.jpodder.ui.swt.theme.UITheme$UIComponentLogic.resolveResources(UITheme.java:347)
+	at com.jpodder.ui.swt.theme.UITheme$UIComponentLogic.addBinder(UITheme.java:325)
+	at com.jpodder.ui.swt.theme.UITheme$UIComponentLogic.addBinders(UITheme.java:317)
+	at com.jpodder.ui.swt.theme.UITheme.addUIThemeView(UITheme.java:187)
+	at com.jpodder.ui.swt.tabs.TabView.registerUIThemeBinders(TabView.java:229)
+	at com.jpodder.ui.swt.tabs.TabView.<init>(TabView.java:148)
+
+
+1.1 plugin description not fully visible.
+FIXED 19-11-2006
+
+1.1 when removing a feed, the reselection of another feed doesn't work.
+FIXED 19-11-2006
+
+1.1 when removing multiple feeds in a selection, the selection maintains all previously selected feeds.
+
+1.1 (CLOSE) Scrollbar in feed info view should not be visible when info fits in view. 
+This can't be fixed. SWT limitation.
+
+1.1 remove time from date in files.
+
+1.1 (FIXED)Shows -1 ? ( Keith and the girl). Also when deleting files, the numbering screws up.
+
+
+1.1 (NEW)Sorting of files by date.
+
+1.1 (FIXED) Can not add to prefered player for some feeds. (coverville)
+(Fixed, Changed the iTunes player while troubleshooting). 
+
+1.1 When updating the fileview, the complete table is updated, which doesn't look good and 
+doesn't keep the scroling state of the view. Only update the relavnt cell!
+(FIXED, use update(Object, property)
+
+1.1 When deleting a feed, and we have an ongoing action, 
+we might want to stop the update process. This would actually apply to all model changes. To implement this, the background threads
+should listen to model changes. 
+
+
+1.1 Add pause/resume in threadpool. Needs also some interaction with download object status. 
+When adding download, while pauzed statued is Queued instead of pauzed.
+
+1.1 (FIXED, 30-09, should abort a method, before releasing connection)
+	Connection not released quickly, leaves thread hanging. 
+
+1.1 (FIXED, 29-09)when retry in download , wrong entry selected.
+
+
+1.1 (Fixed, )fix translation.
+- Fixed. (Perhaps change the colors a bit). 
+
+
+1.1 Error with destiling trhe filename (Problem with TWIT feed). 
+
+
+1.1 bug: (fixed)
+
+java.lang.NullPointerException
+	at com.jpodder.ui.swt.file.MediaLabelProvider.getColumnText(MediaLabelProvider.java:52)
+	at org.eclipse.jface.viewers.TableViewer.doUpdateItem(Unknown Source)
+	at org.eclipse.jface.viewers.StructuredViewer$UpdateItemSafeRunnable.run(Unknown Source)
+	at org.eclipse.jface.util.SafeRunnable$1.run(Unknown Source)
+	at org.eclipse.jface.util.SafeRunnable.run(Unknown Source)
+	at org.eclipse.jface.viewers.StructuredViewer.updateItem(Unknown Source)
+	at org.eclipse.jface.viewers.TableViewer.createItem(Unknown Source)
+	at org.eclipse.jface.viewers.TableViewer.internalRefreshAll(Unknown Source)
+	at org.eclipse.jface.viewers.TableViewer.internalRefresh(Unknown Source)
+	at org.eclipse.jface.viewers.TableViewer.internalRefresh(Unknown Source)
+	at org.eclipse.jface.viewers.StructuredViewer$7.run(Unknown Source)
+	at org.eclipse.jface.viewers.StructuredViewer.preservingSelection(Unknown Source)
+	at org.eclipse.jface.viewers.StructuredViewer.refresh(Unknown Source)
+	at org.eclipse.jface.viewers.StructuredViewer.refresh(Unknown Source)
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+1.1 bug; COM ADD TO ITUNES
+FIXED, REINSTALL iTUNES.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+org.jawin.COMException: 8002801d: Library not registered.
+
+	at org.jawin.marshal.GenericStub.dispatchInvoke0(Native Method)
+	at org.jawin.marshal.GenericStub.dispatchInvoke(GenericStub.java:201)
+	at org.jawin.DispatchPtr.getN(DispatchPtr.java:248)
+	at org.jawin.DispatchPtr.get(DispatchPtr.java:171)
+	at com.jpodder.plugin.player.itunes.ITunesPlayer.forkNew(ITunesPlayer.java:71)
+	at com.jpodder.plugin.player.itunes.ITunesPlayer.initialize(ITunesPlayer.java:50)
+	at com.jpodder.data.player.PlayerLogic.initPlayer(PlayerLogic.java:257)
+	at com.jpodder.data.player.PlayerLogic.hasTrack(PlayerLogic.java:185)
+	at com.jpodder.data.feeds.XFeedLogic.inspectSingleFile(XFeedLogic.java:664)
+	at com.jpodder.data.feeds.XFeedLogic$FeedEnclosureInspector.inspect(XFeedLogic.java:624)
+	at com.jpodder.data.feeds.XFeedLogic$FeedEnclosureInspector.run(XFeedLogic.java:527)
+	at java.lang.Thread.run(Unknown Source)
+
+(SOLVED).
+org.jawin.COMException: 8001010e: The application called an interface that was marshalled for a different thread.
+
+	at org.jawin.marshal.GenericStub.dispatchInvoke0(Native Method)
+	at org.jawin.marshal.GenericStub.dispatchInvoke(GenericStub.java:201)
+	at org.jawin.DispatchPtr.getN(DispatchPtr.java:248)
+	at org.jawin.DispatchPtr.get(DispatchPtr.java:194)
+	at com.jpodder.plugin.player.itunes.ITunesPlayer.addTrack(ITunesPlayer.java:240)
+	at com.jpodder.data.player.PlayerLogic.addTrack(PlayerLogic.java:165)
+	at com.jpodder.data.player.PlayerLogic.storeInPlayer(PlayerLogic.java:89)
+	at com.jpodder.data.download.DownloadLogic.netActionPerformed(DownloadLogic.java:477)
+	at com.jpodder.net.NetTask.fireNetActionPerformed(NetTask.java:142)
+	at com.jpodder.net.NetTask$NetDownloadTask.downLoad(NetTask.java:871)
+	at com.jpodder.net.NetTask$NetDownloadTask.run(NetTask.java:558)
+	at edu.emory.mathcs.backport.java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:660)
+	at edu.emory.mathcs.backport.java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:685)
+	at java.lang.Thread.run(Unknown Source)
+
+(SOLVED).
+2006-08-31 18:20:20,668 ERROR [com.jpodder.plugin.player.itunes.ITunesPlayer] Failed to create a playlist:  6. The Dawn and Drew Show!
+org.jawin.COMException: 800401fd: Object is not connected to server
+
+	at org.jawin.marshal.GenericStub.dispatchInvoke0(Native Method)
+	at org.jawin.marshal.GenericStub.dispatchInvoke(GenericStub.java:201)
+	at org.jawin.DispatchPtr.invokeN(DispatchPtr.java:587)
+	at org.jawin.DispatchPtr.invokeN(DispatchPtr.java:555)
+	at org.jawin.DispatchPtr.invoke(DispatchPtr.java:510)
+	at com.jpodder.plugin.player.itunes.ITunesPlayer.addPlaylist(ITunesPlayer.java:109)
+	at com.jpodder.data.player.PlayerLogic.addTrack(PlayerLogic.java:164)
+	at com.jpodder.data.player.PlayerLogic.storeInPlayer(PlayerLogic.java:89)
+	at com.jpodder.data.download.DownloadLogic.netActionPerformed(DownloadLogic.java:477)
+	at com.jpodder.net.NetTask.fireNetActionPerformed(NetTask.java:142)
+	at com.jpodder.net.NetTask$NetDownloadTask.downLoad(NetTask.java:871)
+	at com.jpodder.net.NetTask$NetDownloadTask.run(NetTask.java:558)
+	at edu.emory.mathcs.backport.java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:660)
+	at edu.emory.mathcs.backport.java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:685)
+	at java.lang.Thread.run(Unknown Source)
+2006-08-31 18:20:20,668 ERROR [com.jpodder.plugin.player.itunes.ITunesPlayer] Error adding track: D:\Data\My Received PodCasts\6. The Dawn and Drew Show!\dawnanddrew-23873-08-30-2006_pshow_10046.mp3
+org.jawin.COMException: 800401fd: Object is not connected to server
+
+	at org.jawin.marshal.GenericStub.dispatchInvoke0(Native Method)
+	at org.jawin.marshal.GenericStub.dispatchInvoke(GenericStub.java:201)
+	at org.jawin.DispatchPtr.getN(DispatchPtr.java:248)
+	at org.jawin.DispatchPtr.get(DispatchPtr.java:194)
+	at com.jpodder.plugin.player.itunes.ITunesPlayer.addTrack(ITunesPlayer.java:240)
+	at com.jpodder.data.player.PlayerLogic.addTrack(PlayerLogic.java:165)
+	at com.jpodder.data.player.PlayerLogic.storeInPlayer(PlayerLogic.java:89)
+	at com.jpodder.data.download.DownloadLogic.netActionPerformed(DownloadLogic.java:477)
+	at com.jpodder.net.NetTask.fireNetActionPerformed(NetTask.java:142)
+	at com.jpodder.net.NetTask$NetDownloadTask.downLoad(NetTask.java:871)
+	at com.jpodder.net.NetTask$NetDownloadTask.run(NetTask.java:558)
+	at edu.emory.mathcs.backport.java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:660)
+	at edu.emory.mathcs.backport.java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:685)
+	at java.lang.Thread.run(Unknown Source)
+
+
+2006-08-31 18:20:20,683 WARN  [com.jpodder.data.player.PlayerLogic] Failed to add: D:\Data\My Received PodCasts\6. The Dawn and Drew Show!\dawnanddrew-23873-08-30-2006_pshow_10046.mp3to iTunes
+
+1.1 (FIXED) ID REWRITE PROBLEM
+: Had migrated the file handling to UserConfig. 
+java.lang.NullPointerException
+	at com.jpodder.data.id3.ID3Generic.writeResource(ID3Generic.java:160)
+	at com.jpodder.ui.swt.id3.ID3SelectDialog.saveSelection(ID3SelectDialog.java:112)
+	at com.jpodder.ui.swt.conf.panel.ID3Panel$1.handleEvent(ID3Panel.java:83)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:66)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:896)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3236)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:2856)
+	at com.jpodder.ui.swt.main.MainUI.dispatch(MainUI.java:215)
+	at com.jpodder.ui.swt.UILauncher.<init>(UILauncher.java:58)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at com.jpodder.util.DynamicObject.<init>(DynamicObject.java:93)
+	at com.jpodder.util.PersistentObject.<init>(PersistentObject.java:137)
+	at com.jpodder.Main.main(Main.java:78)

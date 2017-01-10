@@ -1,0 +1,1 @@
+This folder contains the test resources for the jPodder project components.

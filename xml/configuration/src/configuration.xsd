@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    XML Schema for jPodder Configuration 1.0
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" version="2.0.1.10" >
+	<xs:annotation>
+		<xs:documentation>XML Schema for jPodder Cache File 1.0.</xs:documentation>
+		<xs:documentation>Revision: 1</xs:documentation>
+		<xs:documentation>Date: 1-June-2005</xs:documentation>
+		<xs:documentation>Based on the jPodder 0.9</xs:documentation>
+		<xs:documentation>Author: Andreas Schaefer</xs:documentation>
+		<xs:documentation>Feedback to: http://www.jpodder.com</xs:documentation>
+	</xs:annotation>
+	<xs:element name="jPodder" type="tJPodder"/>
+	<xs:complexType name="tJPodder">
+		<xs:sequence>
+			<xs:element name="connection" type="tConnection" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="production" type="tProduction" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="scheduling" type="tScheduling" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="gui" type="tGui" minOccurs="0" maxOccurs="1"/>
+			<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="folder" type="xs:string" use="required"/>
+		<xs:attribute name="language" type="xs:string" use="required"/>
+		<xs:attribute name="sound" type="xs:boolean " use="required"/>
+		<xs:attribute name="auto" type="xs:boolean " use="required"/>
+		<xs:attribute name="delay" type="xs:positiveInteger " use="required"/>
+		<xs:attribute name="player" type="xs:string" use="required"/>
+		<xs:attribute name="player_sync" type="xs:boolean " use="optional"/>
+		<xs:attribute name="opml_url" type="xs:anyURI" use="optional"/>
+		<xs:attribute name="auto_preview" type="xs:boolean " use="optional"/>
+		<xs:attribute name="torrent_default" type="xs:boolean " use="required"/>
+		<xs:attribute name="cache_learn" type="xs:boolean " use="required"/>
+		<xs:attribute name="mark_max" type="xs:boolean " use="required"/>
+		<xs:attribute name="log_size" type="xs:positiveInteger " use="optional"/>
+		<xs:attribute name="opml_sync" type="xs:string" use="optional"/>
+		<xs:attribute name="cache_file" type="xs:string" use="optional"/>
+		<xs:attribute name="version" type="xs:decimal" use="required" fixed="1.0"/>
+		
+		<xs:anyAttribute namespace="##any"/>
+	</xs:complexType>
+	<xs:complexType name="tConnection">
+		<xs:attribute name="proxy_enabled" type="xs:boolean " use="required"/>
+		<xs:attribute name="proxy_port" type="xs:positiveInteger" use="required"/>
+		<xs:attribute name="proxy" type="xs:anyURI" use="required"/>
+		<xs:attribute name="proxy_user" type="xs:string" use="required"/>
+		<xs:attribute name="proxy_password" type="xs:string" use="required"/>
+		<xs:attribute name="timeout" type="xs:positiveInteger" use="required"/>		
+	</xs:complexType>
+	<xs:complexType name="tProduction">
+		<xs:attribute name="folder" type="xs:string" use="optional"/>
+		<xs:attribute name="file" type="xs:string" use="optional"/>
+		<xs:attribute name="recorder" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="tGui">
+		<xs:attribute name="iconified" type="xs:boolean " use="required"/>
+		<xs:attribute name="maximized" type="xs:boolean " use="required"/>
+		<xs:attribute name="height" type="xs:positiveInteger " use="required"/>
+		<xs:attribute name="width" type="xs:positiveInteger " use="required"/>
+		<xs:attribute name="visible" type="xs:boolean " use="required"/>
+		<xs:attribute name="x" type="xs:positiveInteger " use="required"/>
+		<xs:attribute name="y" type="xs:positiveInteger " use="required"/>
+		<xs:attribute name="directory" type="xs:boolean " use="required"/>
+		<xs:attribute name="log" type="xs:boolean " use="required"/>
+		<xs:attribute name="production" type="xs:boolean " use="required"/>
+		<xs:attribute name="download" type="xs:boolean " use="required"/>
+		<xs:attribute name="help" type="xs:boolean " use="required"/>
+		<xs:attribute name="torrent" type="xs:boolean " use="required"/>
+		<xs:attribute name="settings" type="xs:boolean " use="required"/>
+		<xs:attribute name="fileview" type="xs:boolean " use="required"/>
+	</xs:complexType>
+	<xs:complexType name="tScheduling">
+		<xs:sequence>
+			<xs:element name="timer" type="tTimer" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="type" type="tScheduleTypes" use="required"/>
+		<xs:attribute name="interval" type="xs:positiveInteger " use="optional"/>
+		<xs:attribute name="executeOnStartup" type="xs:boolean " use="optional"/>
+	</xs:complexType>
+	<xs:simpleType name="tScheduleTypes">
+		<xs:annotation>
+			<xs:documentation>Type of Schedules allowed</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="timer"/>
+			<xs:enumeration value="interval"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tTimer">
+		<xs:annotation>
+			<xs:documentation>Time of a Timer to go off</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\d\d\d\d ((AM)|(PM))"/>
+		</xs:restriction>
+	</xs:simpleType>
+<!--
+    TODO:
+    - Need to add regexp pattern for MIME media-type value of tEnclosure/type
+-->
+<!--
+    Change Log:
+    Date			Revision		Description
+    31-Mar-2003		1			Initial version released for comment
+-->
+</xs:schema>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes"?>
+<installation version="1.0">
+  <info>
+    <appname>jPodder</appname>
+    <appversion>1.0-beta1</appversion>
+    <appsubpath>$APP_NAME-$APP_VER</appsubpath>
+    <authors>
+      <author name="Christophe Bouhier" email="christophe@kualasoft.com" />
+      <author name="Paul Leclerc" email="pleclerc@yahoo.com"/>
+      <author name="Dave Hodson" email="davehod@speakeasy.net"/>
+      <author name="Andreas Schaefer" email="aschaefer@SeeBeyond.com"/>
+    </authors>
+    <url>http://www.jpodder.com</url>
+    <javaversion>1.4</javaversion>
+  </info>
+  <guiprefs width="640" height="480" resizable="no" />
+  <locale>
+    <langpack iso3="eng" />
+  </locale>
+  <resources>
+    <res id="LicencePanel.licence" src="..\doc\license.txt" />
+    <!-- <res id="InfoPanel.info" src="..\doc\info.txt"/> -->
+    <res id="shortcutSpec.xml" src="install-shortcuts.xml" />
+  </resources>
+  <panels>
+    <panel classname="HelloPanel" />
+    <!--panel classname="InfoPanel"/-->
+    <panel classname="LicencePanel" />
+    <panel classname="TargetPanel" />
+    <panel classname="PacksPanel" />
+    <panel classname="InstallPanel" />
+    <panel classname="ShortcutPanel" />
+    <panel classname="FinishPanel" />
+  </panels>
+  <native type="izpack" name="ShellLink.dll" />
+  <packs>
+    <pack name="Base" required="yes">
+      <description>The base files</description>
+      <fileset dir="..\doc" targetdir="$INSTALL_PATH">
+        <include name="README.html" />
+        <include name="license.txt" />
+        <include name="Release Notes.html" />
+      </fileset>
+      <fileset dir="..\doc\guide"
+      targetdir="$INSTALL_PATH\doc\guide">
+        <include name="**/*.*" />
+        <exclude name="CVS" />
+      </fileset>
+      <fileset dir="..\bin" targetdir="$INSTALL_PATH\bin">
+        <include name="jawin.dll" />
+        <include name="aereg.dll" />
+        <include name="systray4j.dll" />
+        <include name="ipodder.trans" />
+        <!--include name="feeds.xml"/-->
+        <include name="jpodder.cmd" />
+        <include name="jpodder.ico" />
+        <include name="systray-jpodder.ico" />
+        <include name="systray-jpodder-download.ico" />
+        <include name="jpodder16.png" />
+        <include name="uninstall.ico" />
+        <exclude name="CVS" />
+      </fileset>
+      <fileset dir="..\dist" targetdir="$INSTALL_PATH\bin">
+        <include name="jPodder.jar" />
+        <include name="feeds.xml" />
+      </fileset>
+      <fileset dir="..\lib" targetdir="$INSTALL_PATH\bin">
+        <include name="log4j.xml" />
+      </fileset>
+      <fileset dir="..\lib" targetdir="$INSTALL_PATH\lib">
+        <include name="commons-httpclient-3.0b1.jar" />
+        <include name="commons-codec-1.3.jar" />
+        <include name="commons-logging.jar" />
+        <include name="jawin.jar" />
+        <include name="nanoxml-2.2.3.jar" />
+        <include name="plastic-1.2.1.jar" />
+        <include name="systray4j.jar" />
+        <include name="xmlrpc.jar" />
+        <include name="Azureus2.2.0.2.jar" />
+        <include name="java_mp3.jar" />
+        <include name="xfile_editor.jar" />
+        <include name="xercesImpl.jar" />
+        <include name="xml-apis.jar" />
+        <include name="xbean.jar" />
+        <include name="rss20.jar" />
+        <include name="log4j.jar" />
+        <include name="id3.xml" />
+      </fileset>
+      <fileset dir="..\plugin" targetdir="$INSTALL_PATH\plugin">
+        <include name="**/*.class"/>
+      </fileset>
+      <fileset dir="..\imaging" targetdir="$INSTALL_PATH\imaging">
+        <include name="sunny16.png" />
+        <include name="rainy16.png" />
+        <include name="iPodderX.png" />
+        <include name="jup.png" />
+        <include name="jdown.png" />
+        <include name="folder.png" />
+        <include name="folder_open.png" />
+        <include name="podcast.png" />
+        <include name="podcast-subscribed.png" />
+        <include name="bullet.gif" />
+        <include name="jreload.png" />
+        <include name="jpodder32.png" />
+        <include name="jpodder192.png" />
+        <include name="ipActionbar.png" />
+        <include name="ipGridBlue64.jpg" />
+        <include name="jPodder-Splash.jpg" />
+      </fileset>
+    </pack>
+    <pack name="API Docs" required="no">
+      <description>The documentation</description>
+      <fileset dir="..\doc\api" targetdir="$INSTALL_PATH\doc\api">
+        <include name="**/*.*" />
+        <exclude name="CVS" />
+      </fileset>
+    </pack>
+    <pack name="Sources" required="no">
+      <description>The sources</description>
+      <fileset dir="..\src" targetdir="$INSTALL_PATH\src">
+        <include name="**/*.*" />
+        <exclude name="CVS" />
+      </fileset>
+    </pack>
+  </packs>
+</installation>

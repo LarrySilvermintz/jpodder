@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://purl.org/rss/1.0/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:syn="http://purl.org/rss/1.0/modules/syndication/" xmlns:admin="http://webns.net/mvcb/" xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0">
+
+<channel rdf:about="http://slashdot.org/">
+<title>Slashdot</title>
+<link>http://slashdot.org/</link>
+<description>News for nerds, stuff that matters</description>
+<dc:language>en-us</dc:language>
+<dc:rights>Copyright 1997-2006, OSTG - Open Source Technology Group, Inc.  All Rights Reserved.</dc:rights>
+<dc:date>2006-03-10T09:40:39+00:00</dc:date>
+<dc:publisher>OSTG</dc:publisher>
+<dc:creator>pater@slashdot.org</dc:creator>
+<dc:subject>Technology</dc:subject>
+<syn:updatePeriod>hourly</syn:updatePeriod>
+<syn:updateFrequency>1</syn:updateFrequency>
+<syn:updateBase>1970-01-01T00:00+00:00</syn:updateBase>
+<items>
+ <rdf:Seq>
+  <rdf:li rdf:resource="http://apple.slashdot.org/article.pl?sid=06/03/10/0526237&amp;from=rss" />
+  <rdf:li rdf:resource="http://slashdot.org/article.pl?sid=06/03/10/0522252&amp;from=rss" />
+  <rdf:li rdf:resource="http://yro.slashdot.org/article.pl?sid=06/03/10/0053257&amp;from=rss" />
+  <rdf:li rdf:resource="http://it.slashdot.org/article.pl?sid=06/03/09/233227&amp;from=rss" />
+  <rdf:li rdf:resource="http://linux.slashdot.org/article.pl?sid=06/03/09/230243&amp;from=rss" />
+  <rdf:li rdf:resource="http://slashdot.org/article.pl?sid=06/03/09/2258242&amp;from=rss" />
+  <rdf:li rdf:resource="http://slashdot.org/article.pl?sid=06/03/09/2154207&amp;from=rss" />
+  <rdf:li rdf:resource="http://games.slashdot.org/article.pl?sid=06/03/09/225205&amp;from=rss" />
+  <rdf:li rdf:resource="http://yro.slashdot.org/article.pl?sid=06/03/09/1949206&amp;from=rss" />
+  <rdf:li rdf:resource="http://slashdot.org/article.pl?sid=06/03/09/1943243&amp;from=rss" />
+ </rdf:Seq>
+</items>
+<image rdf:resource="http://images.slashdot.org/topics/topicslashdot.gif" />
+<textinput rdf:resource="http://slashdot.org/search.pl" />
+</channel>
+
+<image rdf:about="http://images.slashdot.org/topics/topicslashdot.gif">
+<title>Slashdot</title>
+<url>http://images.slashdot.org/topics/topicslashdot.gif</url>
+<link>http://slashdot.org/</link>
+</image>
+
+<item rdf:about="http://apple.slashdot.org/article.pl?sid=06/03/10/0526237&amp;from=rss">
+<title>No EFI Support for Vista</title>
+<link>http://rss.slashdot.org/Slashdot/slashdot?m=4168</link>
+<description>DietFluffy writes "Microsoft revealed today that it will not support EFI booting for Windows Vista on its launch. The news will be a shock for owners of Intel Macs who had hoped they would be able to dual-boot between Windows Vista and OS X. Intel Macs only support booting via EFI."&lt;img src="http://rss.slashdot.org/Slashdot/slashdot?g=4168"/&gt;</description>
+<dc:creator>CowboyNeal</dc:creator>
+<dc:date>2006-03-10T09:25:00+00:00</dc:date>
+<dc:subject>windows</dc:subject>
+<slash:department>apples-and-oranges</slash:department>
+<slash:section>apple</slash:section>
+<slash:comments>18</slash:comments>
+<slash:hit_parade>18,17,10,3,0,0,0</slash:hit_parade>
+<feedburner:origLink>http://apple.slashdot.org/article.pl?sid=06/03/10/0526237&amp;from=rss</feedburner:origLink></item>
+
+<item rdf:about="http://slashdot.org/article.pl?sid=06/03/10/0522252&amp;from=rss">
+<title>Google's New Calendar CL2</title>
+<link>http://rss.slashdot.org/Slashdot/slashdot?m=4167</link>
+<description>pvt_medic writes "Google is apparently working on its own calendar (CL2) program to integrate with Gmail. The closed beta is ongoing with about 200 participants - people involved are not allowed to invite outsiders to see the calendar and are under strict rules not to share any details with outsiders. Here are some leaked photos of the CL2."&lt;img src="http://rss.slashdot.org/Slashdot/slashdot?g=4167"/&gt;</description>
+<dc:creator>CowboyNeal</dc:creator>
+<dc:date>2006-03-10T06:11:00+00:00</dc:date>
+<dc:subject>google</dc:subject>
+<slash:department>ajax-in-action</slash:department>
+<slash:section>mainpage</slash:section>
+<slash:comments>100</slash:comments>
+<slash:hit_parade>100,92,77,51,31,26,14</slash:hit_parade>
+<feedburner:origLink>http://slashdot.org/article.pl?sid=06/03/10/0522252&amp;from=rss</feedburner:origLink></item>
+
+<item rdf:about="http://yro.slashdot.org/article.pl?sid=06/03/10/0053257&amp;from=rss">
+<title>Vonage Files Regulatory Complaint Over QoS Premium</title>
+<link>http://rss.slashdot.org/Slashdot/slashdot?m=4166</link>
+<description>xoip writes "A Recent CBC report says that Vonage Canada has filed a complaint with Federal Regulators over a New $10.00 per month Quality of Service Premium that Broadband Internet provider, Shaw Cable has begun charging customers of VoIP. Noted Internet Legal expert Michael Geist has written an excellent review of the complaint Vonage made to the CRTC and highlights the point made in the Vonage filing, 'that not enough is known at this point about the Shaw service in order to formulate an appropriate regulatory response.'"&lt;img src="http://rss.slashdot.org/Slashdot/slashdot?g=4166"/&gt;</description>
+<dc:creator>CowboyNeal</dc:creator>
+<dc:date>2006-03-10T03:43:00+00:00</dc:date>
+<dc:subject>networking</dc:subject>
+<slash:department>not-gonna-take-it</slash:department>
+<slash:section>yro</slash:section>
+<slash:comments>96</slash:comments>
+<slash:hit_parade>96,91,76,49,17,11,4</slash:hit_parade>
+<feedburner:origLink>http://yro.slashdot.org/article.pl?sid=06/03/10/0053257&amp;from=rss</feedburner:origLink></item>
+
+<item rdf:about="http://it.slashdot.org/article.pl?sid=06/03/09/233227&amp;from=rss">
+<title>Security Flaw Discovered in GPG</title>
+<link>http://rss.slashdot.org/Slashdot/slashdot?m=4164</link>
+<description>WeLikeRoy writes "A serious problem in the use of GPG to verify digital signatures has been discovered, which also affects the use of gpg in email. It is possible for an attacker to take any signed message and inject extra arbitrary data without affecting the signed status of the message. Depending on how gpg is invoked, it may be possible to output just faked data as several variants of this attack have been discovered. All versions of gnupg prior to 1.4.2.2 are affected, and it is thus recommended to update GnuPG as soon as possible to version 1.4.2.2."&lt;img src="http://rss.slashdot.org/Slashdot/slashdot?g=4164"/&gt;</description>
+<dc:creator>CowboyNeal</dc:creator>
+<dc:date>2006-03-10T02:22:00+00:00</dc:date>
+<dc:subject>security</dc:subject>
+<slash:department>enemy-within</slash:department>
+<slash:section>it</slash:section>
+<slash:comments>100</slash:comments>
+<slash:hit_parade>100,91,77,62,30,16,12</slash:hit_parade>
+<feedburner:origLink>http://it.slashdot.org/article.pl?sid=06/03/09/233227&amp;from=rss</feedburner:origLink></item>
+
+<item rdf:about="http://linux.slashdot.org/article.pl?sid=06/03/09/230243&amp;from=rss">
+<title>Novell Returns to the SUSE Name</title>
+<link>http://rss.slashdot.org/Slashdot/slashdot?m=4163</link>
+<description>soren42 writes "It appears that Novell has decided to rename their enterprise desktop line SUSE, once again. According to an announcement at CeBIT, Novell will be releasing the next version of their desktop product under the name SUSE Linux Enterprise Desktop - ditching the moniker Novell Linux Desktop. Naming aside, it looks like the features will be there to make it a strong desktop competitor."&lt;img src="http://rss.slashdot.org/Slashdot/slashdot?g=4163"/&gt;</description>
+<dc:creator>CowboyNeal</dc:creator>
+<dc:date>2006-03-10T00:49:00+00:00</dc:date>
+<dc:subject>suse</dc:subject>
+<slash:department>penguin-by-any-other-name</slash:department>
+<slash:section>linux</slash:section>
+<slash:comments>128</slash:comments>
+<slash:hit_parade>128,121,102,69,23,17,9</slash:hit_parade>
+<feedburner:origLink>http://linux.slashdot.org/article.pl?sid=06/03/09/230243&amp;from=rss</feedburner:origLink></item>
+
+<item rdf:about="http://slashdot.org/article.pl?sid=06/03/09/2258242&amp;from=rss">
+<title>Movies Losing Popularity at Box Office</title>
+<link>http://rss.slashdot.org/Slashdot/slashdot?m=4162</link>
+<description>andyring writes "Without the slightest mention of piracy, the MPAA said box-office revenues declined by 8 percent last year. About 40 percent of the decline came from the U.S. Now if only they'd realize that the decline is from movies sucking more than my shop vac." It's been a while since a film warranted spending the money to watch it in a room full of strangers.&lt;img src="http://rss.slashdot.org/Slashdot/slashdot?g=4162"/&gt;</description>
+<dc:creator>CowboyNeal</dc:creator>
+<dc:date>2006-03-09T23:41:00+00:00</dc:date>
+<dc:subject>movies</dc:subject>
+<slash:department>good-scripts-also-lost</slash:department>
+<slash:section>mainpage</slash:section>
+<slash:comments>533</slash:comments>
+<slash:hit_parade>533,531,446,291,78,46,35</slash:hit_parade>
+<feedburner:origLink>http://slashdot.org/article.pl?sid=06/03/09/2258242&amp;from=rss</feedburner:origLink></item>
+
+<item rdf:about="http://slashdot.org/article.pl?sid=06/03/09/2154207&amp;from=rss">
+<title>Google Enters Web-Office Market</title>
+<link>http://rss.slashdot.org/Slashdot/slashdot?m=4161</link>
+<description>jaiva writes "Google's official blog tells us that Google has acquired Writely, a collaborative word processor." From the article: "To be clear, Writely is still in beta, and it's far from perfect. Upholding our great user experience means everything to us, so we're not accepting new registrations until we've moved Writely to Google's software architecture. If you're interested in giving us a try, we hope you'll get on the waitlist so we can let you know when you'll be able to try out Writely."&lt;img src="http://rss.slashdot.org/Slashdot/slashdot?g=4161"/&gt;</description>
+<dc:creator>Zonk</dc:creator>
+<dc:date>2006-03-09T22:32:00+00:00</dc:date>
+<dc:subject>google</dc:subject>
+<slash:department>looking-forward-to-online-clippy</slash:department>
+<slash:section>mainpage</slash:section>
+<slash:comments>194</slash:comments>
+<slash:hit_parade>194,184,156,103,31,23,13</slash:hit_parade>
+<feedburner:origLink>http://slashdot.org/article.pl?sid=06/03/09/2154207&amp;from=rss</feedburner:origLink></item>
+
+<item rdf:about="http://games.slashdot.org/article.pl?sid=06/03/09/225205&amp;from=rss">
+<title>The Problems With Game Copy Protection</title>
+<link>http://rss.slashdot.org/Slashdot/slashdot?m=4165</link>
+<description>Next Generation has a piece looking at the sometimes overly enthusiastic copy protection schemes used in PC games. From the article: "In the late '80s and early '90s, the games industry could do little more than ask nicely that you not pirate their wares. These days, however, copy-protection software is ubiquitous, and any PC game bought at retail is going to have it embedded on the game disc(s) in one form or another. I'm okay with that in theory, but some of these anti-piracy software programs are so potent that they cause issues for legitimate game buyers. One of the leading brands, StarForce, is notorious for not only making it difficult for a small percentage of legitimate users to load up StarForce-protected games, but also for leaving potentially problem-causing StarForce software behind on your PC, even after you've deleted the game it was protecting."&lt;img src="http://rss.slashdot.org/Slashdot/slashdot?g=4165"/&gt;</description>
+<dc:creator>Zonk</dc:creator>
+<dc:date>2006-03-09T22:21:00+00:00</dc:date>
+<dc:subject>games</dc:subject>
+<slash:department>where-to-begin</slash:department>
+<slash:section>games</slash:section>
+<slash:comments>248</slash:comments>
+<slash:hit_parade>248,244,197,147,45,33,18</slash:hit_parade>
+<feedburner:origLink>http://games.slashdot.org/article.pl?sid=06/03/09/225205&amp;from=rss</feedburner:origLink></item>
+
+<item rdf:about="http://yro.slashdot.org/article.pl?sid=06/03/09/1949206&amp;from=rss">
+<title>iTunes Sales Ban Does Increase CD Sales</title>
+<link>http://rss.slashdot.org/Slashdot/slashdot?m=4160</link>
+<description>Guinnessy writes "According to the New York Times, some music labels have deliberately stopped selling some new singles on online stories such as iTunes or Rhapsody while promoting songs on the radio, so that listeners will rush out to buy the CD album instead. The album appears in itunes at a later date. Not everyone seems to think this is a good idea. From the article: 'The labels are shooting themselves in the foot,' says Rhapsody's Tim Quirk. However, Ne-Yo's CD In My Own Words sold 301,000 copies using this method. Chris Brown's Run It, that was in the itunes store, sold 154,000 copies in its first week. Ne-Yo's So Sick was downloaded approximately 3.4 million times on the peer to peer networks during the week of his album release while the album Run It!"was downloaded approximately 5.3 million times in the same release period."&lt;img src="http://rss.slashdot.org/Slashdot/slashdot?g=4160"/&gt;</description>
+<dc:creator>Zonk</dc:creator>
+<dc:date>2006-03-09T21:49:00+00:00</dc:date>
+<dc:subject>music</dc:subject>
+<slash:department>sounds-logical</slash:department>
+<slash:section>yro</slash:section>
+<slash:comments>161</slash:comments>
+<slash:hit_parade>161,159,137,95,49,22,13</slash:hit_parade>
+<feedburner:origLink>http://yro.slashdot.org/article.pl?sid=06/03/09/1949206&amp;from=rss</feedburner:origLink></item>
+
+<item rdf:about="http://slashdot.org/article.pl?sid=06/03/09/1943243&amp;from=rss">
+<title>Cubicles a Giant Mistake</title>
+<link>http://rss.slashdot.org/Slashdot/slashdot?m=4159</link>
+<description>J to the D writes "Apparently even the designer of the cubicle believes now that they are a bad idea." From the article: "After years of prototyping and studying how people work, and vowing to improve on the open-bullpen office that dominated much of the 20th century, Propst designed a system he thought would increase productivity (hence the name Action Office). The young designer, who also worked on projects as varied as heart pumps and tree harvesters, theorized that productivity would rise if people could see more of their work spread out in front of them, not just stacked in an in-box."&lt;img src="http://rss.slashdot.org/Slashdot/slashdot?g=4159"/&gt;</description>
+<dc:creator>Zonk</dc:creator>
+<dc:date>2006-03-09T21:13:00+00:00</dc:date>
+<dc:subject>biz</dc:subject>
+<slash:department>we-already-knew-that</slash:department>
+<slash:section>mainpage</slash:section>
+<slash:comments>306</slash:comments>
+<slash:hit_parade>306,303,249,178,72,46,40</slash:hit_parade>
+<feedburner:origLink>http://slashdot.org/article.pl?sid=06/03/09/1943243&amp;from=rss</feedburner:origLink></item>
+
+<textinput rdf:about="http://slashdot.org/search.pl">
+<title>Search Slashdot</title>
+<description>Search Slashdot stories</description>
+<name>query</name>
+<link>http://slashdot.org/search.pl</link>
+</textinput>
+
+</rdf:RDF>

@@ -1,0 +1,5 @@
+Options +Indexes
+IndexOptions -FancyIndexing
+DirectoryIndex opdaclient.htm
+ErrorDocument 404 /errors/404.htm
+AddType application/x-httpd-php .php .php3 .php4 .html .htm

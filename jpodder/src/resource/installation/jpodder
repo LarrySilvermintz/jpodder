@@ -1,0 +1,45 @@
+# !/bin/bash
+#
+# Hacked together by brendan@zen.org based on 'jpodder.cmd'.
+#
+
+echo jPODDER launched on `date`
+
+# rem ********************************************************************************
+# rem 1. get the application HOME directory. Set manually otherwise.
+# rem ********************************************************************************
+
+if [ -z "$JPODDER_HOME" ]; then
+  d=`dirname "$0"`
+  JPODDER_HOME=`(cd "$d"/.. ; pwd)`
+  export JPODDER_HOME
+fi
+echo JPODDER is located in: $JPODDER_HOME
+
+# rem ********************************************************************************
+# rem 2. get java from JAVA_HOME or set the default jvm.
+# rem ********************************************************************************
+
+# FIXME we assume java is available in the PATH for now
+if [ -z "$_JAVACMD" ]; then
+  _JAVACMD=java
+fi
+
+# rem ********************************************************************************
+# rem 3. set the HOME FOR MOZILLA and export the path as a library path.
+# rem ********************************************************************************
+
+MOZILLA_FIVE_HOME=/usr/lib/mozilla
+LD_LIBRARY_PATH=${MOZILLA_FIVE_HOME}
+export MOZILLA_FIVE_HOME
+export LD_LIBRARY_PATH
+
+# rem ********************************************************************************
+# rem 4 change to the working directory and 
+# rem   execute the resolved JAVA_CMD with -jar main.jar (The jPodder launch file).
+# rem ********************************************************************************
+
+cd $d
+$_JAVACMD -jar -Djpodder.home=$JPODDER_HOME main.jar
+
+exit $?

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+    <extend>../rss-project.xml</extend>
+    <artifactId>jpodder-xml-rdf</artifactId>
+    <name>jpodder-xml-rdf</name>
+    <shortDescription>jPodder: Podcasting Application: RDF Feed XML Bindings</shortDescription>
+    <description>
+       jPodder's RDF Feed XML Binding Classes
+    </description>
+
+    <repository>
+        <connection>scm:cvs:pserver:anonymous@cvs.sourceforge.net:/cvsroot/jpodder:jPodder2/xml/rss</connection>
+    </repository>
+
+   <build>
+      <sourceDirectory>src.empty</sourceDirectory>
+        <sourceModifications>
+            <sourceModification>
+                <className>DoNotFindMe</className>
+                <excludes>
+                    <exclude>test/**/*.java</exclude>
+                </excludes>
+            </sourceModification>
+        </sourceModifications>
+      <unitTestSourceDirectory>test/src/java</unitTestSourceDirectory>
+      <aspectSourceDirectory/>
+
+      <unitTest>
+         <includes>
+            <include>**/*Test.java</include>
+         </includes>
+      </unitTest>
+   </build>
+</project>

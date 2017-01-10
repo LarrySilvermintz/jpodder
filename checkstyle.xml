@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC
+	"-//Puppy Crawl//DTD Package Names 1.0//EN"
+	"http://www.puppycrawl.com/dtds/configuration_1_1.dtd">
+
+<module name="Checker">
+	<!-- Check that package.html exists -->
+	<module name="PackageHtml"/>
+
+	<module name="TreeWalker">
+		<property name="tabWidth" value="3"/>
+
+		<!-- Import checks -->
+		<module name="AvoidStarImport"/>
+		<module name="ConstantName"/>
+		<module name="RedundantImport"/>
+		<module name="UnusedImports"/>
+
+		<!-- Modifier checks -->
+		<module name="RedundantModifier">
+			<property name="tokens" value="METHOD_DEF"/>
+		</module>
+		<module name="VisibilityModifier">
+			<property name="packageAllowed" value="true"/>
+			<property name="protectedAllowed" value="true"/>
+		</module>
+
+		<!-- Whitespace checks -->
+		<module name="ParenPad">
+			<property name="option" value="space"/>
+            <property name="tokens" value="CTOR_CALL, METHOD_CALL, SUPER_CTOR_CALL"/>
+		</module>
+
+        <module name="TabCharacter"/>
+
+		<!-- Javadoc checks -->
+		<module name="JavadocType">
+			<property name="versionFormat" value=".*"/>
+		</module>
+
+		<!-- Blocks -->
+		<module name="LeftCurly">
+			<property name="option" value="eol"/>
+		</module>
+		<module name="RightCurly">
+			<property name="option" value="same"/>
+		</module>
+        <!-- It seems to be a good idea to concantenate strings with the '+' on
+             the next line because it makes it easier to add, extend or remove parts of the string -->
+		<module name="OperatorWrap">
+			<property name="option" value="nl"/>
+			<property name="tokens" value="PLUS"/>
+		</module>
+		<module name="NeedBraces"/>
+		<module name="EmptyBlock">
+			<property name="option" value="text"/>
+		</module>
+
+		<!-- Naming conventions -->
+		<module name="ConstantName"/>
+		<module name="ParameterName">
+			<property name="format" value="^[a-z][a-zA-Z0-9_]*$"/>
+		</module>
+		<module name="StaticVariableName">
+			<property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
+		</module>
+		<module name="LocalVariableName">
+			<property name="format" value="^[a-z][a-zA-Z0-9_]*$"/>
+		</module>
+		<module name="MemberName">
+			<property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
+		</module>
+
+		<!-- Size Violations -->
+		<module name="FileLength">
+			<property name="max" value="2000"/>
+		</module>
+		<module name="LineLength">
+			<property name="max" value="320"/>
+		</module>
+		<module name="MethodLength">
+			<property name="max" value="150"/>
+		</module>
+	</module>
+</module>
+

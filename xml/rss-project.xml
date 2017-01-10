@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+    <extend>../basic-project.xml</extend>
+
+    <siteAddress>www.jpodder.com</siteAddress>
+<!--    <siteDirectory>/home/jdoppio/deploy/jdoppio.war</siteDirectory> -->
+
+    <dependencies>
+        <dependency>
+            <groupId>xmlbeans</groupId>
+            <artifactId>xbean</artifactId>
+            <version>1.0.4</version>
+            <url></url>
+            <properties><jar.lib>true</jar.lib></properties>
+        </dependency>
+    </dependencies>
+</project>

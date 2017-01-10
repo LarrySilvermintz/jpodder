@@ -1,0 +1,115 @@
+/*
+	jPodder Application Styles: 
+	
+	Colors: 
+	version: 1.1
+	Author: Christophe Bouhier
+	
+	Style Colors:	TODO Implement in jPodder.
+	The colors are also parsed by the application to be used
+	in various UI components (Mostly tables).
+*/ /* STYLE COLORS */
+
+
+.generic{
+    color: #F5F8F1;
+}
+
+
+.table_odd_background_color {
+	color: #F5F8F1;
+}
+
+.title_color {
+	color: #0039A3;
+}
+
+.link_color {
+	color: #94918C;
+}
+
+.selection_background_color {
+	color: #DFE3ED;
+}
+
+.generic_background_color {
+	color: #F9A004;
+}
+
+.scheduled_color {
+	color: #f5aef9;
+}
+
+body {
+	font-family: Tahoma, Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	margin: 0px;
+	padding: 0px;
+}
+
+#box {
+	margin: 2px;
+	padding: 5px;
+	/* width: 95%;*/
+}
+
+div.content {
+	padding: 4px;
+	background: #FFF;
+	border: 1px solid #999;
+}
+
+.image {
+	vertical-align: top;
+	padding: 5px;
+}
+
+.link {
+	font-size: 10px;
+	padding: 5px;
+}
+
+.description {
+	text-align: left;
+	vertical-align: top;
+	padding: 5px;
+	font-size: 14px;
+}
+
+H2 {
+	font-size: 16px;
+	font-style: bold;
+	border-bottom: 1px dashed #999;
+	margin: 5px;
+	padding: 2px;
+	color: #26344C;
+}
+
+.message {
+	text-align: center;
+	vertical-align: center;
+	font-size: 16px;
+	font-style: bold;
+	color: #94918C;
+}
+
+.date {
+	color: #666;
+	font-family: Tahoma, Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	line-height: 16px;
+	font-weight: normal;
+	float: right;
+}
+
+.pubdate {
+	color: #666;
+	font-family: Tahoma, Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	line-height: 16px;
+	font-weight: normal;
+	text-align: right;
+	margin: 0px;
+	padding: 6px 5px;
+	clear: both;
+}

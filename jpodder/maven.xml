@@ -1,0 +1,296 @@
+<project default="jpodder:build"
+         xmlns:ant="jelly:ant"
+         xmlns:j="jelly:core"
+         xmlns:maven="jelly:maven"
+         xmlns:deploy="deploy"
+         xmlns:util="jelly:util"
+>
+    
+    <goal name="jpodder:build" prereqs="jar:install" description="Builds this project" >
+        <attainGoal name="build-installation"/>
+    </goal>
+
+    <goal name="jpodder:create-installation" description="Create installation of this project" >
+        <attainGoal name="create-installation"/>
+    </goal>
+
+    <goal name="jpodder:clean" description="Deletes the build directory" >
+        <attainGoal name="clean"/>
+    </goal>
+    
+<!-- Pre / Post Goals for this Project -->
+
+    <preGoal name="java:compile">
+        <attainGoal name="init"/>
+    </preGoal>    
+    <postGoal name="java:compile">
+    </postGoal>
+
+<!-- Private Goals for this Project -->
+
+<!-- ************************************************************************* -->
+<!-- GOAL:BUILD-INSTALLATION                                                  -->
+<!-- ************************************ ************************************ -->    
+    <goal name="build-installation">
+<!-- -->
+<!-- COPY LIBRARIES AND SET CLASSPATH   -->
+<!-- -->            
+        <j:set var="tmpDependenciesDir" value="${maven.build.dir}/tmpLibDir"/>
+        <j:forEach var="lib" items="${pom.artifacts}">
+            <j:set var="dep" value="${lib.dependency}"/>      
+            <j:if test="${dep.getProperty('jar.lib')=='true'}">
+                <util:file name="${lib.file.parent}/${lib.file.name}" var="checkFile" />
+                <!-- define the directory where the dependency will be included -->
+                <!-- (if the property is not set, dir is the root) -->
+                <j:set var="bundleDir" value="."/> 
+                <!-- define the name of the dependency -->
+                <j:set var="bundleName" value="${lib.name}"/>
+                <j:set var="bundlePath" value="${bundleDir}/${bundleName}"/>
+                <!-- after the definitions, copy the dependency -->
+                <ant:echo>Copy file: ${lib.file.parent}/${lib.file.name} to ${tmpDependenciesDir}/${bundlePath}</ant:echo>
+                <ant:copy file="${lib.file.parent}/${lib.file.name}" tofile="${tmpDependenciesDir}/${bundlePath}"/>
+                <j:if test="${dep.getProperty('add.to.main')=='true'}">
+                    <j:set var="manifest.class.path" value="${manifest.class.path} ../lib/${bundlePath}"/>
+                </j:if>
+            </j:if>
+        </j:forEach>        
+<!-- -->
+<!-- JPODDER JAR   -->
+<!-- -->        
+        <ant:jar
+            jarfile="${tmpDependenciesDir}/jPodder.jar"
+            compress="true">
+            <ant:manifest>
+                <ant:attribute name="Built-By" value="${user.name}"/>
+                <ant:attribute name="Created-By" value="maven"/>
+                <ant:attribute name="Package" value="${pom.package}"/>
+            </ant:manifest>
+            <ant:fileset dir="${maven.build.dir}/classes">
+                <ant:include name="**/*.class"/>
+                <ant:exclude name="**/plugin/player/**/*.class"/>
+                <ant:exclude name="**/Main.class"/>
+            </ant:fileset>
+            <ant:fileset dir="${jpodder.resource.config.dir}">
+                <ant:include name="*.properties"/>
+                <ant:exclude name="*.xml"/>
+            </ant:fileset>
+        </ant:jar>
+
+<!-- -->
+<!-- MAIN JAR      -->
+<!-- -->
+        <ant:jar
+            jarfile="${maven.build.dir}/main.jar"
+            compress="true">
+            <ant:manifest>
+                <ant:attribute name="Built-By" value="${user.name}"/>
+                <ant:attribute name="Created-By" value="maven"/>
+                <ant:attribute name="Package" value="${pom.package}"/>
+                <ant:attribute name="Main-Class" value="com.jpodder.Main"/>
+                <ant:attribute name="Class-Path" value="${manifest.class.path}"/>
+            </ant:manifest>
+            <ant:fileset dir="${maven.build.dir}/classes">
+                <ant:include name="com/jpodder//Main*.class"/>
+                <ant:include name="com/jpodder//OS.class"/>
+                <ant:include name="com/jpodder//JPodderClassLoader.class"/>
+                <ant:include name="com/jpodder/ui/SplashScreen.class"/>
+                <ant:include name="com/jpodder/ui/SplashWindow.class"/>
+                <ant:include name="com/jpodder/util/DynamicObject*.class"/>
+                <ant:include name="com/jpodder/util/PersistentObject*.class"/>
+                <ant:include name="com/jpodder/util/AbstractTypedException.class"/>
+                <ant:include name="com/jpodder/util/Logger.class"/>
+                <ant:include name="com/jpodder/util/XLevel.class"/>
+            </ant:fileset>
+        </ant:jar>
+
+<!-- -->
+<!-- ONE-CLICK JAR -->
+<!-- -->
+
+        <j:set var="oneClickLibDir" value="${maven.build.dir}/oneClickLibDir"/>
+        <j:forEach var="lib" items="${pom.artifacts}">
+            <j:set var="dep" value="${lib.dependency}"/>      
+            <j:if test="${dep.getProperty('on.click.jar.lib')=='true'}">
+                <util:file name="${lib.file.parent}/${lib.file.name}" var="checkFile" />
+                <!-- define the directory where the dependency will be included -->
+                <!-- (if the property is not set, dir is the root) -->
+                <j:set var="bundleDir" value="."/> 
+                <!-- define the name of the dependency -->
+                <j:set var="bundleName" value="${lib.name}"/>
+                <j:set var="bundlePath" value="${bundleDir}/${bundleName}"/>
+                <!-- after the definitions, copy the dependency -->
+                <ant:echo>Copy file: ${lib.file.parent}/${lib.file.name} to ${oneClickLibDir}/lib/${bundlePath}</ant:echo>
+                <ant:copy file="${lib.file.parent}/${lib.file.name}" tofile="${oneClickLibDir}/lib/${bundlePath}"/>
+                <j:set var="onClick.manifest.class.path" value="${onClick.manifest.class.path} lib/${bundlePath}"/>
+            </j:if>
+        </j:forEach>
+
+
+<!--AS TODO: This is a workaround because the manifest class path does not work with inner libraryes. Create a Class Loader that can do it -->
+        <j:set var="oneClickExtDir" value="${oneClickLibDir}/ext"/>
+        <ant:unjar dest="${oneClickExtDir}">
+            <ant:fileset dir="${oneClickLibDir}">
+                <ant:include name="**/*.jar"/>
+            </ant:fileset>
+        </ant:unjar>        
+        <ant:jar
+            jarfile="${maven.build.dir}/jPodder.one.click.jar"
+            compress="true"
+        >
+            <ant:manifest>
+                <ant:attribute name="Built-By" value="${user.name}"/>
+                <ant:attribute name="Created-By" value="maven"/>
+                <ant:attribute name="Package" value="${pom.package}"/>
+                <ant:attribute name="Main-Class" value="com.jpodder.remote.client.Main"/>
+                <ant:attribute name="Class-Path" value="${onClick.manifest.class.path}"/>
+            </ant:manifest>
+            <ant:fileset dir="${maven.build.dir}/classes">
+                <ant:include name="com/jpodder/remote/client/**/*.class"/>
+            </ant:fileset>
+            <ant:fileset dir="${oneClickLibDir}">
+                <ant:include name="**/*.jar"/>
+            </ant:fileset>
+<!--AS TODO: This is a workaround because the manifest class path does not work with inner libraryes. Create a Class Loader that can do it -->
+            <ant:fileset dir="${oneClickExtDir}">
+                <ant:include name="**/*"/>
+            </ant:fileset>
+        </ant:jar>
+    </goal>
+
+<!-- ************************************************************************* -->
+<!-- GOAL:CREATE-INSTALLATION                                                  -->
+<!-- ************************************ ************************************ -->    
+    <goal name="create-installation">
+<!-- -->
+<!-- OS DETECTION -->
+<!-- -->
+        <ant:condition property="isUnix" value="true">
+            <os family="unix" />
+        </ant:condition>
+        <ant:condition property="isWindows" value="true">
+            <or>
+                <os family="windows" />
+                <os family="win9x" />
+            </or>
+        </ant:condition>
+        <ant:condition property="isMac" value="true">
+            <or>
+                <os family="mac" />
+            </or>
+        </ant:condition>
+        
+        
+<!-- -->
+<!-- Build NSIS Installer -->
+ 
+		<j:if test="${isWindows == 'true'}">
+        	<exec dir="${jpodder.installation.nsis.dir}" executable="${jpodder.nsis.home}/makensis.exe" >
+		  		<arg line="${jpodder.installation.nsis.windows.file}"/>
+			</exec>		
+			<ant:copy todir="${jpodder.root.dir}/target" >
+            	<ant:fileset dir="${jpodder.installation.nsis.dir}">
+                	<ant:include name="Setup.exe"/>
+            	</ant:fileset>
+        	</ant:copy>
+		</j:if>
+		
+<!-- -->
+<!-- IzPack (UNIX ONLY!), set the install file. -->
+<!-- -->
+
+		<j:if test="${isUnix == 'true'}">
+        <j:set var="izpack.install.file" value="${jpodder.installation.izpack.windows.file}" />
+        <j:if test="${isUnix == 'true'}">
+            <j:set var="izpack.install.file" value="${jpodder.installation.izpack.unix.file}" />
+        </j:if>
+        <j:if test="${isMac == 'true'}">
+            <j:set var="izpack.install.file" value="${jpodder.installation.izpack.mac.file}" />
+        </j:if>
+        
+        
+<!-- FIX THIS LATER
+
+        <ant:taskdef
+            name="izpack" classpath="${jpodder.izpack.home}/lib/compiler.jar"
+            classname="com.izforge.izpack.ant.IzPackTask"
+        />
+        
+			
+        <ant:mkdir dir="${maven.build.dir}/docs/apidocs" />
+        <ant:echo>IzPack install file: ${izpack.install.file}</ant:echo>
+        <ant:echo>IzPack compiler: ${jpodder.izpack.home}/lib/compiler.jar</ant:echo>
+        <izpack
+            input="${jpodder.installation.izpack.dir}/${izpack.install.file}" 
+            output="${maven.build.dir}/install.jar"
+            installerType="standard"
+            basedir="${jpodder.installation.izpack.dir}"
+            izPackDir="${jpodder.izpack.home}"
+        />
+
+-->
+			
+<!-- -->
+<!-- COPY INSTALL -->
+<!-- -->
+
+<!-- FIX THIS LATER.
+        <ant:copy todir="${jpodder.root.dir}/target" >
+            <ant:fileset dir="${maven.build.dir}">
+                <ant:include name="install.jar"/>
+            </ant:fileset>
+        </ant:copy>
+-->
+           
+<!-- ************************************************************************* -->
+<!-- Create an install.exe for win32 only.                                     -->
+<!-- ************************************************************************* -->
+			
+<!-- THIS IS NOT NEEDED, AS WE USE NSIS for Win32.			
+        <j:if test="${isWindows == 'true'}">
+	        <ant:copy todir="${jpodder.root.dir}/target" >
+	            <ant:fileset dir="${jpodder.resource.dir}/installation/launcher">
+	                <ant:include name="install.exe"/>
+	                <ant:include name="launcher.ini"/>
+	            </ant:fileset>
+	        </ant:copy>
+	        <ant:zip destfile="${jpodder.root.dir}/target/${pom.groupId}-${pom.currentVersion}.zip" >
+            <ant:zipfileset dir="${jpodder.root.dir}/target" >
+                <ant:include name="install.jar" />
+	            <ant:include name="install.exe"/>
+	            <ant:include name="launcher.ini"/>                
+            </ant:zipfileset>
+        </ant:zip>
+        </j:if>
+-->        
+        </j:if>       
+			
+    </goal>
+    
+    <goal name="prepare-archive">
+        <ant:input addproperty="p_relnum" message="Upload beta ${p_app}- (e.g. 0.1a) :" />
+        <!-- ZIP this release -->
+        <ant:zip destfile="${maven.build.dir}/${p_app}-${p_relnum}.zip" >
+            <ant:zipfileset dir="${maven.build.dir}" >
+                <ant:include name="install.jar" />
+            </ant:zipfileset>
+            <ant:zipfileset dir="${p_doc}" >
+                <ant:include name="README.html" />
+            </ant:zipfileset>
+        </ant:zip>
+    </goal>
+
+    <goal name="init">
+        <!-- Copy the Debug template class to be built with the rest -->
+		<ant:echo>Debug = ${jpodder.with.dev.debug}</ant:echo>
+        <ant:copy todir="${maven.build.dir}/src">
+            <ant:fileset dir="${jpodder.resource.template.dir}">
+                <ant:include name="**/*.java"/>
+            </ant:fileset>
+            <ant:filterset>
+                <ant:filter token="with.dev.debug" value="${jpodder.with.dev.debug}"/>
+            </ant:filterset>
+        </ant:copy>
+        <ant:path id="sourcePath" path="${maven.build.dir}/src"/>
+        <maven:addPath id="maven.compile.src.set" refid="sourcePath"/>
+    </goal>
+</project>

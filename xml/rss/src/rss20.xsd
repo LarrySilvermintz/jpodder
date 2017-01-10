@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="rss" type="TRss"/>
+  <xs:complexType name="TRss">
+    <xs:sequence>
+      <xs:element type="TChannel" name="channel"/>
+    </xs:sequence>
+    <xs:attribute type="xs:float" name="version" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+  </xs:complexType>
+  <xs:complexType name="TChannel">
+    <xs:sequence>
+      <xs:element type="xs:string" name="title" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:anyURI" name="link" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:string" name="description" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:string" name="generator" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:anyURI" name="docs" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:string" name="language" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:string" name="copyright" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:string" name="managingEditor" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:string" name="webMaster" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:string" name="pubDate" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:string" name="lastBuildDate" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:string" name="category" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:short" name="ttl" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="TImage" name="image"/>
+      <xs:element ref="pod:author" xmlns:pod="http://www.itunes.com/dtds/podcast-1.0.dtd"/>
+      <xs:element ref="pod:subtitle" xmlns:pod="http://www.itunes.com/dtds/podcast-1.0.dtd"/>
+      <xs:element ref="pod:summary" xmlns:pod="http://www.itunes.com/dtds/podcast-1.0.dtd"/>
+      <xs:element ref="pod:keywords" xmlns:pod="http://www.itunes.com/dtds/podcast-1.0.dtd"/>
+      <xs:element ref="pod:explicit" xmlns:pod="http://www.itunes.com/dtds/podcast-1.0.dtd"/>
+      <xs:element ref="pod:image" xmlns:pod="http://www.itunes.com/dtds/podcast-1.0.dtd"/>
+      <xs:element ref="pod:owner" xmlns:pod="http://www.itunes.com/dtds/podcast-1.0.dtd"/>
+      <xs:element ref="pod:block" xmlns:pod="http://www.itunes.com/dtds/podcast-1.0.dtd"/>
+      <xs:element ref="pod:category" xmlns:pod="http://www.itunes.com/dtds/podcast-1.0.dtd"/>
+      <xs:element type="TItem" name="item" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TImage">
+    <xs:sequence>
+      <xs:element type="xs:anyURI" name="url" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:string" name="title" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:anyURI" name="link" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:short" name="width" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:short" name="height" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TGuid">
+    <xs:simpleContent>
+      <xs:extension base="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:attribute type="xs:boolean" name="isPermaLink" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="TEnclosure">
+    <xs:simpleContent>
+      <xs:extension base="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:attribute type="xs:anyURI" name="url" use="optional"/>
+        <xs:attribute type="xs:int" name="length" use="optional"/>
+        <xs:attribute type="xs:string" name="type" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="TItem">
+    <xs:sequence>
+      <xs:element type="xs:string" name="title" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:anyURI" name="link" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:string" name="description" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:string" name="author" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:string" name="pubDate" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:string" name="category" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:anyURI" name="comments" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="TEnclosure" name="enclosure"/>
+      <xs:element type="TGuid" name="guid"/>
+      <xs:element ref="pod:author" xmlns:pod="http://www.itunes.com/dtds/podcast-1.0.dtd"/>
+      <xs:element ref="pod:subtitle" xmlns:pod="http://www.itunes.com/dtds/podcast-1.0.dtd"/>
+      <xs:element ref="pod:summary" xmlns:pod="http://www.itunes.com/dtds/podcast-1.0.dtd"/>
+      <xs:element ref="pod:explicit" xmlns:pod="http://www.itunes.com/dtds/podcast-1.0.dtd"/>
+      <xs:element ref="pod:duration" xmlns:pod="http://www.itunes.com/dtds/podcast-1.0.dtd"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

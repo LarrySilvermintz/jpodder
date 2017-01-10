@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    XML Schema for jPodder Cache 1.0
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" version="2.0.1.10" >
+	<xs:annotation>
+		<xs:documentation>XML Schema for jPodder Plugin Descriptor 1.0.</xs:documentation>
+		<xs:documentation>Revision: 1</xs:documentation>
+		<xs:documentation>Date: 4-July-2005</xs:documentation>
+		<xs:documentation>Based on the jPodder 0.9</xs:documentation>
+		<xs:documentation>Author: Andreas Schaefer</xs:documentation>
+		<xs:documentation>Feedback to: http://www.jpodder.com</xs:documentation>
+	</xs:annotation>
+	<xs:element name="plugins" type="tPlugins"/>
+	<xs:complexType name="tPlugins">
+		<xs:sequence>
+			<xs:element name="plugin" type="tPlugin" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="archives" type="tArchives" minOccurs="0" maxOccurs="1"/>
+			<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="version" type="xs:decimal" use="required" fixed="1.0"/>
+		<xs:anyAttribute namespace="##any"/>
+	</xs:complexType>
+	<xs:complexType name="tPlugin">
+        <xs:annotation>
+            <xs:documentation>The plugin</xs:documentation>
+        </xs:annotation>
+		<xs:sequence>
+			<xs:element name="depends" type="tDepend" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>The </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+		<xs:attribute name="class" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>The fully qualified class name of the plugin main class</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+		<xs:attribute name="name" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation>The name of the plugin (class attribute will be used if not provided)</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="tDepend">
+        <xs:annotation>
+            <xs:documentation>The list of other plugins this plugin depends on</xs:documentation>
+        </xs:annotation>
+		<xs:sequence>
+			<xs:element name="depend" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>The name of the plugin which must be started before this one</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="tArchives">
+        <xs:annotation>
+            <xs:documentation>The list of archives needed by the plugins</xs:documentation>
+        </xs:annotation>
+		<xs:sequence>
+			<xs:element name="archive" type="tArchive" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="tArchive">
+        <xs:annotation>
+            <xs:documentation>An archive the plugin is loading</xs:documentation>
+        </xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+                <xs:attribute name="type" type="xs:string" use="optional">
+                    <xs:annotation>
+                        <xs:documentation>The type of archive it is like java (default) or native</xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="scope" type="xs:string" use="optional">
+                    <xs:annotation>
+                        <xs:documentation>The scope of the class which means if the classes are only available
+                            to the plugin (local) or to the entire application (global). ATTENTION: native libraries
+                            are always loaded with global scope but the developer must ensure that the classes
+                            with the JNI native method class are also loaded with GLOBAL scope
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+<!--
+		<xs:attribute name="type" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation>The type of archive it is like java (default) or native</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+		<xs:attribute name="scope" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation>The scope of the class which means if the classes are only available
+                    to the plugin (local) or to the entire application (global). ATTENTION: native libraries
+                    are always loaded with global scope but the developer must ensure that the classes
+                    with the JNI native method class are also loaded with GLOBAL scope
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+-->
+	</xs:complexType>
+	<!--
+TODO:
+- Need to add regexp pattern for MIME media-type value of tEnclosure/type
+-->
+	<!--
+Change Log:
+Date			Revision		Description
+4-July-2005		1			Initial version released for comment
+-->
+</xs:schema>

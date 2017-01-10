@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://purl.org/rss/1.0/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="textinput" type="ns:textinputType" xmlns:ns="http://purl.org/rss/1.0/"/>
+  <xs:element name="channel" type="ns:channelType" xmlns:ns="http://purl.org/rss/1.0/"/>
+  <xs:element name="image" type="ns:imageType" xmlns:ns="http://purl.org/rss/1.0/"/>
+  <xs:element name="item" type="ns:itemType" xmlns:ns="http://purl.org/rss/1.0/"/>
+  <xs:complexType name="itemType">
+    <xs:sequence>
+      <xs:element name="title">
+        <xs:simpleType>
+          <xs:restriction base="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:enumeration value="No EFI Support for Vista"/>
+            <xs:enumeration value="Google's New Calendar CL2"/>
+            <xs:enumeration value="Vonage Files Regulatory Complaint Over QoS Premium"/>
+            <xs:enumeration value="Security Flaw Discovered in GPG"/>
+            <xs:enumeration value="Novell Returns to the SUSE Name"/>
+            <xs:enumeration value="Movies Losing Popularity at Box Office"/>
+            <xs:enumeration value="Google Enters Web-Office Market"/>
+            <xs:enumeration value="The Problems With Game Copy Protection"/>
+            <xs:enumeration value="iTunes Sales Ban Does Increase CD Sales"/>
+            <xs:enumeration value="Cubicles a Giant Mistake"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="link">
+        <xs:simpleType>
+          <xs:restriction base="xs:anyURI" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:enumeration value="http://rss.slashdot.org/Slashdot/slashdot?m=4168"/>
+            <xs:enumeration value="http://rss.slashdot.org/Slashdot/slashdot?m=4167"/>
+            <xs:enumeration value="http://rss.slashdot.org/Slashdot/slashdot?m=4166"/>
+            <xs:enumeration value="http://rss.slashdot.org/Slashdot/slashdot?m=4164"/>
+            <xs:enumeration value="http://rss.slashdot.org/Slashdot/slashdot?m=4163"/>
+            <xs:enumeration value="http://rss.slashdot.org/Slashdot/slashdot?m=4162"/>
+            <xs:enumeration value="http://rss.slashdot.org/Slashdot/slashdot?m=4161"/>
+            <xs:enumeration value="http://rss.slashdot.org/Slashdot/slashdot?m=4165"/>
+            <xs:enumeration value="http://rss.slashdot.org/Slashdot/slashdot?m=4160"/>
+            <xs:enumeration value="http://rss.slashdot.org/Slashdot/slashdot?m=4159"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="description">
+        <xs:simpleType>
+          <xs:restriction base="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:enumeration value="DietFluffy writes &quot;Microsoft revealed today that it will not support EFI booting for Windows Vista on its launch. The news will be a shock for owners of Intel Macs who had hoped they would be able to dual-boot between Windows Vista and OS X. Intel Macs only support booting via EFI.&quot;&lt;img src=&quot;http://rss.slashdot.org/Slashdot/slashdot?g=4168&quot;/>"/>
+            <xs:enumeration value="pvt_medic writes &quot;Google is apparently working on its own calendar (CL2) program to integrate with Gmail. The closed beta is ongoing with about 200 participants - people involved are not allowed to invite outsiders to see the calendar and are under strict rules not to share any details with outsiders. Here are some leaked photos of the CL2.&quot;&lt;img src=&quot;http://rss.slashdot.org/Slashdot/slashdot?g=4167&quot;/>"/>
+            <xs:enumeration value="xoip writes &quot;A Recent CBC report says that Vonage Canada has filed a complaint with Federal Regulators over a New $10.00 per month Quality of Service Premium that Broadband Internet provider, Shaw Cable has begun charging customers of VoIP. Noted Internet Legal expert Michael Geist has written an excellent review of the complaint Vonage made to the CRTC and highlights the point made in the Vonage filing, 'that not enough is known at this point about the Shaw service in order to formulate an appropriate regulatory response.'&quot;&lt;img src=&quot;http://rss.slashdot.org/Slashdot/slashdot?g=4166&quot;/>"/>
+            <xs:enumeration value="WeLikeRoy writes &quot;A serious problem in the use of GPG to verify digital signatures has been discovered, which also affects the use of gpg in email. It is possible for an attacker to take any signed message and inject extra arbitrary data without affecting the signed status of the message. Depending on how gpg is invoked, it may be possible to output just faked data as several variants of this attack have been discovered. All versions of gnupg prior to 1.4.2.2 are affected, and it is thus recommended to update GnuPG as soon as possible to version 1.4.2.2.&quot;&lt;img src=&quot;http://rss.slashdot.org/Slashdot/slashdot?g=4164&quot;/>"/>
+            <xs:enumeration value="soren42 writes &quot;It appears that Novell has decided to rename their enterprise desktop line SUSE, once again. According to an announcement at CeBIT, Novell will be releasing the next version of their desktop product under the name SUSE Linux Enterprise Desktop - ditching the moniker Novell Linux Desktop. Naming aside, it looks like the features will be there to make it a strong desktop competitor.&quot;&lt;img src=&quot;http://rss.slashdot.org/Slashdot/slashdot?g=4163&quot;/>"/>
+            <xs:enumeration value="andyring writes &quot;Without the slightest mention of piracy, the MPAA said box-office revenues declined by 8 percent last year. About 40 percent of the decline came from the U.S. Now if only they'd realize that the decline is from movies sucking more than my shop vac.&quot; It's been a while since a film warranted spending the money to watch it in a room full of strangers.&lt;img src=&quot;http://rss.slashdot.org/Slashdot/slashdot?g=4162&quot;/>"/>
+            <xs:enumeration value="jaiva writes &quot;Google's official blog tells us that Google has acquired Writely, a collaborative word processor.&quot; From the article: &quot;To be clear, Writely is still in beta, and it's far from perfect. Upholding our great user experience means everything to us, so we're not accepting new registrations until we've moved Writely to Google's software architecture. If you're interested in giving us a try, we hope you'll get on the waitlist so we can let you know when you'll be able to try out Writely.&quot;&lt;img src=&quot;http://rss.slashdot.org/Slashdot/slashdot?g=4161&quot;/>"/>
+            <xs:enumeration value="Next Generation has a piece looking at the sometimes overly enthusiastic copy protection schemes used in PC games. From the article: &quot;In the late '80s and early '90s, the games industry could do little more than ask nicely that you not pirate their wares. These days, however, copy-protection software is ubiquitous, and any PC game bought at retail is going to have it embedded on the game disc(s) in one form or another. I'm okay with that in theory, but some of these anti-piracy software programs are so potent that they cause issues for legitimate game buyers. One of the leading brands, StarForce, is notorious for not only making it difficult for a small percentage of legitimate users to load up StarForce-protected games, but also for leaving potentially problem-causing StarForce software behind on your PC, even after you've deleted the game it was protecting.&quot;&lt;img src=&quot;http://rss.slashdot.org/Slashdot/slashdot?g=4165&quot;/>"/>
+            <xs:enumeration value="Guinnessy writes &quot;According to the New York Times, some music labels have deliberately stopped selling some new singles on online stories such as iTunes or Rhapsody while promoting songs on the radio, so that listeners will rush out to buy the CD album instead. The album appears in itunes at a later date. Not everyone seems to think this is a good idea. From the article: 'The labels are shooting themselves in the foot,' says Rhapsody's Tim Quirk. However, Ne-Yo's CD In My Own Words sold 301,000 copies using this method. Chris Brown's Run It, that was in the itunes store, sold 154,000 copies in its first week. Ne-Yo's So Sick was downloaded approximately 3.4 million times on the peer to peer networks during the week of his album release while the album Run It!&quot;was downloaded approximately 5.3 million times in the same release period.&quot;&lt;img src=&quot;http://rss.slashdot.org/Slashdot/slashdot?g=4160&quot;/>"/>
+            <xs:enumeration value="J to the D writes &quot;Apparently even the designer of the cubicle believes now that they are a bad idea.&quot; From the article: &quot;After years of prototyping and studying how people work, and vowing to improve on the open-bullpen office that dominated much of the 20th century, Propst designed a system he thought would increase productivity (hence the name Action Office). The young designer, who also worked on projects as varied as heart pumps and tree harvesters, theorized that productivity would rise if people could see more of their work spread out in front of them, not just stacked in an in-box.&quot;&lt;img src=&quot;http://rss.slashdot.org/Slashdot/slashdot?g=4159&quot;/>"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element ref="ns:creator" xmlns:ns="http://purl.org/dc/elements/1.1/"/>
+      <xs:element ref="ns:date" xmlns:ns="http://purl.org/dc/elements/1.1/"/>
+      <xs:element ref="ns:subject" xmlns:ns="http://purl.org/dc/elements/1.1/"/>
+      <xs:element ref="slas:department" xmlns:slas="http://purl.org/rss/1.0/modules/slash/"/>
+      <xs:element ref="slas:section" xmlns:slas="http://purl.org/rss/1.0/modules/slash/"/>
+      <xs:element ref="slas:comments" xmlns:slas="http://purl.org/rss/1.0/modules/slash/"/>
+      <xs:element ref="slas:hit_parade" xmlns:slas="http://purl.org/rss/1.0/modules/slash/"/>
+      <xs:element ref="ns:origLink" xmlns:ns="http://rssnamespace.org/feedburner/ext/1.0"/>
+    </xs:sequence>
+    <xs:attribute ref="rdf:about" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+  </xs:complexType>
+  <xs:complexType name="channelType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="title" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:anyURI" name="link" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:string" name="description" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element ref="ns:language" xmlns:ns="http://purl.org/dc/elements/1.1/"/>
+      <xs:element ref="ns:rights" xmlns:ns="http://purl.org/dc/elements/1.1/"/>
+      <xs:element ref="ns:date" xmlns:ns="http://purl.org/dc/elements/1.1/"/>
+      <xs:element ref="ns:publisher" xmlns:ns="http://purl.org/dc/elements/1.1/"/>
+      <xs:element ref="ns:creator" xmlns:ns="http://purl.org/dc/elements/1.1/"/>
+      <xs:element ref="ns:subject" xmlns:ns="http://purl.org/dc/elements/1.1/"/>
+      <xs:element ref="syn:updatePeriod" xmlns:syn="http://purl.org/rss/1.0/modules/syndication/"/>
+      <xs:element ref="syn:updateFrequency" xmlns:syn="http://purl.org/rss/1.0/modules/syndication/"/>
+      <xs:element ref="syn:updateBase" xmlns:syn="http://purl.org/rss/1.0/modules/syndication/"/>
+      <xs:element type="ns:itemsType" name="items" xmlns:ns="http://purl.org/rss/1.0/"/>
+      <xs:element type="ns:imageType" name="image" xmlns:ns="http://purl.org/rss/1.0/"/>
+      <xs:element type="ns:textinputType" name="textinput" xmlns:ns="http://purl.org/rss/1.0/"/>
+    </xs:sequence>
+    <xs:attribute ref="rdf:about" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+  </xs:complexType>
+  <xs:complexType name="textinputType" mixed="true">
+    <xs:sequence>
+      <xs:element type="xs:string" name="title" minOccurs="0" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:string" name="description" minOccurs="0" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:string" name="name" minOccurs="0" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:anyURI" name="link" minOccurs="0" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+    </xs:sequence>
+    <xs:attribute ref="rdf:resource" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <xs:attribute ref="rdf:about" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+  </xs:complexType>
+  <xs:complexType name="imageType" mixed="true">
+    <xs:sequence>
+      <xs:element type="xs:string" name="title" minOccurs="0" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:anyURI" name="url" minOccurs="0" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:anyURI" name="link" minOccurs="0" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+    </xs:sequence>
+    <xs:attribute ref="rdf:resource" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <xs:attribute ref="rdf:about" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+  </xs:complexType>
+  <xs:complexType name="itemsType">
+    <xs:sequence>
+      <xs:element ref="rdf:Seq" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

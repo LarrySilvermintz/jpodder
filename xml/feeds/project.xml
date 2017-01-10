@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+    <extend>../../basic-project.xml</extend>
+
+    <artifactId>jpodder-xml-feeds</artifactId>
+    <name>jpodder-xml-feeds</name>
+    <shortDescription>jPodder: Podcasting Application: Feeds XML Bindings</shortDescription>
+    <description>
+       jPodder's Feeds XML Binding Classes
+    </description>
+
+    <siteAddress>www.jpodder.com</siteAddress>
+<!--    <siteDirectory>/home/jdoppio/deploy/jdoppio.war</siteDirectory> -->
+
+    <repository>
+        <connection>scm:cvs:pserver:anonymous@cvs.sourceforge.net:/cvsroot/jpodder:jPodder2/xml/feeds</connection>
+    </repository>
+
+    <dependencies>
+        <dependency>
+            <groupId>xmlbeans</groupId>
+            <artifactId>xbean</artifactId>
+            <version>1.0.4</version>
+            <url></url>
+            <properties><jar.lib>true</jar.lib></properties>
+        </dependency>
+    </dependencies>
+
+   <build>
+      <nagEmailAddress>andreas.schaefer@madplanet.com</nagEmailAddress>
+<!--AS: We cannot add the src for now because we would have duplicate classes (here and int maven.buid.dir/src where
+        the extract sources from the library goes. Maybe we can later keep this by going over the source from
+        here and delete all the files with the same name in the maven.build.dir/src
+-->
+      <sourceDirectory>src.empty</sourceDirectory>
+        <sourceModifications>
+            <sourceModification>
+                <className>DoNotFindMe</className>
+                <excludes>
+                    <exclude>test/**/*.java</exclude>
+                </excludes>
+            </sourceModification>
+        </sourceModifications>
+      <unitTestSourceDirectory>test/src/java</unitTestSourceDirectory>
+      <aspectSourceDirectory/>
+
+      <unitTest>
+         <includes>
+            <include>**/*Test.java</include>
+         </includes>
+      </unitTest>
+   </build>
+</project>

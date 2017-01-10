@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+    <extend>../../basic-project.xml</extend>
+
+    <artifactId>jpodder-plugin-core</artifactId>
+    <name>jpodder-plugin-core</name>
+    <shortDescription>jPodder Core Plugin</shortDescription>
+    <description>
+        jPodder's Core Plugin
+    </description>
+
+    <siteAddress>www.jpodder.com</siteAddress>
+
+    <repository>
+        <connection>scm:cvs:pserver:anonymous@cvs.sourceforge.net:/cvsroot/jpodder:jPodder2/plugin/core</connection>
+    </repository>
+
+    <pomVersion>3</pomVersion>
+
+    <dependencies>
+        <dependency>
+            <groupId>jPodder</groupId>
+            <artifactId>jPodder2-jpodder</artifactId>
+            <version>1.0</version>
+            <url>http://jpodder.com</url>
+            <properties><jar.lib>true</jar.lib></properties>
+        </dependency>
+                <dependency>
+            <groupId>swt</groupId>
+            <artifactId>swt</artifactId>
+            <version>3.2</version>
+            <url>http://www.eclipse.org/swt</url>
+            <properties><jar.lib>true</jar.lib></properties>
+        </dependency>
+                <dependency>
+            <groupId>jface</groupId>
+            <artifactId>jface</artifactId>
+            <version>3.2.0</version>
+            <url>http://www.eclipse.org</url>
+            <properties><jar.lib>true</jar.lib></properties>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <nagEmailAddress>andreas.schaefer@madplanet.com</nagEmailAddress>
+        <sourceDirectory>src/java</sourceDirectory>
+        <unitTestSourceDirectory>test/src/java</unitTestSourceDirectory>
+        <aspectSourceDirectory/>
+
+        <unitTest>
+            <includes>
+                <include>**/*Test.java</include>
+            </includes>
+        </unitTest>
+
+        <resources>
+            <resource>
+                <directory>${basedir}/src/resource/config</directory>
+                <includes>
+                    <include>log4j.xml</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+</project>

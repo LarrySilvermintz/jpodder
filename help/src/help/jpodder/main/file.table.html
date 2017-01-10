@@ -1,0 +1,115 @@
+<html>
+    <head>
+        <title>File Table in jPodder</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <link rel="stylesheet" ref="stylesheet" href="../../main.css" type="text/css">
+    </head>
+    <body>
+        <div id="title"><h1><a name="top">Enclosure &amp; File Table</a></h1></div>
+        <p>
+            <i id="element">Enclosures</i> and <i id="element">Files</i> are represent a
+            <i id="element">podcast</i> but an <i id="element">Enclosure</i> means the media file specified in the
+            feed and <i id="element">File</i> represents the media on your computer. Whereas
+            the <i id="element">Enclosure</i> is not downloaded yet a <i id="element">File</i>
+            can be still on your hard disk even when the source was pulled by the feed
+            provider. We are going to use <i id="element">Enclosure</i> when we mean the
+            element in the feed or the media file on the provider's server and <i id="element">File</i>
+            when we mean that the media is downloaded onto your computer and/or player. In case
+            the difference does not matter we speak about a <i id="element">podcast</i>.
+        </p>
+        <p id="image">
+            <img src="../../images/file.table.png">
+        </p>
+        <p>
+            The <i id="element">enclosure &amp; file</i> table contains nine columns:
+            <table id="list"><tr valign="top">
+            <td id="index">1.</td><td id="key">#</td><td id="desc">Index of the column</td>
+            </tr><tr valign="top">
+            <td id="index">2.</td><td id="key">Mark</td><td id="desc">If check the podcast is marked to executes some action on a group of podcasts</td>
+            </tr><tr valign="top">
+            <td id="index">3.</td><td id="key">File Name</td><td id="desc">name of the file</td>
+            </tr><tr valign="top">
+            <td id="index">4.</td><td id="key">Size (web)</td><td id="desc">the size described by the <i id="element">enclosure</i></td>
+            </tr><tr valign="top">
+            <td id="index">5.</td><td id="key">Size (disc)</td><td id="desc">the actual size of the file on the local disc</td>
+            </tr><tr valign="top">
+            <td id="index">6.</td><td id="key">On disc?</td><td id="desc">selected if the podcast is available on the local disc</td>
+            </tr><tr valign="top">
+            <td id="index">7.</td><td id="key">In cache?</td><td id="desc">selected if the podcast is in jPodder's cache</td>
+            </tr><tr valign="top">
+            <td id="index">8.</td><td id="key">In player?</td><td id="desc">selected if the file was transfered onto a player</td>
+            </tr><tr valign="top">
+            <td id="index">9.</td><td id="key">Last modified</td><td id="desc">date &amp; time of the last modification to the file</td>
+            </tr></table>
+        </p>
+        
+        <!-- File table Context menu description ------------------------------------------------------>
+        <div id="title"><h2><a name="context.menu">File Context Menu</a></h2></div>
+        <p>
+            You can work with the files by either using jPodder's Menu ('Enclosures') as well as the
+            context menu in the right table which for example under Windows is activated by pressing the right
+            menu button while the mouse hoovers over the file table:
+        </p>
+        <p id="image">
+            <img src="../../images/file.context.menu.png">
+        </p>
+        <p>
+<!-- Need to verify with Christophe if this is going to be fixed -->
+            <b id="key">Note:</b> The entries in the context menu are enabled or disabled (gray) depending on the position
+            of the mouse and therefore depending on the underlying file.
+            </p>
+            <p>The file context menu contains these entires:
+            <table id="list"><tr valign="top">
+            <td id="key">Download ...</td><td id="desc">downloads the <i id="element">enclosure</i> from the podcast provider</td>
+            </tr><tr valign="top">
+            <td id="key">Play</td><td id="desc">plays the podcast directly without transferring it to the player (you may not be able to pause the playing)</td>
+            </tr><tr valign="top">
+            <td id="key">Mark all</td><td id="desc">marks all <i id="element">podcasts</i> in the table</td>
+            </tr><tr valign="top">
+            <td id="key">Clear all marking</td><td id="desc">unmarks all <i id="element">enclospodcastsures</i> in the table</td>
+            </tr><tr valign="top">
+            <td id="key">Delete marked...</td><td id="desc">deletes all <i id="element">podcasts</i> that are marked</td>
+            </tr><tr valign="top">
+            <td id="key">Add marked to player...</td><td id="desc">transfers all <i id="element">podcasts</i> to the currently selected player</td>
+            </tr><tr valign="top">
+            <td id="key">MP3 Info</td><td id="desc">views all the tags of the <i id="element">podcasts</i></td>
+            </tr><tr valign="top">
+            <td id="key">MP3 Edit</td><td id="desc">allows you to edit some of the tags of the <i id="element">podcasts</i></td>
+            </tr></table>
+        </p>
+        
+        <!-- File table tag dialog ------------------------------------------------------>
+        <div id="title"><h2><a name="tag.dialog">File Tag Dialog</a></h2></div>
+        <p>
+            With the <i id="element">podcast tag dialog</i> you can view / edit the tags of audio (mp3) file.
+            This way you can fine control how a player will display the audio file. The list of tags shown
+            are the ones available in the audio file.
+        </p>
+        <p id="image">
+            <img src="../../images/file.tag.dialog.png">
+        </p>
+        <p>
+            <b id="key">Note:</b> The picture shows the edit version but the view version just misses the links and the tag values are not editable.
+        </p>
+        <p>
+            The file tag edit / view dialog contains:
+            <table id="list"><tr valign="top">
+            <td id="key"><u>Choose</u></td><td id="desc">allows you to select artwork for the file (picture)</td>
+            </tr><tr valign="top">
+            <td id="key">Name</td><td id="desc">name of the tag</td>
+            </tr><tr valign="top">
+            <td id="key">Value</td><td id="desc">current content of the tag</td>
+            </tr><tr valign="top">
+            <td id="key"><u>Select the editable ID tags</td><td id="desc">Link allowing you to
+                <object CLASSID="java:com.sun.java.help.impl.JHSecondaryViewer">
+                    <param name="content" value="./popup/select.tags.html">
+                    <param name="viewerActivator" value="javax.help.LinkLabel">
+                    <param name="viewerStyle" value="javax.help.Popup">
+                    <param name="viewerSize" value="315, 215">
+                    <param name="text" value="select the tags">
+                </object> to be rewriten. These tags are then listed below.
+            </td>
+            </tr></table>
+        </p>
+    </body>
+</html>

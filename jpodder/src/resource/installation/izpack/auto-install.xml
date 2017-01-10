@@ -1,0 +1,20 @@
+<AutomatedInstallation langpack="eng">
+    <com.izforge.izpack.panels.HelloPanel/>
+    <com.izforge.izpack.panels.LicencePanel/>
+    <com.izforge.izpack.panels.TargetPanel>
+		<installpath>@maven.build.dir@/installation/jPodder</installpath>
+    </com.izforge.izpack.panels.TargetPanel>
+    <com.izforge.izpack.panels.PacksPanel>
+        <selected>
+            <pack index="0"/>
+            <pack index="1"/>
+        </selected>
+    </com.izforge.izpack.panels.PacksPanel>
+    <com.izforge.izpack.panels.InstallPanel/>
+    <com.izforge.izpack.panels.ShortcutPanel>
+        <programGroup name="jPodder-build-installation"/>
+        <shortcut name="jPodder" initialState="1" commandLine="" workingDirectory="@maven.build.dir@/installation/jPodder/bin" target="@maven.build.dir@/installation/jPodder/bin/Main.jar" type="1" icon="@maven.build.dir@/installation/jPodder/bin/jpodder.ico" group="true" description="jPodder media downloader" iconIndex="0"/>
+        <shortcut name="Uninstall" initialState="1" commandLine="" workingDirectory="@maven.build.dir@/installation/jPodder/bin" target="@maven.build.dir@/installation/jPodder/Uninstaller/uninstaller.jar" type="1" icon="@maven.build.dir@/installation/jPodder/bin/uninstall.ico" group="true" description="uninstall jPodder" iconIndex="0"/>
+    </com.izforge.izpack.panels.ShortcutPanel>
+    <com.izforge.izpack.panels.FinishPanel/>
+</AutomatedInstallation>

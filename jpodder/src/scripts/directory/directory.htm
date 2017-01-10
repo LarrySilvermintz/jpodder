@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>Feed Directory</title>
+<script type="text/javascript" src="../lib/scripts/xmlrpc.js"></script>
+<script type="text/javascript" src="directory.js"></script>
+<script type="text/javascript" src="../lib/scripts/misc.js"></script>
+<script type="text/javascript" src="../lib/scripts/dom.js"></script>
+<script type="text/javascript" src="../lib/scripts/xpath.js"></script>
+<script type="text/javascript" src="../lib/scripts/xslt.js"></script>
+<link type="text/css" rel="stylesheet" href="directory.css"></link>
+</head>
+<body onload="return loadDirectory();">
+
+<div class="tables">
+	<div class="title">Directory
+		<div class="status" id="status"></div>
+	</div>
+	<div class="subtitle">Subscribe to podcasts</div>	
+	<div class="catdisplay" id="catdisplay"></div>
+	
+	<form name="searchform" class="first_row">
+		<input name="search" type="text" id="query" size="20"/> 
+		<input type="button" id="query" onclick="return searchFeeds()" value="Search"/>
+	</form>
+	<div class="feedsdisplay" id="feedsdisplay"></div>
+</div>
+</body>
+</html>

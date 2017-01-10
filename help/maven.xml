@@ -1,0 +1,24 @@
+<project default="jpodder:build"
+         xmlns:ant="jelly:ant"
+         xmlns:j="jelly:core"
+         xmlns:maven="jelly:maven"
+         xmlns:deploy="deploy"
+         xmlns:util="jelly:util"
+>
+    <goal name="jpodder:build" prereqs="jar:install" description="Builds the Java Help archive" >
+    </goal>
+
+    <goal name="jpodder:clean" prereqs="clean:clean" description="Deletes the build directory" >
+    </goal>
+    
+<!-- Pre / Post Goals for this Project -->
+
+    <preGoal name="java:compile">
+        <attainGoal name="init"/>
+    </preGoal>
+    
+<!-- Private Goals for this Project -->
+
+    <goal name="init">
+    </goal>
+</project>

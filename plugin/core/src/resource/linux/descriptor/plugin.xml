@@ -1,0 +1,29 @@
+<!-- Author: Christophe Bouhier -->
+<!-- Core Plugin: UI Libraries (SWT 3.2, 3235) -->
+<plugins>	
+    <plugin name="OneClick" class="com.jpodder.CorePlugin"/>
+    <archives>
+    	<!-- The Core plugin are libraries for SWT 3.2 Linux-->    
+    	<archive type="java" scope="global">swt.jar</archive>
+    	
+        <!-- The Core plugin are libraries for SWT Linux-->
+        <archive type="native" scope="global">libswt-atk-gtk-3235.so</archive>
+        <archive type="native" scope="global">libswt-awt-gtk-3235.so</archive>
+        <archive type="native" scope="global">libswt-cairo-gtk-3235.so</archive>
+        <archive type="native" scope="global">libswt-glx-gtk-3235.so</archive>
+        <archive type="native" scope="global">libswt-gtk-3235.so</archive>
+        <archive type="native" scope="global">libswt-gnome-gtk-3235.so</archive>
+        <archive type="native" scope="global">libswt-pi-gtk-3235.so</archive>
+        <!-- CAIRO API-->
+        <archive type="native" scope="global">libcairo-swt.so</archive>
+        <!-- MOZILLA API-->
+        <archive type="native" scope="global">libswt-mozilla14-profile-gcc3-gtk-3235.so</archive>
+        <archive type="native" scope="global">libswt-mozilla14-profile-gtk-3235.so</archive>
+        <archive type="native" scope="global">libswt-mozilla17-profile-gcc3-gtk-3235.so</archive>
+        <archive type="native" scope="global">libswt-mozilla17-profile-gtk-3235.so</archive>
+        <archive type="native" scope="global">libswt-mozilla18-profile-gcc3-gtk-3235.so</archive>
+        <archive type="native" scope="global">libswt-mozilla18-profile-gtk-3235.so</archive>
+        <archive type="native" scope="global">libswt-mozilla-gcc3-gtk-3235.so</archive>
+        <archive type="native" scope="global">libswt-mozilla-gtk-3235.so</archive>
+    </archives>
+</plugins>

@@ -1,0 +1,72 @@
+package com.jpodder.ui.swt.id3;
+
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.util.List;
+
+import javax.swing.AbstractListModel;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.ListModel;
+
+import com.jpodder.ui.text.InsightControl;
+import com.jpodder.util.TokenHandler;
+import com.xfile.generic.xException;
+
+/**
+ * A textfield which is a container for an insight handler.
+ * 
+ * @see wpInsightControl
+ */
+public class PredictionField extends JTextField implements FocusListener {
+
+    InsightControl insight;
+
+    public PredictionField(JFrame frame) {
+
+        insight = new InsightControl(frame, this, "Tokens");
+        final List tokens = TokenHandler.getInstance().getTokens();
+        ListModel model = new AbstractListModel() {
+            public int getSize() {
+                return tokens.size();
+            }
+
+            public Object getElementAt(int i) {
+                return tokens.get(i);
+            }
+        };
+        insight.setInsightList(model);
+        this.addFocusListener(this);
+
+    }
+
+    final public void replaceSelection(String content) {
+        super.replaceSelection(content);
+
+        if (isEditable() || isEnabled()) {
+            if (insight != null & insight.isEnabled()) {
+                try {
+                    insight.fillToggleWithPrediction();
+                } catch (xException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    /**
+     * @see java.awt.event.FocusListener#focusGained(java.awt.event.FocusEvent)
+     */
+    public void focusGained(FocusEvent e) {
+
+    }
+
+    /**
+     * @see java.awt.event.FocusListener#focusLost(java.awt.event.FocusEvent)
+     */
+    public void focusLost(FocusEvent e) {
+        insight.setEnabled(true);
+        insight.toggleInsight();
+
+    }
+}

@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <title>Settings in jPodder</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <link rel="stylesheet" ref="stylesheet" href="../../main.css" type="text/css">
+    </head>
+    <body>
+        <div id="title"><h1><a name="top">Settings: Connection</a></h1></div>
+        <p>
+            Allows you to adjust the Internet connection settings. This includes the
+            settings for a Proxy as well as the timeout for Internet connections.
+        </p>
+        <p id="image">
+            <img src="../../images/settings.connection.png">
+        </p>
+        <p>
+            The <i id="element">Connection</i> view contains these fields:
+            <table id="list"><tr valign="top">
+            <td id="key">Connect to RSS feeds through a proxy</td><td id="value">
+                If checked the RSS feeds are downloaded through the given
+                <object CLASSID="java:com.sun.java.help.impl.JHSecondaryViewer">
+                    <param name="content" value="../glossary/proxy.html">
+                    <param name="viewerActivator" value="javax.help.LinkLabel">
+                    <param name="viewerStyle" value="javax.help.Popup">
+                    <param name="viewerSize" value="315, 215">
+                    <param name="text" value="Proxy">
+                </object> below. jPodder needs to know that the proxy in order to
+                use the proxy as client instead of the RSS provider.
+            </td>
+            </tr><tr valign="top">
+            <td id="key">Proxy server</td><td id="value">Server name of the proxy</td>
+            </tr><tr valign="top">
+            <td id="key">Proxy port</td><td id="value">Port of the proxy</td>
+            </tr><tr valign="top">
+            <td id="key">User Id</td><td id="value">User name if the proxy requires authentication</td>
+            </tr><tr valign="top">
+            <td id="key">Password</td><td id="value">Password if the proxy requires authentication</td>
+            </tr><tr valign="top">
+            <td id="key">(HTTP) Connection timeout value (sec)</td><td id="value">The
+                <object CLASSID="java:com.sun.java.help.impl.JHSecondaryViewer">
+                    <param name="content" value="../glossary/web.connection.timeout.html">
+                    <param name="viewerActivator" value="javax.help.LinkLabel">
+                    <param name="viewerStyle" value="javax.help.Popup">
+                    <param name="viewerSize" value="415, 205">
+                    <param name="text" value="HTTP Connection Timeout">
+                </object>
+                allows you to set a specific timeout where the application assumes a connection is
+                <i id="element">stale</i> and terminates it. If you have a slow connection you can
+                increase the timeout in order to reduce the number of terminated connections but
+                it also could mean that your application becomes less responsive. The timeout value
+                is specified in <b>seconds</b>.
+            </td>
+            </tr></table>
+        </p>
+    </body>
+</html>

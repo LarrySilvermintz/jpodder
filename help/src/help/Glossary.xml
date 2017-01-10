@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='ISO-8859-1'  ?>
+<!DOCTYPE index
+  PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Index Version 1.0//EN"
+         "http://java.sun.com/products/javahelp/index_2_0.dtd">
+<index version="2.0">
+    <indexitem text="Adam Curry" target="jpodder.glossary.adam.curry"/>
+    <indexitem text="Bit Torrent" target="jpodder.glossary.bittorent"/>
+    <indexitem text="Enclosure" target="jpodder.glossary.enclosure"/>
+    <indexitem text="Feed" target="jpodder.glossary.feed"/>
+    <indexitem text="OPML" target="jpodder.glossary.opml"/>
+    <indexitem text="Podcasting" target="jpodder.glossary.podcasting"/>
+    <indexitem text="Proxy (Web)" target="jpodder.glossary.proxy"/>
+    <indexitem text="RSS" target="jpodder.glossary.rss"/>
+    <indexitem text="URL" target="jpodder.glossary.url"/>
+    <indexitem text="Web Connection Timeout" target="jpodder.glossary.web.connection.timeout"/>
+</index>
+

@@ -1,0 +1,132 @@
+<html>
+    <head>
+        <title>Feed Handling in jPodder</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <link rel="stylesheet" ref="stylesheet" href="../../main.css" type="text/css">
+    </head>
+    <body>
+        <div id="title"><h2><a name="editing">Adding / Editing a Feed</a></h2></div>
+        <p>
+            In order to download podcasts you need to add a feed to your personal feed list. In addition jPodder allows you to customize
+            your feed and its podcasts in many ways. The most import feature is the <i>tag rewriting</i> for the podcasts. As you maybe
+            have noticed the MP3 audio files contain a set of tags like <i>Artist</i>, <i>Genre</i> etc that are set by the producer. But
+            sometimes they are not what you would like them to be like, for example, the <i>Genre</i> is set to something like 'vocal',
+            'other' etc instead of 'Podcast'. In case you have regular music MP3 files you end up with problems keeping them appart. With
+            the tag rewriting jPodder can help you adjust these tags to whatever value you like so that they fit your needs the best.
+        </p>
+        <p>
+            The difference between adding a <b>new</b> and editing an <b>existing</b> feed is that in the dialog for addition a feed you
+            only have the tab <i id="element">General</i> and <i id="element">Media</i> available whereas when you edit a feed you also
+            see the tabs <i id="element">History</i> and  <i id="element">RSS</i>. When you preview a new and valid feed the tab
+            <i id="element">RSS</i> is made visible, too.
+        </p>
+        <p>
+            You can <b>add a new feed</b> by either using the jPodder's Feed menu, the feed context menu <i id="element">Add Feed</i> entry or
+            by double-clicking on a empty row in the feed table (there are always two empty rows at the bottom of the feed table). <b>Editing an
+            existing feed</b> is done by using the jPodder's Feed menu, the feed context menu <i id="element">Edit Feed</i> entry or by
+            double clicking the feed in question.
+        </p>
+        <p>
+            The <i id="element">Feed Manager</i> dialog has a default button on the <i id="element">Add</i> when adding a new feed or on the
+            <i id="element">Ok</i> when editing a feed adding feed to the list or accepting the changes and closing the dialog. You can
+                <object CLASSID="java:com.sun.java.help.impl.JHSecondaryViewer">
+                    <param name="content" value="../glossary/feed.preview.html">
+                    <param name="viewerActivator" value="javax.help.LinkLabel">
+                    <param name="viewerStyle" value="javax.help.Popup">
+                    <param name="viewerSize" value="250,105">
+                    <param name="text" value="preview the feed">
+                </object>
+                even when not added yet. This way you can read the feed data in the <i id="element">RSS</i> tab. If the feed URL is invalid
+                you can still change it or discard the feed entirely by clicking on the <i id="element">cancel</i> button.
+            preview
+            the feed
+        <p>
+            The <i id="element">Feed Manager</i> dialog for adding a new feed looks like this:
+            <img alt="Feed Manager Dialog" src="../../images/feed.add.png">
+        </p>
+        <p>
+            The <i id="element">General</i> tab contains these fields:
+            <table id="list"><tr valign="top">
+            <td id="key">The feed URL</td><td id="value">The
+                <object CLASSID="java:com.sun.java.help.impl.JHSecondaryViewer">
+                    <param name="content" value="../glossary/url.html">
+                    <param name="viewerActivator" value="javax.help.LinkLabel">
+                    <param name="viewerStyle" value="javax.help.Popup">
+                    <param name="viewerSize" value="200,100">
+                    <param name="text" value="URL of the feed">
+                </object> is set here
+            </td>
+            </tr><tr valign="top">
+            <td id="key">The feed title</td><td id="value">Title of the Feed which is normally taken from the feed during a preview but can be changed here at any time</td>
+            </tr><tr valign="top">
+            <td id="key">Checked when subscribed</td><td id="value">Uncheck if the feed should be kept inactive (no inspection or downloading podcasts)</td>
+            </tr><tr valign="top">
+            <td id="key">Marking & download limit</td><td id="value">The maximum numbers of marked enclosures per feed and therefore the maximum number of downloads for this feed per download cycle</td>
+            </tr><tr valign="top">
+            <td id="key">Downloads will be stored in</td><td id="value">The directory where a downloaded podcast will placed in</td>
+            </tr></table>
+        </p>
+        <p>
+            <a name="feed.media">
+            <img alt="Feed Manager Dialog" src="../../images/feed.add.media.png">
+        </p>
+        <p>
+            The <i id="element">Media</i> tab contains these fields:
+            <table id="list"><tr valign="top">
+            <td id="key"><u>Select</u></td><td id="value">Link allowing you to
+                <object CLASSID="java:com.sun.java.help.impl.JHSecondaryViewer">
+                    <param name="content" value="../popup/select.tags.html">
+                    <param name="viewerActivator" value="javax.help.LinkLabel">
+                    <param name="viewerStyle" value="javax.help.Popup">
+                    <param name="viewerSize" value="315, 215">
+                    <param name="text" value="select the tags">
+                </object> to be rewriten. These tags are then listed below.
+            </td>
+            </tr><tr valign="top">
+            <td id="key">Name</td><td id="value">Name of the Tag to be rewritten. Is set when you select a tag in the <u>select</u> link above</td>
+            </tr><tr valign="top">
+            <td id="key">Value</td><td id="value">New value of the tag set when rewritten. You can enter the value you like and even add values from other tags.
+            An easy what to do so is to enter a '$' character and then select a tag from the
+                <object CLASSID="java:com.sun.java.help.impl.JHSecondaryViewer">
+                    <param name="content" value="../popup/tag.placeholder.list.html">
+                    <param name="viewerActivator" value="javax.help.LinkLabel">
+                    <param name="viewerStyle" value="javax.help.Popup">
+                    <param name="viewerSize" value="415, 205">
+                    <param name="text" value="tag placeholder">
+                </object>
+                list. You can add as many placeholders as you like.
+            </td>
+            </tr></table>
+        </p>
+        <p>
+            <img alt="Feed Manager Dialog" src="../../images/feed.edit.history.png">
+        </p>
+        <p>
+            The <i id="element">History</i> tab contains these fields:
+            <table id="list"><tr valign="top">
+            <td id="key">Historical events</td><td id="value">All the events that have occurred with this feed</td>
+            </tr><tr valign="top">
+            <td id="key">When?</td><td id="value">Date and Time when the event happened</td>
+            </tr><tr valign="top">
+            <td id="key">What?</td><td id="value">The action that was performed with that event</td>
+            </tr></table>
+        </p>
+        <p>
+            <img alt="Feed Manager Dialog" src="../../images/feed.edit.rss.png">
+        </p>
+        <p>
+            The <i id="element">RSS</i> tab contains these fields:
+            <table id="list"><tr valign="top">
+            <td id="key">The local RSS file location</td><td id="value">The location and file name of the local RSS document</td>
+            </tr><tr valign="top">
+            <td id="key">Title</td><td id="value">Original Title of the Feed</td>
+            </tr><tr valign="top">
+            <td id="key">Link</td><td id="value">Original Link of the Feed</td>
+            </tr><tr valign="top">
+            <td id="key">Description</td><td id="value">Description provided by the Feed</td>
+            </tr><tr valign="top">
+            <td id="key">...</td><td id="value">futher attributes of the feed less commonly used</td>
+            </tr></table>
+        </p>
+    </body>
+</html>

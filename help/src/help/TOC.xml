@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='ISO-8859-1'  ?>
+<!DOCTYPE toc
+  PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp TOC Version 2.0//EN"
+           "http://java.sun.com/products/javahelp/toc_2_0.dtd">
+
+<toc version="2.0">
+    <tocitem text="jPodder Podcast Receiver" image="toplevelfolder">
+<!--AS Remove this later or adjust it
+       <tocitem text="Introduction to jPodder Online Help" target="jpodder.intro"/>
+-->
+       <tocitem text="jPodder Help" target="jpodder.main.toc" expand="true">
+           <tocitem text="Chapter 1: Personal Feeds &amp; Files" target="jpodder.main.feed.handling">
+               <tocitem text="Chapter 1.1: Feed Table (left)" target="jpodder.main.feed.handling.table"/>
+               <tocitem text="Chapter 1.2: Feed Context Menu" target="jpodder.main.feed.handling.context.menu"/>
+               <tocitem text="Chapter 1.3: Feed Adding &amp; Editing" target="jpodder.main.feed.handling.editing"/>
+               <tocitem text="Chapter 1.4: File Table (right)" target="jpodder.main.file.table"/>
+               <tocitem text="Chapter 1.5: File Context Menu" target="jpodder.main.file.context.menu"/>
+               <tocitem text="Chapter 1.6: File Tag Dialog" target="jpodder.main.file.tag.dialog"/>
+           </tocitem>
+           <tocitem text="Chapter 2: Settings" target="jpodder.main.settings">
+               <tocitem text="Chapter 2.1: Media - Tags" target="jpodder.main.settings.media-tags"/>
+               <tocitem text="Chapter 2.2: Media - Mime Types" target="jpodder.main.settings.media-mime"/>
+               <tocitem text="Chapter 2.3: Connection" target="jpodder.main.settings.connection"/>
+               <tocitem text="Chapter 2.4: Download" target="jpodder.main.settings.download"/>
+               <tocitem text="Chapter 2.5: Production" target="jpodder.main.settings.production"/>
+               <tocitem text="Chapter 2.6: Import" target="jpodder.main.settings.import"/>
+               <tocitem text="Chapter 2.7: Scheduling" target="jpodder.main.settings.scheduling"/>
+           </tocitem>
+           <tocitem text="Chapter 3: Downloads" target="jpodder.main.downloads"/>
+           <tocitem text="Chapter 4: Directory" target="jpodder.main.directory"/>
+           <tocitem text="Chapter 5: Logging" target="jpodder.main.logging"/>
+           <tocitem text="Chapter 6: Podcast Production" target="jpodder.main.podcast.production">
+               <tocitem text="Chapter 6.1: Step 1: Feed" target="jpodder.main.podcast.production.feed"/>
+               <tocitem text="Chapter 6.2: Step 2: Record" target="jpodder.main.podcast.production.record"/>
+               <tocitem text="Chapter 6.3: Step 3: Podcasts" target="jpodder.main.podcast.production.enclosure"/>
+               <tocitem text="Chapter 6.4: Step 4: Publish" target="jpodder.main.podcast.production.transfer"/>
+           </tocitem>
+       </tocitem>
+
+<!--AS Remove this later
+       <tocitem text="jPodder Guide" target="jpodder.guide.toc" expand="true">
+           <tocitem text="Feature Overview" target="jpodder.guide.overview"/>
+           <tocitem text="Chapter 1: Configure jPodder" target="jpodder.guide.configuration">
+               <tocitem text="Chapter 1.1: Configure Media" target="jpodder.guide.configuration.media"/>
+           </tocitem>
+           <tocitem text="Chapter 2: jPodder's Feed Directory" target="jpodder.guide.feed.directory"/>
+           <tocitem text="Chapter 4: Downloading Podcasts" target="jpodder.guide.downloading"/>
+           <tocitem text="Chapter 5: Transfer Podcasts to a Player" target="jpodder.guide.transfer.to.player"/>
+           <tocitem text="Chapter 6: Logging" target="jpodder.guide.logging"/>
+           <tocitem text="Chapter 7: Getting More Help" target="jpodder.guide.more.help"/>
+       </tocitem>
+   <tocitem text="IDE Tutorial" target="tut.starttoc" expand="true">
+       <tocitem text="Introducing JDE" target="tut.overview"/>
+       <tocitem text="Tutorial One: Creating the Blink Project" target="tut.quickstart"/>
+       <tocitem text="Tutorial Two: Editing Project Attributes" target="tut.edit"/>
+       <tocitem text="Tutorial Three: Fixing Errors in Source Code" target="tut.errors"/>
+       <tocitem text="Tutorial Four: Browsing a Project" target="tut.browse"/>
+       <tocitem text="Tutorial Five: Debugging a Project" target="tut.simpledebug"/>
+       <tocitem text="Tutorial Six: Customizing a Run Page" target="tut.customize"/>
+       <tocitem text="Tutorial Seven: Creating a GUI" target="tut.visual"/>
+       <tocitem text="Tutorial Eight: Creating the Clock Project" target="tut.beansoverview"/>
+   </tocitem>
+
+   <tocitem text="Beans In JDE" target="bean.jbeanstory"/>
+   <tocitem text="Beans In JDE - in SecondaryWindow" target="bean.jbeanstory" presentationtype="javax.help.SecondaryWindow" presentationname="main"/>
+   <tocitem text="Beans In JDE - in Popup" target="bean.jbeanstory" presentationtype="javax.help.Popup"/>
+   <tocitem text="Tips on Using Beans Effectively" target="bean.beantips"/>
+
+   <tocitem text="Managing Projects" target="proj.managertoc">
+      <tocitem text="What Is a Portfolio?" target="proj.portfolio"/>
+      <tocitem text="Creating a Portfolio" target="proj.createportfolio"/>
+      <tocitem text="Adding an Existing Portfolio" target="proj.import"/>
+      <tocitem text="Changing the Current Portfolio" target="proj.changeportfolio"/>
+      <tocitem text="Removing a Portfolio" target="proj.removeportfolio"/>
+      <tocitem text="What Is a Project?" target="proj.projects"/>
+      <tocitem text="Where Are Project Files Stored?" target="proj.paths"/>
+   </tocitem>
+
+   <tocitem text="Editing Source Files" target="edit.editsource">
+      <tocitem text="Basic Editing" target="edit.basic"/>
+      <tocitem text="Editor Menu and Toolbar Commands" target="edit.controls"/>
+      <tocitem text="Source Editor Tabs and Indentation" target="edit.tabs"/>
+      <tocitem text="Syntax Highlighting and Colors" target="edit.syntax"/>
+      <tocitem text="Source Editor Fonts" target="edit.font"/>
+      <tocitem text="Source Editor Preferences" target="edit.preferences"/>
+      <tocitem text="Keyboard Preferences" target="edit.keyboard"/>
+      <tocitem text="Find Dialog Box" target="edit.find"/>
+      <tocitem text="Replace Dialog Box" target="edit.replace"/>
+   </tocitem>
+
+   <tocitem text="Building Projects" target="build.build">
+      <tocitem text="Compiling a Single File" target="build.compilefile"/>
+      <tocitem text="Builder Preferences Dialog Box" target="build.compiler_pref"/>
+   </tocitem>
+
+   <tocitem text="Debugging Projects">
+      <tocitem text="Debugging with Java Workshop" target="debug.overview"/>
+      <tocitem text="Starting a Debugging Session" target="debug.start"/>
+      <tocitem text="Debugging In the Source Editor" target="debug.editor"/>
+      <tocitem text="Specifying Program Arguments" target="debug.arguments"/>
+   </tocitem>
+
+   <tocitem text="Profiling Projects" target="prof.profile">
+      <tocitem text="Profiler Menus" target="prof.menus"/>
+      <tocitem text="Custom Filter Dialog Box" target="prof.custom"/>
+   </tocitem>
+
+   <tocitem text="Browsing Source Files" target="browse.sbrowse">
+      <tocitem text="Viewing Class Files" target="browse.class"/>
+      <tocitem text="Javadoc - The Java API Documentation Generator" target="browse.javadoc"/>
+      <tocitem text="Searching for Strings" target="browse.strings"/>
+   </tocitem>
+
+   <tocitem text="Version Control" target="version.version"/>
+
+   <tocitem text="Preferences">
+     <tocitem text="Source Editor" target="pref.preferences"/>
+     <tocitem text="Keyboard" target="pref.keyboard"/>
+     <tocitem text="Console Input" target="pref.console_input"/>
+     <tocitem text="Java Compiler" target="pref.compiler_pref"/>
+   </tocitem>
+
+   <tocitem text="Menus">
+      <tocitem text="File Menu" target="menus.file"/>
+      <tocitem text="Edit Menu" target="menus.edit"/>
+      <tocitem text="Build Menu" target="menus.build"/>
+      <tocitem text="Debug Menu" target="menus.debug"/>
+      <tocitem text="Preferences Menu" target="menus.preferences"/>
+      <tocitem text="Windows Menu" target="menus.windows"/>
+      <tocitem text="Help Menu" target="menus.help"/>
+   </tocitem>
+
+   <tocitem text="Toolbars">
+      <tocitem text="Main Toolbar" target="toolbar.main"/>
+      <tocitem text="Edit/Debug Toolbar" target="toolbar.pce_debug"/>
+   </tocitem>
+-->
+
+    </tocitem>
+</toc>
+

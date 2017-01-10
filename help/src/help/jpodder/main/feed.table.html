@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <title>Feed Handling in jPodder</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <link rel="stylesheet" ref="stylesheet" href="../../main.css" type="text/css">
+    </head>
+    <body>
+        <div id="title"><h2><a name="table">Feed Table</a></h2></div>
+        <p>
+            <img border="0" src="../../images/feed.table.png" align="right" hspace="7">
+        </p>
+        <p>
+            The feed table contains four columns and will show at least two empty rows at the end of the table
+            so that you can always add a new feed with a double click on an empty row. The four columns contain:
+            <table id="list"><tr valign="top">
+            <td id="index">1.</td><td id="key">Subscribe</td><td id="desc">shows a checkbox to indicated if you subscribed to the feed or not. In the context menu we call it <b>marked</b></td>
+            </tr><tr valign="top">
+            <td id="index">2.</td><td id="key">Feed</td><td id="desc">the title and URL of the feed</td>
+            </tr><tr valign="top">
+            <td id="index">3.</td><td id="key">Max</td><td id="desc">maximum number of enclosures downloaded for this feed at one given time</td>
+            </tr><tr valign="top">
+            <td id="index">4.</td><td id="key">Quality</td><td id="desc">an image indicating the quality of the feed that can be good (<i>Sun</i>) or bad
+            (<i>Umbrella</i>) which means that a connection could not be established with the server that provides
+            the feed or there is a problem with the feed itself</td>
+            </tr></table>
+        </p>
+        <p>
+            The
+            <object CLASSID="java:com.sun.java.help.impl.JHSecondaryViewer">
+                <param name="content" value="./popup/feed.arrows.html">
+                <param name="viewerActivator" value="javax.help.LinkLabel">
+                <param name="viewerStyle" value="javax.help.Popup">
+                <param name="viewerSize" value="165, 165">
+                <param name="text" value="arrows on the left side">
+            </object>
+            of the table are used to <b>sort</b> the feeds. If a feed is selected the arrows will
+            move them relative to the other feeds. In case of the picture above clicking the up buttom will move the feed in
+            front of the second feed making it the second feed. A click on the down button would make it again the third feed.
+        </p>
+        
+        <!-- Feed table Context menu description ------------------------------------------------------>
+        <div id="title"><h2><a name="context.menu">Feed Context Menu</a></h2></div>
+        <p>
+            You can work with the feeds by either using jPodder's Menu ('Feeds' and 'Enclosures') as well as the
+            context menu in the left table which for example under Windows is activated by pressing the right
+            menu button while the mouse hoovers over the feed table:
+        </p>
+        <p id="image">
+            <img src="../../images/feed.context.menu.png">
+        </p>
+        <p>
+            <b id="key">Note:</b> The entries in the context menu are enabled or disabled (gray) depending on the position
+            of the mouse and therefore depending on the underlying feed.
+            </p>
+            <p>The feed context menu contains these entires:
+            <table id="list"><tr valign="top">
+            <td id="key">Scan Folder</td><td id="desc">allows you to search for available feeds in your feeds directory that are not added to the list currently</td>
+            </tr><tr valign="top">
+            <td id="key">Add Feed</td><td id="desc">lets you add a new feed that is added to the end of the list and <b>does not change</b> the current feed</td>
+            </tr><tr valign="top">
+            <td id="key">Preview</td><td id="desc">downloads the feed (RSS document) from the given location (URL)</td>
+            </tr><tr valign="top">
+            <td id="key">Preview All</td><td id="desc">downloads all the listed and marked feeds</td>
+            </tr><tr valign="top">
+            <td id="key">Edit Feed</td><td id="desc">allows you to edit the feed like the location, title but also edit the tags of any audio file (podcast) provided by this feed</td>
+            </tr><tr valign="top">
+            <td id="key">Remove Feed</td><td id="desc">removes this feed</td>
+            </tr><tr valign="top">
+            <td id="key">Lookup URL</td><td id="desc">lets jPodder try to find the URL of the feed that can be missing after adding a feed after <i>Scan Folder</td>
+            <!--AS Move this to the file context menu
+            </tr><tr valign="top">
+            <td id="key">Mark all</td><td id="desc">marks all the feeds in the table</td>
+            </tr><tr valign="top">
+            <td id="key">Clear all marking</td><td id="desc">deselects all feeds in the table</td>
+            </tr><tr valign="top">
+            <td id="key">Delete marked</td><td id="desc">deleted all the marked feeds</td>
+            </tr><tr valign="top">
+            <td id="key">Add marked to player</td><td id="desc">downloads and transfers all marked enclosures of all marked feeds to the current player</td>
+            -->
+            </tr><tr valign="top">
+            <td id="key">Production</td><td id="desc">takes the current feed and creates a podcast production using some of the feed's data</td>
+            </tr></table>
+        </p>
+    </body>
+</html>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    XML Schema for jPodder Feeds 1.0
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" version="2.0.1.10" >
+	<xs:annotation>
+		<xs:documentation>XML Schema for jPodder Feeds FIle 1.0.</xs:documentation>
+		<xs:documentation>Revision: 1</xs:documentation>
+		<xs:documentation>Date: 1-June-2005</xs:documentation>
+		<xs:documentation>Based on the jPodder 0.9</xs:documentation>
+		<xs:documentation>Author: Andreas Schaefer</xs:documentation>
+		<xs:documentation>Feedback to: http://www.jpodder.com</xs:documentation>
+	</xs:annotation>
+	<xs:element name="feeds" type="tFeeds"/>
+	<xs:complexType name="tFeeds">
+		<xs:sequence>
+			<xs:element name="feed" type="tFeed" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="version" type="xs:decimal" use="required" fixed="1.0"/>
+		<xs:anyAttribute namespace="##any"/>
+	</xs:complexType>
+	<xs:complexType name="tFeed">
+		<xs:sequence>
+			<xs:element name="head" type="tFeedHead" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="enclosure" type="tEnclosure" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="id3tags" type="tID3Tags" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="url" type="xs:anyURI" use="required"/>
+		<xs:attribute name="redirecturl" type="xs:anyURI" use="required"/>
+		<xs:attribute name="folder" type="xs:string" use="required"/>
+		<xs:attribute name="title" type="xs:string" use="required"/>
+		<xs:attribute name="poll" type="xs:boolean" use="required"/>
+		<xs:attribute name="quality" type="xs:positiveInteger" use="required"/>
+		<xs:attribute name="max" type="xs:positiveInteger" use="required"/>
+		<xs:attribute name="description" type="xs:string" use="required"/>
+		<xs:attribute name="file" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="tEnclosure">
+		<xs:sequence>
+			<xs:element name="head" type="tFeedHead"/>
+			<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="marked" type="xs:boolean" use="required"/>
+		<xs:attribute name="completed" type="xs:boolean" use="optional"/>
+		<xs:attribute name="url" type="xs:anyURI" use="required"/>
+        <!--AS QUESTON: is there a type for the MIME Type -->
+		<xs:attribute name="type" type="xs:string" use="required"/>
+        <!--AS QUESTON: is there a type for a directory -->
+		<xs:attribute name="file" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="tFeedHead">
+		<xs:attribute name="head_size" type="xs:positiveInteger" use="required"/>
+		<xs:attribute name="head_encoding" type="xs:string" use="optional"/>
+		<xs:attribute name="head_modified" type="tRfc822FormatDate" use="optional"/>
+		<xs:attribute name="head_date" type="tRfc822FormatDate" use="required"/>
+		<xs:attribute name="head_expired" type="xs:boolean" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="tID3Tags">
+		<xs:sequence>
+			<xs:element name="id3tag" type="tID3Tag" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="tID3Tag">
+		<xs:attribute name="name" type="xs:string" use="required"/>
+		<xs:attribute name="value" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:simpleType name="tRfc822FormatDate">
+		<xs:annotation>
+			<xs:documentation>A date-time displayed in RFC-822 format.</xs:documentation>
+			<xs:documentation>Using the regexp definiton of rfc-822 date by Sam Ruby at http://www.intertwingly.net/blog/1360.html</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(((Mon)|(Tue)|(Wed)|(Thu)|(Fri)|(Sat)|(Sun)), *)?\d\d? +((Jan)|(Feb)|(Mar)|(Apr)|(May)|(Jun)|(Jul)|(Aug)|(Sep)|(Oct)|(Nov)|(Dec)) +\d\d(\d\d)? +\d\d:\d\d(:\d\d)? +(([+\-]?\d\d\d\d)|(UT)|(GMT)|(EST)|(EDT)|(CST)|(CDT)|(MST)|(MDT)|(PST)|(PDT)|\w)"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--
+TODO:
+- Need to add regexp pattern for MIME media-type value of tEnclosure/type 
+-->
+	<!--
+Change Log:
+Date			Revision		Description
+31-Mar-2003		1			Initial version released for comment
+-->
+</xs:schema>

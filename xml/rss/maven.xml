@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<project default="jpodder:build"
+         xmlns:ant="jelly:ant"
+         xmlns:j="jelly:core"
+         xmlns:maven="jelly:maven"
+         xmlns:deploy="deploy"
+         xmlns:xmlbeans="geronimo:xmlbeans"
+>
+
+    <preGoal name="java:compile">
+        <j:set var="uptodatePropName" value="xmlbeans.uptodate"/>
+        <j:expr value="${context.setVariable(uptodatePropName, null)}"/>
+        <j:set var="schema.name" value="rss20"/>
+        <j:set var="itunes.name" value="pod"/>
+        
+        <uptodate property="${uptodatePropName}"
+            targetfile="${maven.build.dir}/${maven.final.name}.jar">
+            <srcfiles dir="src"
+                includes="**/${schema.name}.xsd, **/${itunes.name}.xsd, **/${schema.name}.xsdconfig"/>
+        </uptodate>
+        
+        <j:if test="${context.getVariable(uptodatePropName) == null}">
+            <ant:taskdef  name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpathref="maven.dependency.classpath" />
+            <xmlbean
+                classgendir="${maven.build.dir}/src"
+                srcgendir="${maven.build.dir}/src"
+                classpathref="maven.dependency.classpath"
+                destfile="${maven.build.dir}/${maven.final.name}.jar"
+                failonerror="true"
+            >
+            	<fileset dir="src" includes="**/${schema.name}.xsd"/>
+              <fileset dir="src" includes="**/${itunes.name}.xsd"/>
+              <fileset dir="src" includes="**/${schema.name}.xsdconfig"/>
+            </xmlbean>
+        </j:if>
+    </preGoal>
+
+<!--AS NOTE: do not execute the jar:jar because it is done by the XMLBean Ant task -->
+   <goal name="jar:jar">
+      <attainGoal name="java:compile"/>
+   </goal>
+
+   <goal name="jpodder:build">
+      <attainGoal name="jar:install"/>
+   </goal>
+</project>

@@ -1,0 +1,10 @@
+<mime>
+ 	<type name="audio/mpg> icon16="mpeg.png" icon48="mpeg48.png">
+ 		<variant name="audio/mpeg">
+ 		<variant name="audio/x-mpeg-3">
+	</type>
+	<type name="audio/mp4" icon16="mp4-16.png" icon48="mp4-48.png" />
+    <type name="audio/wma" icon16="wma-16.png" icon48="wma-48.png" />
+	<type name="application/x-bittorent" icon16="bt-16.png" icon48="bt-48.png" />
+	<type name="video/quicktime" icon16="qt-16.png" icon48="qt-48.png" />
+</mime>

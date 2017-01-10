@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+    <extend>../basic-project.xml</extend>
+
+    <artifactId>jpodder-help</artifactId>
+    <name>jpodder-help</name>
+    <shortDescription>jPodder Java Help System</shortDescription>
+    <description>
+        jPodder's Java Help System
+    </description>
+
+    <siteAddress>www.jpodder.com</siteAddress>
+<!--    <siteDirectory>/home/jdoppio/deploy/jdoppio.war</siteDirectory> -->
+
+    <repository>
+        <connection>scm:cvs:pserver:anonymous@cvs.sourceforge.net:/cvsroot/jpodder:jPodder2/help</connection>
+    </repository>
+
+    <pomVersion>3</pomVersion>
+
+    <dependencies>
+    </dependencies>
+
+    <build>
+        <nagEmailAddress>andreas.schaefer@madplanet.com</nagEmailAddress>
+        <sourceDirectory>src/java</sourceDirectory>
+        <unitTestSourceDirectory>test/src/java</unitTestSourceDirectory>
+        <aspectSourceDirectory/>
+
+        <unitTest>
+            <includes>
+                <include>**/*Test.java</include>
+            </includes>
+        </unitTest>
+
+        <resources>
+            <resource>
+                <directory>${basedir}/src/help</directory>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+</project>

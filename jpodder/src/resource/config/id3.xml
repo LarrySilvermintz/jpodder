@@ -1,0 +1,74 @@
+<id3>
+<tag id="TALB" name="Album" description="Read album/movie/show title"/>
+<tag id="TPE1" name="Artist" description="Read artist, store as text content"/>
+<tag id="WOAR" name="ArtistWebpage" description="Read official artist / performer webpage, store as text content"/>
+<tag id="WOAF" name="AudioFileWebpage" description="Read official audio file webpage, store as text content"/>
+<tag id="WOAS" name="AudioSourceWebpage" description="Read official audio source webpage, store as text content Used e.g. for movie soundtracks, then points to the movie"/>
+<tag id="TPE2" name="Band" description="Read band (orchestra, accompaniment), store as text content"/>
+<tag id="TBPM" name="BPM" description="Read BPM" />
+<tag id="MCDI" name="CDIdentifier" description="Read Music CD identifier, store as binary content" />
+<tag id="COMM" name="Comments" description="Read comments, store language as type, description as description and comments as text content" />
+<tag id="COMR" name="Commercial" description="Read commercial frame, store as binary content See the ID3v2 informal standard for details on the format of this field" />
+<tag id="WCOM" name="CommercialInformation" description="Read Commercial information webpage, store as text content" />
+<tag id="TCOM" name="Composer" description="Read composer(s), stored as text content" />
+<tag id="TPE3" name="Conductor" description="Read conductor, store as text content" />
+<tag id="TIT1" name="ContentGroup" description="Read content group description, store as text content" />
+<tag id="TCOP" name="CopyrightText" description="Read copyright, store as text content" />
+<tag id="WCOP" name="CopyrightWebpage" description="Read Coypright / legal information webpage, store as text content" />
+<tag id="TDAT" name="Date" description="Read date (format DDMM), store as text content" />
+<tag id="GEOB" name="EncapsulatedObject" description="Read general encapsulated object, store MIME type as type, filename as text subtype, description as description and object as binary content" />
+<tag id="TENC" name="EncodedBy" description="Read encoded by, store as text content" />
+<tag id="ENCR" name="EncryptionMethodRegistration" description="Read encryption method registration, store owner identifier as type, method symbol as binary subtype and encryption data as binary content" />
+<tag id="EQUA" name="Equalisation" description="Read equalisation, store as binary content See the ID3v2 informal standard for details on the format of this field" />
+<tag id="ETCO" name="EventTimingCodes" description="Read event timing codes, store as binary content See the ID3v2 informal standard for details on the format of this field" />
+<tag id="TOWN" name="FileOwner" description="Read file owner, store as text content" />
+<tag id="TSIZ" name="Filesize" description="Get size of file in bytes, excluding id3v2 tag, store as text content" />
+<tag id="TFLT" name="FileType" description="Read file type, store as text content" />
+<tag id="TCON" name="Genre" description="Read genre (type of music like &quot;Soul&quot;, &quot;Rock&quot;, etc.) stored as text content" />
+<tag id="GRID" name="GroupIdentificationRegistration" description="Read group identification registration, store owner identifier as type, group symbol as binary subtype and group dependent data as binary content" />
+<tag id="TKEY" name="InitialKey" description="Read initial key Musical key in which sound starts" />
+<tag id="TRSN" name="InternetRadioStationName" description="Get Internet radio station name, store as text content" />
+<tag id="TRSO" name="InternetRadioStationOwner" description="Get Internet radio station owner, store as text content" />
+<tag id="WORS" name="InternetRadioStationWebpage" description="Read official internet radio station webpage, store as text content" />
+<tag id="TSRC" name="ISRC" description="Get International Standard Recording Code, store as text content" />
+<tag id="TLAN" name="Language" description="Read language of lyrics Language is represented with three characters according to ISO-639-2" />
+<tag id="TLEN" name="LengthInTag" description="Read length of audiofile in milliseconds, store as text content" />
+<tag id="MLLT" name="LookupTable" description="Read MPEG location lookup table, store as binary content See the ID3v2 informal standard for details on the format of this field" />
+<tag id="TEXT" name="Lyricist" description="Read lyricist, store as text content" />
+<tag id="TMED" name="MediaType" description="Read media type, store as text content" />
+<tag id="TOPE" name="OriginalArtist" description="Read original artist(s) (for cover songs), store as text content" />
+<tag id="TOFN" name="OriginalFilename" description="Read original filename, store as text content Original filename is used to store prefered filename on media which does have limitations to the filename" />
+<tag id="TOLY" name="OriginalLyricist" description="Read original lyricist(s) (for cover songs), store as text content" />
+<tag id="TOAL" name="OriginalTitle" description="Read original title (for cover songs), store as text content" />
+<tag id="TORY" name="OriginalYear" description="Read original release year (format YYYY) (for cover songs), store as text content" />
+<tag id="OWNE" name="Ownership" description="Read ownership, store as binary content See the ID3v2 informal standard for details on the format of this field" />
+<tag id="TPOS" name="PartOfSet" description="Read part of a set (e.g. 1/2 for a double CD), store as text content" />
+<tag id="WPAY" name="PaymentWebpage" description="Read payment webpage, store as text content" />
+<tag id="APIC" name="Picture" description="Read attached picture, store MIME type as type, picture type as binary subtype, description as description and picture data as binary content" />
+<tag id="PCNT" name="PlayCounter" description="Read play counter, store as binary content See the ID3v2 informal standard for details on the format of this field" />
+<tag id="TDLY" name="PlaylistDelay" description="Read playlist delay, store as text content" />
+<tag id="POPM" name="Popularimeter" description="Read popularimeter, store as binary content See the ID3v2 informal standard for details on the format of this field" />
+<tag id="POSS" name="PositionSynchronization" description="Read position synchronization, store as binary content See the ID3v2 informal standard for details on the format of this field" />
+<tag id="PRIV" name="Private" description="" />
+<tag id="PRIV" name="PrivateData" description="Read private data, store owner identifier as type, private data as binary content" />
+<tag id="TPUB" name="Publisher" description="Read publisher, store as text content" />
+<tag id="WPUB" name="PublishersWebpage" description="Read official publishers webpage, store as text content" />
+<tag id="RBUF" name="RecommendedBufferSize" description="Read recommended buffer size, store as binary content See the ID3v2 informal standard for details on the format of this field" />
+<tag id="TRDA" name="RecordingDates" description="Get recording dates, store as text content" />
+<tag id="RVAD" name="RelativeVolumenAdjustment" description="Read relative volume adjustment, store as binary content See the ID3v2 informal standard for details on the format of this field" />
+<tag id="TPE4" name="Remixer" description="Read remixer, store as text content" />
+<tag id="RVRB" name="Reverb" description="Read reverb, store as binary content See the ID3v2 informal standard for details on the format of this field" />
+<tag id="TIT3" name="Subtitle" description="Read subtitle, store as text content" />
+<tag id="SYLT" name="SynchronizedLyrics" description="Read synchronized lyrics, store as binary content See the ID3v2 informal standard for details on the format of this field" />
+<tag id="SYTC" name="SynchronizedTempoCodes" description="Read synchronized tempo codes, store as binary content See the ID3v2 informal standard for details on the format of this field" />
+<tag id="TSSE" name="SoftwareHardware" description="Software/Hardware and settings used for encoding' " />
+<tag id="USER" name="TermsOfUse" description="Read terms of use, store language as type and terms of use as text content" />
+<tag id="TIME" name="Time" description="Read time (format HHMM), store as text content" />
+<tag id="TIT2" name="Title" description="Read song title, store as text content" />
+<tag id="TRCK" name="Track" description="Read track number, store in text content" />
+<tag id="UFID" name="UniqueFileIdentifier" description="Read unique file identifier" />
+<tag id="USLT" name="UnsynchronizedLyrics" description="Read unsynchronized lyrics, store language as type, description as description and lyrics as text content" />
+<tag id="TXXX" name="UserDefinedText" description="Read user defined text, store description as description and value as text content" />
+<tag id="WXXX" name="UserDefinedURL" description="Read user defined URL, store description as description and URL as text content" />
+<tag id="TYER" name="Year" description="Get year of recording, store as text content" />
+</id3>

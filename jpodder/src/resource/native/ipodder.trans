@@ -1,0 +1,17 @@
+scan_on_startup
+dl_command_enable
+player_type=player
+download_dir=folder
+dl_command
+enableAuto=auto
+startingAt
+intervalHours=delay
+defaultMinute
+appdata_dir
+runTimesEnable
+runTimes
+gui_dir
+politeness
+show_log_page
+hide_on_startup
+runMode	specific

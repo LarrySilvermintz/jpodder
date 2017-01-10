@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://purl.org/rss/1.0/modules/slash/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="hit_parade">
+    <xs:simpleType>
+      <xs:restriction base="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:enumeration value="18,17,10,3,0,0,0"/>
+        <xs:enumeration value="100,92,77,51,31,26,14"/>
+        <xs:enumeration value="96,91,76,49,17,11,4"/>
+        <xs:enumeration value="100,91,77,62,30,16,12"/>
+        <xs:enumeration value="128,121,102,69,23,17,9"/>
+        <xs:enumeration value="533,531,446,291,78,46,35"/>
+        <xs:enumeration value="194,184,156,103,31,23,13"/>
+        <xs:enumeration value="248,244,197,147,45,33,18"/>
+        <xs:enumeration value="161,159,137,95,49,22,13"/>
+        <xs:enumeration value="306,303,249,178,72,46,40"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="department">
+    <xs:simpleType>
+      <xs:restriction base="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:enumeration value="apples-and-oranges"/>
+        <xs:enumeration value="ajax-in-action"/>
+        <xs:enumeration value="not-gonna-take-it"/>
+        <xs:enumeration value="enemy-within"/>
+        <xs:enumeration value="penguin-by-any-other-name"/>
+        <xs:enumeration value="good-scripts-also-lost"/>
+        <xs:enumeration value="looking-forward-to-online-clippy"/>
+        <xs:enumeration value="where-to-begin"/>
+        <xs:enumeration value="sounds-logical"/>
+        <xs:enumeration value="we-already-knew-that"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="section">
+    <xs:simpleType>
+      <xs:restriction base="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:enumeration value="apple"/>
+        <xs:enumeration value="mainpage"/>
+        <xs:enumeration value="yro"/>
+        <xs:enumeration value="it"/>
+        <xs:enumeration value="linux"/>
+        <xs:enumeration value="games"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="comments">
+    <xs:simpleType>
+      <xs:restriction base="xs:short" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:enumeration value="18"/>
+        <xs:enumeration value="100"/>
+        <xs:enumeration value="96"/>
+        <xs:enumeration value="128"/>
+        <xs:enumeration value="533"/>
+        <xs:enumeration value="194"/>
+        <xs:enumeration value="248"/>
+        <xs:enumeration value="161"/>
+        <xs:enumeration value="306"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+</xs:schema>

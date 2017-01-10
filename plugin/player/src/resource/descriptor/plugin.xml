@@ -1,0 +1,14 @@
+<plugins>
+    <!--ATTENTION: The name of the player plugins must match what the Player.getName() method returns -->
+    <plugin name="iTunes" class="com.jpodder.plugin.player.itunes.ITunesPlayer"/>
+    <plugin name="Windows Media Player" class="com.jpodder.plugin.player.wmp.WindowsMediaPlayer"/>
+	<plugin name="Thumb Drive Player" class="com.jpodder.plugin.player.thumb.ThumbDrivePlayer"/>
+	<plugin name="Thumb Drive" class="com.jpodder.plugin.player.thumb.ThumbPluginSWT"/>
+<!--
+    <archives>
+        <archive type="java">jawin-1.0.jar</archive>
+        <archive type="java">jawin-stubs-1.0.jar</archive>
+        <archive type="native" platform="windows">jawin-1.0.dll</archive>
+    </archives>
+-->
+</plugins>
